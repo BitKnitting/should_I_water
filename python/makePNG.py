@@ -55,9 +55,8 @@ class MakePNG():
     def _make_drawing(self):
         self.im = Image.new('RGB', (600,400), "white")
         self.dr = ImageDraw.Draw(self.im)
-        # There are three planters
         self._draw_planters()
-        self._draw_readings()
+
 
 
     def make_png(self,filename='moisture_readings.png'):
