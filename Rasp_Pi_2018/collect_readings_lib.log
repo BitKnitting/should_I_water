@@ -1,0 +1,6 @@
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "reading" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "timestamp" DATETIME NOT NULL, "measurement" INTEGER NOT NULL, "battery_level" REAL NOT NULL)', [])
+INFO:root:Measurement,print_info:Received a _TEST_PACKET
+ERROR:root:Measurement,print_error:list index out of range
+INFO:root:Measurement,print_info:Received a _TEST_PACKET
+INFO:root:Measurement,print_info:Received a _MOISTURE_INFO_PACKET
+DEBUG:peewee:('INSERT INTO "reading" ("nodeID", "timestamp", "measurement", "battery_level") VALUES (?, ?, ?, ?)', [1, datetime.datetime(2018, 4, 26, 14, 39, 2, 684573), 232, 0.06])
