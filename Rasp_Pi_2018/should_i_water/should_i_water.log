@@ -1,0 +1,13 @@
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "node" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "reading" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "timestamp" DATETIME NOT NULL, "measurement" INTEGER NOT NULL, "battery_level" REAL NOT NULL)', [])
+INFO:root:04/29/2018 12:37:47 | /home/pi/myLadybugHelper/should_i_water/collect_readings_lib.py | 49 | _receive_done: Received a _MOISTURE_INFO_PACKET
+DEBUG:peewee:('INSERT INTO "reading" ("nodeID", "timestamp", "measurement", "battery_level") VALUES (?, ?, ?, ?)', [1, datetime.datetime(2018, 4, 29, 12, 38, 39, 352194), 171, 4.2])
+INFO:root:04/29/2018 12:37:47 | collect_readings_task.py | 22 | store_measurement: measurement stored.  nodeID: 1, measurement: 171, battery_level: 4.2
+INFO:root:04/29/2018 12:37:47 | /home/pi/myLadybugHelper/should_i_water/collect_readings_lib.py | 49 | _receive_done: Received a _MOISTURE_INFO_PACKET
+DEBUG:peewee:('INSERT INTO "reading" ("nodeID", "timestamp", "measurement", "battery_level") VALUES (?, ?, ?, ?)', [1, datetime.datetime(2018, 4, 29, 12, 38, 39, 553216), 171, 4.2])
+INFO:root:04/29/2018 12:37:47 | collect_readings_task.py | 22 | store_measurement: measurement stored.  nodeID: 1, measurement: 171, battery_level: 4.2
+INFO:root:04/29/2018 12:37:47 | /home/pi/myLadybugHelper/should_i_water/collect_readings_lib.py | 49 | _receive_done: Received a _MOISTURE_INFO_PACKET
+DEBUG:peewee:('INSERT INTO "reading" ("nodeID", "timestamp", "measurement", "battery_level") VALUES (?, ?, ?, ?)', [1, datetime.datetime(2018, 4, 29, 12, 39, 38, 720667), 171, 4.21])
+INFO:root:04/29/2018 12:37:47 | collect_readings_task.py | 22 | store_measurement: measurement stored.  nodeID: 1, measurement: 171, battery_level: 4.21
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "node" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "reading" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "timestamp" DATETIME NOT NULL, "measurement" INTEGER NOT NULL, "battery_level" REAL NOT NULL)', [])

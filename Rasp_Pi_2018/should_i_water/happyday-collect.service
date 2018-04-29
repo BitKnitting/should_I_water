@@ -6,7 +6,7 @@ After=network.target
 [Service]
 Type=simple
 Environment=PYTHONPATH=/home/pi/.local/lib/python3.5/site-packages
-ExecStart=/usr/bin/python3 /home/pi/RFM69_Pi/rcv_store_measurements.py
+ExecStart=/usr/bin/python3 /home/pi/myLadybugHelper/should_i_water/collect_readings_task.py
 Restart=on-failure
 User=pi
 
