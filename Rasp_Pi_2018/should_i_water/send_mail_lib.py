@@ -67,7 +67,7 @@ class SendMail:
             except Node.DoesNotExist as e:
                 self.handle_logging.print_error(e)
             if (self.measurement <= 205):
-                 return node_description+" - Unless the weather says otherwise, you should water."
+                 return node_description+" - Unless the weather says otherwise, you should water. (the reading was {})".format(self.measurement)
             else:
                  return node_description+" - No need to water today."
         else:
@@ -90,7 +90,9 @@ class SendMail:
     def send_email(self):
         message = self._put_message_together()
         thor_mail = OutlookProvider()
-        thor_mail.send_mail('thor_johnson@msn.com',message)
+        # thor_mail.send_mail('thor_johnson@msn.com',message)
+        # me_mail = GmailProvider()
+        import pdb;pdb.set_trace()
         me_mail = GmailProvider()
         me_mail.send_mail('happday.mjohnson@gmail.com',message)
         pass

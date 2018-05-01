@@ -6,7 +6,7 @@
 //
 // copyright (c)  Margaret Johnson
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
-#define DEBUG
+//#define DEBUG
 #include <DebugLib.h>
 #include <RH_RF69.h>
 
@@ -23,7 +23,6 @@ RH_RF69 rf69(RFM69_CS, RFM69_INT);
 #include <RTCZero.h>
 RTCZero rtc;
 
-const int POWER = 12;
 const int NUMBER_OF_TRIES = 10;
 
 bool bHaveTimeInfo = false;
@@ -199,8 +198,7 @@ void get_reading() {
  *******************************************************************/
 
 int read_moisture() {
-  // Turn power on to the moisture sensor.
-  digitalWrite(POWER, HIGH);
+  
   delay(10);
   // Average over nReadings.
   const int num_readings = 30;
@@ -212,8 +210,6 @@ int read_moisture() {
     tot_readings += current_reading;
     delay(delay_between_readings );
   }
-  // Turn off power to the moisture sensor.
-  digitalWrite(POWER, LOW);
   // Return an average of the values read.
   int reading = round(tot_readings / num_readings);
   DEBUG_PRINTF("Reading: ");
@@ -239,8 +235,6 @@ float read_battery_level() {
 void init_stuff() {
   pinMode(LED, OUTPUT);
   digitalWrite(LED, LOW);
-  // The Moisture sensor's v + is connected to the POWER GPIO pin.
-  pinMode(POWER, OUTPUT);
   init_radio();
   init_rtc();
 }
