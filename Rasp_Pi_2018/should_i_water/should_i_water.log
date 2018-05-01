@@ -11,3 +11,348 @@ DEBUG:peewee:('INSERT INTO "reading" ("nodeID", "timestamp", "measurement", "bat
 INFO:root:04/29/2018 12:37:47 | collect_readings_task.py | 22 | store_measurement: measurement stored.  nodeID: 1, measurement: 171, battery_level: 4.21
 DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "node" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL)', [])
 DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "reading" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "timestamp" DATETIME NOT NULL, "measurement" INTEGER NOT NULL, "battery_level" REAL NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "node" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "reading" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "timestamp" DATETIME NOT NULL, "measurement" INTEGER NOT NULL, "battery_level" REAL NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "node" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "reading" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "timestamp" DATETIME NOT NULL, "measurement" INTEGER NOT NULL, "battery_level" REAL NOT NULL)', [])
+DEBUG:peewee:('SELECT "t1"."id", "t1"."nodeID", "t1"."timestamp", "t1"."measurement", "t1"."battery_level" FROM "reading" AS "t1" WHERE ("t1"."timestamp" BETWEEN ? AND ?) LIMIT 1 OFFSET 0', [datetime.datetime(2018, 4, 29, 0, 0), datetime.datetime(2018, 4, 29, 16, 13, 23, 633045)])
+DEBUG:peewee:('SELECT "t1"."id", "t1"."nodeID", "t1"."description" FROM "node" AS "t1" WHERE ("t1"."nodeID" = ?) LIMIT 1 OFFSET 0', [1])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "node" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "reading" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "timestamp" DATETIME NOT NULL, "measurement" INTEGER NOT NULL, "battery_level" REAL NOT NULL)', [])
+DEBUG:peewee:('SELECT "t1"."id", "t1"."nodeID", "t1"."timestamp", "t1"."measurement", "t1"."battery_level" FROM "reading" AS "t1" WHERE ("t1"."timestamp" BETWEEN ? AND ?) LIMIT 1 OFFSET 0', [datetime.datetime(2018, 4, 29, 0, 0), datetime.datetime(2018, 4, 29, 16, 17, 31, 451255)])
+DEBUG:peewee:('SELECT "t1"."id", "t1"."nodeID", "t1"."description" FROM "node" AS "t1" WHERE ("t1"."nodeID" = ?) LIMIT 1 OFFSET 0', [1])
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.darksky.net
+DEBUG:urllib3.connectionpool:https://api.darksky.net:443 "GET /forecast/d3fbc403cc28523a125c3c5ab8e43ded/47.649093,-122.199153 HTTP/1.1" 200 31022
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "node" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "reading" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "timestamp" DATETIME NOT NULL, "measurement" INTEGER NOT NULL, "battery_level" REAL NOT NULL)', [])
+DEBUG:peewee:('SELECT "t1"."id", "t1"."nodeID", "t1"."timestamp", "t1"."measurement", "t1"."battery_level" FROM "reading" AS "t1" WHERE ("t1"."timestamp" BETWEEN ? AND ?) LIMIT 1 OFFSET 0', [datetime.datetime(2018, 4, 29, 0, 0), datetime.datetime(2018, 4, 29, 16, 18, 4, 379379)])
+DEBUG:peewee:('SELECT "t1"."id", "t1"."nodeID", "t1"."description" FROM "node" AS "t1" WHERE ("t1"."nodeID" = ?) LIMIT 1 OFFSET 0', [1])
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.darksky.net
+DEBUG:urllib3.connectionpool:https://api.darksky.net:443 "GET /forecast/d3fbc403cc28523a125c3c5ab8e43ded/47.649093,-122.199153 HTTP/1.1" 200 31248
+INFO:root:04/29/2018 12:54:09 | /home/pi/myLadybugHelper/should_i_water/collect_readings_lib.py | 49 | _receive_done: Received a _MOISTURE_INFO_PACKET
+DEBUG:peewee:('INSERT INTO "reading" ("nodeID", "timestamp", "measurement", "battery_level") VALUES (?, ?, ?, ?)', [1, datetime.datetime(2018, 4, 30, 4, 0, 7, 68739), 187, 3.12])
+INFO:root:04/29/2018 12:54:09 | /home/pi/myLadybugHelper/should_i_water/collect_readings_task.py | 22 | store_measurement: Measurement stored.  nodeID: 1, measurement: 187, battery_level: 3.12
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "node" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "reading" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "timestamp" DATETIME NOT NULL, "measurement" INTEGER NOT NULL, "battery_level" REAL NOT NULL)', [])
+DEBUG:peewee:('SELECT "t1"."id", "t1"."nodeID", "t1"."timestamp", "t1"."measurement", "t1"."battery_level" FROM "reading" AS "t1" WHERE ("t1"."timestamp" BETWEEN ? AND ?) LIMIT 1 OFFSET 0', [datetime.datetime(2018, 4, 30, 0, 0), datetime.datetime(2018, 4, 30, 4, 49, 17, 519278)])
+DEBUG:peewee:('SELECT "t1"."id", "t1"."nodeID", "t1"."timestamp", "t1"."measurement", "t1"."battery_level" FROM "reading" AS "t1" WHERE ("t1"."timestamp" BETWEEN ? AND ?) LIMIT 1 OFFSET 0', [datetime.datetime(2018, 4, 30, 0, 0), datetime.datetime(2018, 4, 30, 4, 49, 31, 427952)])
+DEBUG:peewee:('SELECT "t1"."id", "t1"."nodeID", "t1"."description" FROM "node" AS "t1" WHERE ("t1"."nodeID" = ?) LIMIT 1 OFFSET 0', [1])
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.darksky.net
+DEBUG:urllib3.connectionpool:https://api.darksky.net:443 "GET /forecast/d3fbc403cc28523a125c3c5ab8e43ded/47.649093,-122.199153 HTTP/1.1" 200 30217
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "node" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "reading" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "timestamp" DATETIME NOT NULL, "measurement" INTEGER NOT NULL, "battery_level" REAL NOT NULL)', [])
+DEBUG:peewee:('SELECT "t1"."id", "t1"."nodeID", "t1"."timestamp", "t1"."measurement", "t1"."battery_level" FROM "reading" AS "t1" WHERE ("t1"."timestamp" BETWEEN ? AND ?) LIMIT 1 OFFSET 0', [datetime.datetime(2018, 4, 30, 0, 0), datetime.datetime(2018, 4, 30, 4, 50, 55, 649955)])
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.darksky.net
+DEBUG:urllib3.connectionpool:https://api.darksky.net:443 "GET /forecast/d3fbc403cc28523a125c3c5ab8e43ded/47.649093,-122.199153 HTTP/1.1" 200 30366
+DEBUG:peewee:('SELECT "t1"."id", "t1"."nodeID", "t1"."timestamp", "t1"."measurement", "t1"."battery_level" FROM "reading" AS "t1" WHERE ("t1"."timestamp" BETWEEN ? AND ?) LIMIT 1 OFFSET 0', [datetime.datetime(2018, 4, 30, 0, 0), datetime.datetime(2018, 4, 30, 4, 51, 15, 83016)])
+DEBUG:peewee:('SELECT "t1"."id", "t1"."nodeID", "t1"."description" FROM "node" AS "t1" WHERE ("t1"."nodeID" = ?) LIMIT 1 OFFSET 0', [1])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "node" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "reading" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "timestamp" DATETIME NOT NULL, "measurement" INTEGER NOT NULL, "battery_level" REAL NOT NULL)', [])
+DEBUG:peewee:('SELECT "t1"."id", "t1"."nodeID", "t1"."timestamp", "t1"."measurement", "t1"."battery_level" FROM "reading" AS "t1" WHERE ("t1"."timestamp" BETWEEN ? AND ?) LIMIT 1 OFFSET 0', [datetime.datetime(2018, 4, 30, 0, 0), datetime.datetime(2018, 4, 30, 9, 26, 51, 841215)])
+DEBUG:peewee:('SELECT "t1"."id", "t1"."nodeID", "t1"."timestamp", "t1"."measurement", "t1"."battery_level" FROM "reading" AS "t1" WHERE ("t1"."timestamp" BETWEEN ? AND ?) LIMIT 1 OFFSET 0', [datetime.datetime(2018, 4, 30, 0, 0), datetime.datetime(2018, 4, 30, 9, 26, 51, 858374)])
+DEBUG:peewee:('SELECT "t1"."id", "t1"."nodeID", "t1"."description" FROM "node" AS "t1" WHERE ("t1"."nodeID" = ?) LIMIT 1 OFFSET 0', [1])
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.darksky.net
+DEBUG:urllib3.connectionpool:https://api.darksky.net:443 "GET /forecast/d3fbc403cc28523a125c3c5ab8e43ded/47.649093,-122.199153 HTTP/1.1" 200 32761
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "node" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "reading" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "timestamp" DATETIME NOT NULL, "measurement" INTEGER NOT NULL, "battery_level" REAL NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "node" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "reading" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "timestamp" DATETIME NOT NULL, "measurement" INTEGER NOT NULL, "battery_level" REAL NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "node" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "reading" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "timestamp" DATETIME NOT NULL, "measurement" INTEGER NOT NULL, "battery_level" REAL NOT NULL)', [])
+DEBUG:peewee:('SELECT "t1"."id", "t1"."nodeID", "t1"."timestamp", "t1"."measurement", "t1"."battery_level" FROM "reading" AS "t1" WHERE ("t1"."timestamp" BETWEEN ? AND ?) LIMIT 1 OFFSET 0', [datetime.datetime(2018, 4, 30, 0, 0), datetime.datetime(2018, 4, 30, 9, 30, 45, 877072)])
+DEBUG:peewee:('SELECT "t1"."id", "t1"."nodeID", "t1"."description" FROM "node" AS "t1" WHERE ("t1"."nodeID" = ?) LIMIT 1 OFFSET 0', [1])
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.darksky.net
+DEBUG:urllib3.connectionpool:https://api.darksky.net:443 "GET /forecast/d3fbc403cc28523a125c3c5ab8e43ded/47.649093,-122.199153 HTTP/1.1" 200 31159
+DEBUG:peewee:('SELECT "t1"."id", "t1"."nodeID", "t1"."timestamp", "t1"."measurement", "t1"."battery_level" FROM "reading" AS "t1" WHERE ("t1"."timestamp" BETWEEN ? AND ?) LIMIT 1 OFFSET 0', [datetime.datetime(2018, 4, 30, 0, 0), datetime.datetime(2018, 4, 30, 9, 31, 0, 781340)])
+WARNING:googleapiclient.discovery_cache:file_cache is unavailable when using oauth2client >= 4.0.0
+Traceback (most recent call last):
+  File "/home/pi/.local/lib/python3.5/site-packages/googleapiclient/discovery_cache/__init__.py", line 36, in autodetect
+    from google.appengine.api import memcache
+ImportError: No module named 'google'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/pi/.local/lib/python3.5/site-packages/googleapiclient/discovery_cache/file_cache.py", line 33, in <module>
+    from oauth2client.contrib.locked_file import LockedFile
+ImportError: No module named 'oauth2client.contrib.locked_file'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/pi/.local/lib/python3.5/site-packages/googleapiclient/discovery_cache/file_cache.py", line 37, in <module>
+    from oauth2client.locked_file import LockedFile
+ImportError: No module named 'oauth2client.locked_file'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/pi/.local/lib/python3.5/site-packages/googleapiclient/discovery_cache/__init__.py", line 41, in autodetect
+    from . import file_cache
+  File "/home/pi/.local/lib/python3.5/site-packages/googleapiclient/discovery_cache/file_cache.py", line 41, in <module>
+    'file_cache is unavailable when using oauth2client >= 4.0.0')
+ImportError: file_cache is unavailable when using oauth2client >= 4.0.0
+INFO:googleapiclient.discovery:URL being requested: GET https://www.googleapis.com/discovery/v1/apis/gmail/v1/rest
+INFO:googleapiclient.discovery:URL being requested: POST https://www.googleapis.com/gmail/v1/users/me/messages/send?alt=json
+WARNING:googleapiclient.discovery_cache:file_cache is unavailable when using oauth2client >= 4.0.0
+Traceback (most recent call last):
+  File "/home/pi/.local/lib/python3.5/site-packages/googleapiclient/discovery_cache/__init__.py", line 36, in autodetect
+    from google.appengine.api import memcache
+ImportError: No module named 'google'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/pi/.local/lib/python3.5/site-packages/googleapiclient/discovery_cache/file_cache.py", line 33, in <module>
+    from oauth2client.contrib.locked_file import LockedFile
+ImportError: No module named 'oauth2client.contrib.locked_file'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/pi/.local/lib/python3.5/site-packages/googleapiclient/discovery_cache/file_cache.py", line 37, in <module>
+    from oauth2client.locked_file import LockedFile
+ImportError: No module named 'oauth2client.locked_file'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/pi/.local/lib/python3.5/site-packages/googleapiclient/discovery_cache/__init__.py", line 41, in autodetect
+    from . import file_cache
+  File "/home/pi/.local/lib/python3.5/site-packages/googleapiclient/discovery_cache/file_cache.py", line 41, in <module>
+    'file_cache is unavailable when using oauth2client >= 4.0.0')
+ImportError: file_cache is unavailable when using oauth2client >= 4.0.0
+INFO:googleapiclient.discovery:URL being requested: GET https://www.googleapis.com/discovery/v1/apis/gmail/v1/rest
+INFO:googleapiclient.discovery:URL being requested: POST https://www.googleapis.com/gmail/v1/users/me/messages/send?alt=json
+INFO:root:04/30/2018 13:19:39 | /home/pi/myLadybugHelper/should_i_water/mail_providers_lib.py | 81 | _send_message: Message sent. ID = 1631836015604e70
+WARNING:googleapiclient.discovery_cache:file_cache is unavailable when using oauth2client >= 4.0.0
+Traceback (most recent call last):
+  File "/home/pi/.local/lib/python3.5/site-packages/googleapiclient/discovery_cache/__init__.py", line 36, in autodetect
+    from google.appengine.api import memcache
+ImportError: No module named 'google'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/pi/.local/lib/python3.5/site-packages/googleapiclient/discovery_cache/file_cache.py", line 33, in <module>
+    from oauth2client.contrib.locked_file import LockedFile
+ImportError: No module named 'oauth2client.contrib.locked_file'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/pi/.local/lib/python3.5/site-packages/googleapiclient/discovery_cache/file_cache.py", line 37, in <module>
+    from oauth2client.locked_file import LockedFile
+ImportError: No module named 'oauth2client.locked_file'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/pi/.local/lib/python3.5/site-packages/googleapiclient/discovery_cache/__init__.py", line 41, in autodetect
+    from . import file_cache
+  File "/home/pi/.local/lib/python3.5/site-packages/googleapiclient/discovery_cache/file_cache.py", line 41, in <module>
+    'file_cache is unavailable when using oauth2client >= 4.0.0')
+ImportError: file_cache is unavailable when using oauth2client >= 4.0.0
+INFO:googleapiclient.discovery:URL being requested: GET https://www.googleapis.com/discovery/v1/apis/gmail/v1/rest
+INFO:googleapiclient.discovery:URL being requested: POST https://www.googleapis.com/gmail/v1/users/me/messages/send?alt=json
+INFO:root:04/30/2018 13:20:32 | /home/pi/myLadybugHelper/should_i_water/mail_providers_lib.py | 81 | _send_message: Message sent. ID = 1631837047008297
+WARNING:googleapiclient.discovery_cache:file_cache is unavailable when using oauth2client >= 4.0.0
+Traceback (most recent call last):
+  File "/home/pi/.local/lib/python3.5/site-packages/googleapiclient/discovery_cache/__init__.py", line 36, in autodetect
+    from google.appengine.api import memcache
+ImportError: No module named 'google'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/pi/.local/lib/python3.5/site-packages/googleapiclient/discovery_cache/file_cache.py", line 33, in <module>
+    from oauth2client.contrib.locked_file import LockedFile
+ImportError: No module named 'oauth2client.contrib.locked_file'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/pi/.local/lib/python3.5/site-packages/googleapiclient/discovery_cache/file_cache.py", line 37, in <module>
+    from oauth2client.locked_file import LockedFile
+ImportError: No module named 'oauth2client.locked_file'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/pi/.local/lib/python3.5/site-packages/googleapiclient/discovery_cache/__init__.py", line 41, in autodetect
+    from . import file_cache
+  File "/home/pi/.local/lib/python3.5/site-packages/googleapiclient/discovery_cache/file_cache.py", line 41, in <module>
+    'file_cache is unavailable when using oauth2client >= 4.0.0')
+ImportError: file_cache is unavailable when using oauth2client >= 4.0.0
+INFO:googleapiclient.discovery:URL being requested: GET https://www.googleapis.com/discovery/v1/apis/gmail/v1/rest
+INFO:googleapiclient.discovery:URL being requested: POST https://www.googleapis.com/gmail/v1/users/me/messages/send?alt=json
+INFO:root:04/30/2018 13:23:07 | /home/pi/myLadybugHelper/should_i_water/mail_providers_lib.py | 81 | _send_message: Message sent. ID = 163183a9eae62056
+WARNING:googleapiclient.discovery_cache:file_cache is unavailable when using oauth2client >= 4.0.0
+Traceback (most recent call last):
+  File "/home/pi/.local/lib/python3.5/site-packages/googleapiclient/discovery_cache/__init__.py", line 36, in autodetect
+    from google.appengine.api import memcache
+ImportError: No module named 'google'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/pi/.local/lib/python3.5/site-packages/googleapiclient/discovery_cache/file_cache.py", line 33, in <module>
+    from oauth2client.contrib.locked_file import LockedFile
+ImportError: No module named 'oauth2client.contrib.locked_file'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/pi/.local/lib/python3.5/site-packages/googleapiclient/discovery_cache/file_cache.py", line 37, in <module>
+    from oauth2client.locked_file import LockedFile
+ImportError: No module named 'oauth2client.locked_file'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/pi/.local/lib/python3.5/site-packages/googleapiclient/discovery_cache/__init__.py", line 41, in autodetect
+    from . import file_cache
+  File "/home/pi/.local/lib/python3.5/site-packages/googleapiclient/discovery_cache/file_cache.py", line 41, in <module>
+    'file_cache is unavailable when using oauth2client >= 4.0.0')
+ImportError: file_cache is unavailable when using oauth2client >= 4.0.0
+INFO:googleapiclient.discovery:URL being requested: GET https://www.googleapis.com/discovery/v1/apis/gmail/v1/rest
+INFO:googleapiclient.discovery:URL being requested: POST https://www.googleapis.com/gmail/v1/users/me/messages/send?alt=json
+INFO:root:04/30/2018 13:23:07 | /home/pi/myLadybugHelper/should_i_water/mail_providers_lib.py | 81 | _send_message: Message sent. ID = 163183ad527d20e4
+WARNING:googleapiclient.discovery_cache:file_cache is unavailable when using oauth2client >= 4.0.0
+Traceback (most recent call last):
+  File "/home/pi/.local/lib/python3.5/site-packages/googleapiclient/discovery_cache/__init__.py", line 36, in autodetect
+    from google.appengine.api import memcache
+ImportError: No module named 'google'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/pi/.local/lib/python3.5/site-packages/googleapiclient/discovery_cache/file_cache.py", line 33, in <module>
+    from oauth2client.contrib.locked_file import LockedFile
+ImportError: No module named 'oauth2client.contrib.locked_file'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/pi/.local/lib/python3.5/site-packages/googleapiclient/discovery_cache/file_cache.py", line 37, in <module>
+    from oauth2client.locked_file import LockedFile
+ImportError: No module named 'oauth2client.locked_file'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/pi/.local/lib/python3.5/site-packages/googleapiclient/discovery_cache/__init__.py", line 41, in autodetect
+    from . import file_cache
+  File "/home/pi/.local/lib/python3.5/site-packages/googleapiclient/discovery_cache/file_cache.py", line 41, in <module>
+    'file_cache is unavailable when using oauth2client >= 4.0.0')
+ImportError: file_cache is unavailable when using oauth2client >= 4.0.0
+INFO:googleapiclient.discovery:URL being requested: GET https://www.googleapis.com/discovery/v1/apis/gmail/v1/rest
+INFO:googleapiclient.discovery:URL being requested: POST https://www.googleapis.com/gmail/v1/users/me/messages/send?alt=json
+INFO:root:04/30/2018 13:26:09 | /home/pi/myLadybugHelper/should_i_water/mail_providers_lib.py | 81 | _send_message: Message sent. ID = 163183c89350bd34
+WARNING:googleapiclient.discovery_cache:file_cache is unavailable when using oauth2client >= 4.0.0
+Traceback (most recent call last):
+  File "/home/pi/.local/lib/python3.5/site-packages/googleapiclient/discovery_cache/__init__.py", line 36, in autodetect
+    from google.appengine.api import memcache
+ImportError: No module named 'google'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/pi/.local/lib/python3.5/site-packages/googleapiclient/discovery_cache/file_cache.py", line 33, in <module>
+    from oauth2client.contrib.locked_file import LockedFile
+ImportError: No module named 'oauth2client.contrib.locked_file'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/pi/.local/lib/python3.5/site-packages/googleapiclient/discovery_cache/file_cache.py", line 37, in <module>
+    from oauth2client.locked_file import LockedFile
+ImportError: No module named 'oauth2client.locked_file'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/pi/.local/lib/python3.5/site-packages/googleapiclient/discovery_cache/__init__.py", line 41, in autodetect
+    from . import file_cache
+  File "/home/pi/.local/lib/python3.5/site-packages/googleapiclient/discovery_cache/file_cache.py", line 41, in <module>
+    'file_cache is unavailable when using oauth2client >= 4.0.0')
+ImportError: file_cache is unavailable when using oauth2client >= 4.0.0
+INFO:googleapiclient.discovery:URL being requested: GET https://www.googleapis.com/discovery/v1/apis/gmail/v1/rest
+INFO:googleapiclient.discovery:URL being requested: POST https://www.googleapis.com/gmail/v1/users/me/messages/send?alt=json
+INFO:oauth2client.transport:Refreshing due to a 401 (attempt 1/2)
+INFO:oauth2client.client:Refreshing access_token
+INFO:root:04/30/2018 16:16:16 | /home/pi/myLadybugHelper/should_i_water/mail_providers_lib.py | 82 | _send_message: Message sent. ID = 16318d7b982e6caa
+INFO:root:04/30/2018 16:28:59 | /home/pi/myLadybugHelper/should_i_water/mail_providers_lib.py | 122 | send_mail: Outlook email successfully sent
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "node" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "reading" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "timestamp" DATETIME NOT NULL, "measurement" INTEGER NOT NULL, "battery_level" REAL NOT NULL)', [])
+DEBUG:peewee:('SELECT "t1"."id", "t1"."nodeID", "t1"."timestamp", "t1"."measurement", "t1"."battery_level" FROM "reading" AS "t1" WHERE ("t1"."timestamp" BETWEEN ? AND ?) LIMIT 1 OFFSET 0', [datetime.datetime(2018, 5, 1, 0, 0), datetime.datetime(2018, 5, 1, 3, 36, 30, 920529)])
+ERROR:root:05/01/2018 03:36:22 | /home/pi/myLadybugHelper/should_i_water/send_mail_lib.py | 45 | _is_a_reading : <class 'reading_model.Reading'> instance matching query does not exist:
+SQL: SELECT "t1"."id", "t1"."nodeID", "t1"."timestamp", "t1"."measurement", "t1"."battery_level" FROM "reading" AS "t1" WHERE ("t1"."timestamp" BETWEEN ? AND ?) LIMIT 1 OFFSET 0
+Params: [datetime.datetime(2018, 5, 1, 0, 0), datetime.datetime(2018, 5, 1, 3, 36, 30, 920529)]
+ERROR:root:05/01/2018 03:36:22 | /home/pi/myLadybugHelper/should_i_water/send_mail_lib.py | 74 | get_moisture_puck_advice : Error - a reading does not exist.
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.darksky.net
+DEBUG:urllib3.connectionpool:https://api.darksky.net:443 "GET /forecast/d3fbc403cc28523a125c3c5ab8e43ded/47.649093,-122.199153 HTTP/1.1" 200 28687
+DEBUG:peewee:('SELECT "t1"."id", "t1"."nodeID", "t1"."timestamp", "t1"."measurement", "t1"."battery_level" FROM "reading" AS "t1" WHERE ("t1"."timestamp" BETWEEN ? AND ?) LIMIT 1 OFFSET 0', [datetime.datetime(2018, 5, 1, 0, 0), datetime.datetime(2018, 5, 1, 3, 36, 32, 599318)])
+ERROR:root:05/01/2018 03:36:22 | /home/pi/myLadybugHelper/should_i_water/send_mail_lib.py | 45 | _is_a_reading : <class 'reading_model.Reading'> instance matching query does not exist:
+SQL: SELECT "t1"."id", "t1"."nodeID", "t1"."timestamp", "t1"."measurement", "t1"."battery_level" FROM "reading" AS "t1" WHERE ("t1"."timestamp" BETWEEN ? AND ?) LIMIT 1 OFFSET 0
+Params: [datetime.datetime(2018, 5, 1, 0, 0), datetime.datetime(2018, 5, 1, 3, 36, 32, 599318)]
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "node" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "reading" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "timestamp" DATETIME NOT NULL, "measurement" INTEGER NOT NULL, "battery_level" REAL NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "node" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "reading" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "timestamp" DATETIME NOT NULL, "measurement" INTEGER NOT NULL, "battery_level" REAL NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "node" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "reading" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "timestamp" DATETIME NOT NULL, "measurement" INTEGER NOT NULL, "battery_level" REAL NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "node" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "reading" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "timestamp" DATETIME NOT NULL, "measurement" INTEGER NOT NULL, "battery_level" REAL NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "node" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "reading" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "timestamp" DATETIME NOT NULL, "measurement" INTEGER NOT NULL, "battery_level" REAL NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "node" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "reading" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "timestamp" DATETIME NOT NULL, "measurement" INTEGER NOT NULL, "battery_level" REAL NOT NULL)', [])
+DEBUG:peewee:('SELECT "t1"."id", "t1"."nodeID", "t1"."timestamp", "t1"."measurement", "t1"."battery_level" FROM "reading" AS "t1" WHERE ("t1"."timestamp" BETWEEN ? AND ?) LIMIT 1 OFFSET 0', [datetime.datetime(2018, 5, 1, 0, 0), datetime.datetime(2018, 5, 1, 3, 50, 15, 428480)])
+ERROR:root:05/01/2018 03:50:15 | /home/pi/myLadybugHelper/should_i_water/send_mail_lib.py | 45 | _is_a_reading : <class 'reading_model.Reading'> instance matching query does not exist:
+SQL: SELECT "t1"."id", "t1"."nodeID", "t1"."timestamp", "t1"."measurement", "t1"."battery_level" FROM "reading" AS "t1" WHERE ("t1"."timestamp" BETWEEN ? AND ?) LIMIT 1 OFFSET 0
+Params: [datetime.datetime(2018, 5, 1, 0, 0), datetime.datetime(2018, 5, 1, 3, 50, 15, 428480)]
+ERROR:root:05/01/2018 03:50:15 | /home/pi/myLadybugHelper/should_i_water/send_mail_lib.py | 74 | get_moisture_puck_advice : Error - a reading does not exist.
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.darksky.net
+DEBUG:urllib3.connectionpool:https://api.darksky.net:443 "GET /forecast/d3fbc403cc28523a125c3c5ab8e43ded/47.649093,-122.199153 HTTP/1.1" 200 28742
+DEBUG:peewee:('SELECT "t1"."id", "t1"."nodeID", "t1"."timestamp", "t1"."measurement", "t1"."battery_level" FROM "reading" AS "t1" WHERE ("t1"."timestamp" BETWEEN ? AND ?) LIMIT 1 OFFSET 0', [datetime.datetime(2018, 5, 1, 0, 0), datetime.datetime(2018, 5, 1, 3, 50, 16, 699359)])
+ERROR:root:05/01/2018 03:50:15 | /home/pi/myLadybugHelper/should_i_water/send_mail_lib.py | 45 | _is_a_reading : <class 'reading_model.Reading'> instance matching query does not exist:
+SQL: SELECT "t1"."id", "t1"."nodeID", "t1"."timestamp", "t1"."measurement", "t1"."battery_level" FROM "reading" AS "t1" WHERE ("t1"."timestamp" BETWEEN ? AND ?) LIMIT 1 OFFSET 0
+Params: [datetime.datetime(2018, 5, 1, 0, 0), datetime.datetime(2018, 5, 1, 3, 50, 16, 699359)]
+INFO:root:05/01/2018 03:50:16 | /home/pi/myLadybugHelper/should_i_water/mail_providers_lib.py | 122 | send_mail: Outlook email successfully sent
+WARNING:googleapiclient.discovery_cache:file_cache is unavailable when using oauth2client >= 4.0.0
+Traceback (most recent call last):
+  File "/home/pi/.local/lib/python3.5/site-packages/googleapiclient/discovery_cache/__init__.py", line 36, in autodetect
+    from google.appengine.api import memcache
+ImportError: No module named 'google'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/pi/.local/lib/python3.5/site-packages/googleapiclient/discovery_cache/file_cache.py", line 33, in <module>
+    from oauth2client.contrib.locked_file import LockedFile
+ImportError: No module named 'oauth2client.contrib.locked_file'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/pi/.local/lib/python3.5/site-packages/googleapiclient/discovery_cache/file_cache.py", line 37, in <module>
+    from oauth2client.locked_file import LockedFile
+ImportError: No module named 'oauth2client.locked_file'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/pi/.local/lib/python3.5/site-packages/googleapiclient/discovery_cache/__init__.py", line 41, in autodetect
+    from . import file_cache
+  File "/home/pi/.local/lib/python3.5/site-packages/googleapiclient/discovery_cache/file_cache.py", line 41, in <module>
+    'file_cache is unavailable when using oauth2client >= 4.0.0')
+ImportError: file_cache is unavailable when using oauth2client >= 4.0.0
+INFO:googleapiclient.discovery:URL being requested: GET https://www.googleapis.com/discovery/v1/apis/gmail/v1/rest
+INFO:googleapiclient.discovery:URL being requested: POST https://www.googleapis.com/gmail/v1/users/me/messages/send?alt=json
+INFO:oauth2client.transport:Refreshing due to a 401 (attempt 1/2)
+INFO:oauth2client.client:Refreshing access_token
+INFO:root:05/01/2018 03:50:18 | /home/pi/myLadybugHelper/should_i_water/mail_providers_lib.py | 86 | _send_message: Message sent. ID = 1631b53132683f67
+INFO:root:04/29/2018 12:54:09 | /home/pi/myLadybugHelper/should_i_water/collect_readings_lib.py | 49 | _receive_done: Received a _MOISTURE_INFO_PACKET
+DEBUG:peewee:('INSERT INTO "reading" ("nodeID", "timestamp", "measurement", "battery_level") VALUES (?, ?, ?, ?)', [1, datetime.datetime(2018, 5, 1, 4, 0, 5, 396512), 188, 2.96])
+INFO:root:04/29/2018 12:54:09 | /home/pi/myLadybugHelper/should_i_water/collect_readings_task.py | 22 | store_measurement: Measurement stored.  nodeID: 1, measurement: 188, battery_level: 2.96

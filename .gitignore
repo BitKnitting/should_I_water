@@ -1,1 +1,5 @@
-mail_test/secrets/
+.gitignore
+Rasp_Pi_2018/env_variables/
+Rasp_Pi_2018/should_i_water/__pycache__/
+Rasp_Pi_2018/should_i_water/set_env.sh
+Rasp_Pi_2018/should_i_water/test_env.py

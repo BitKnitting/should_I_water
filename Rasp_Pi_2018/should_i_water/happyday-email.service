@@ -1,0 +1,16 @@
+[Unit]
+Description=Send email about watering status.
+# Don't start the service until the network is up and running
+After=network.target
+
+[Service]
+Type=simple
+Environment = 'PYTHONPATH=/home/pi/.local/lib/python3.5/site-packages'
+EnvironmentFile = /home/pi/myLadybugHelper/env_variables/email.env
+ExecStart=/usr/bin/python3 /home/pi/myLadybugHelper/should_i_water/send_mail_task.py
+Restart=on-failure
+User=pi
+
+[Install]
+# Components of this application should be started at boot time
+WantedBy=multi-user.target
