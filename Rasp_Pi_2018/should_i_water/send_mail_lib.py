@@ -73,14 +73,22 @@ class SendMail:
         else:
             self.handle_logging.print_error("Error - a reading does not exist.")
             return ''
-
+    ##########################################################################
+    # can test with the following curl command:
+    # curl -i -H "Accept: application/json" -H "Content-Type: application/json" -X GET https://api.darksky.net/forecast/d3fbc403cc28523a125c3c5ab8e43ded/47.649093,-122.199153
+    ##########################################################################
     def get_weather(self):
         http = urllib3.PoolManager(cert_reqs='CERT_REQUIRED',ca_certs=certifi.where())
         url = "https://api.darksky.net/forecast/d3fbc403cc28523a125c3c5ab8e43ded/47.649093,-122.199153"
         request = http.request('GET',url)
-        weather_stuff = json.loads(request.data.decode('utf8'))
-        summary_string = weather_stuff['hourly']['summary']
-        return "The weather: "+summary_string
+        # Try a five times in case there is a failure to connect
+        for i in range(0,5):
+            try:
+                weather_stuff = json.loads(request.data.decode('utf8'))
+                return weather_stuff['hourly']['summary']
+            except HTTPError as e:
+                self.handle_logging.print_error(e)
+        return "Sorry about this.  The elves refuse to get today's forecast."
 
     def get_battery_level(self):
         if self._is_a_reading():
@@ -89,10 +97,9 @@ class SendMail:
 
     def send_email(self):
         message = self._put_message_together()
-        thor_mail = OutlookProvider()
+        #### SEND ONLY TO ME UNTIL WORK OUT TESTS.....
+        # thor_mail = OutlookProvider()
         # thor_mail.send_mail('thor_johnson@msn.com',message)
-        # me_mail = GmailProvider()
-        import pdb;pdb.set_trace()
         me_mail = GmailProvider()
-        me_mail.send_mail('happday.mjohnson@gmail.com',message)
+        me_mail.send_mail('happyday.mjohnson@gmail.com',message)
         pass

@@ -20,6 +20,7 @@ class Measurement:
         self.callback = callback
         self.radio =  RFM69()
         self.handle_logging = HandleLogging()
+        self.handle_logging.print_info("Initializing Measurement class.")
 
     def _receive_done(self,packet):
         '''
