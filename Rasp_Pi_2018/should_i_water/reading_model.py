@@ -1,9 +1,20 @@
 from peewee import *
 import datetime
+from handle_logging_lib import HandleLogging
+import os
+import sys
+
+handle_logging = HandleLogging()
+try:
+   DATABASE_FILE = os.environ.get("DATABASE_FILE")
+except KeyError as e:
+   handle_logging.print_error(e)
+   sys.exit(1)
 
 
 
-db = SqliteDatabase('/home/pi/myLadybugHelper/databases/garden_readings.db')
+db = SqliteDatabase("DATABASE_FILE")
+
 class BaseModel(Model):
     def initialize():
         '''Create the database and the table if they don't exist.'''
@@ -21,3 +32,4 @@ class Reading(BaseModel):
 class Node(BaseModel):
     nodeID = IntegerField()
     description = CharField(max_length=255)
+    threshold = IntegerField()

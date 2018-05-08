@@ -8,6 +8,8 @@ import sys
 import urllib3
 
 ###############
+_SUMMARY      =  1  # Return summary email message
+_DETAILED     =  2  # Return detailed email message..
 
 class SendMail:
 
@@ -46,17 +48,22 @@ class SendMail:
             return False
 
 
-    def _put_message_together(self):
+    def _put_message_together(self,to_name='',weather=None,level_of_detail=_SUMMARY):
         ''' assemble the message to send in a morning email'''
-        message = "Good Morning!\n\n\n"
-        message += self.get_moisture_puck_advice() + "\n\n"
-        message += self.get_weather() + "\n\n"
-        message += self.get_battery_level() + "\n\n"
-        message += "Please find many things to smile about.\nWith love, Thor's little helper"
+        if len(to_name) > 0:
+            message = "Good Morning, " +to_name+"!\n\n\n"
+        else:
+            message = "Good Morning!"    
+        message += self.get_moisture_puck_advice(level_of_detail) + "\n\n"
+        # Avoid multiple calls to get the weather...
+        if weather is not None:
+            message += weather + "\n\n"
+        message += ("Please find many things to smile about."
+                    "\n\nWith love,\nThor's little helper")
         return message
 
 
-    def get_moisture_puck_advice(self):
+    def get_moisture_puck_advice(self,level_of_detail):
         '''get today's reading and then get the text description for
         the node id'''
         if self._is_a_reading():
@@ -64,12 +71,21 @@ class SendMail:
             try:
                 node_info = Node.get(Node.nodeID == self.nodeID)
                 node_description = node_info.description
+                node_threshold = node_info.threshold
             except Node.DoesNotExist as e:
                 self.handle_logging.print_error(e)
-            if (self.measurement <= 205):
-                 return node_description+" - Unless the weather says otherwise, you should water. (the reading was {})".format(self.measurement)
+            if level_of_detail == _SUMMARY:
+                reading_details = ""
             else:
-                 return node_description+" - No need to water today."
+                reading_details = (" The reading is {}, the threshold is {}, "
+                            "the battery level is {}."
+                            .format(self.measurement,node_threshold,self.battery_level))
+            if (self.measurement <= node_threshold):
+                return node_description+" - Unless the weather says otherwise, you should water."+ reading_details
+            else:
+                return node_description+" - No need to water today." + reading_details
+
+                return node_description+" - No need to water today."
         else:
             self.handle_logging.print_error("Error - a reading does not exist.")
             return ''
@@ -82,7 +98,7 @@ class SendMail:
         url = "https://api.darksky.net/forecast/d3fbc403cc28523a125c3c5ab8e43ded/47.649093,-122.199153"
         request = http.request('GET',url)
         # Try a five times in case there is a failure to connect
-        for i in range(0,5):
+        for i in range(5):
             try:
                 weather_stuff = json.loads(request.data.decode('utf8'))
                 return weather_stuff['hourly']['summary']
@@ -96,10 +112,10 @@ class SendMail:
         return "Unable to get today's battery level reading."
 
     def send_email(self):
-        message = self._put_message_together()
-        #### SEND ONLY TO ME UNTIL WORK OUT TESTS.....
-        # thor_mail = OutlookProvider()
-        # thor_mail.send_mail('thor_johnson@msn.com',message)
+        weather = self.get_weather()
+        message = self._put_message_together('Thor',weather,_SUMMARY)
+        thor_mail = OutlookProvider()
+        thor_mail.send_mail('thor_johnson@msn.com',message)
+        message = self._put_message_together('Margaret',weather,_DETAILED)
         me_mail = GmailProvider()
         me_mail.send_mail('happyday.mjohnson@gmail.com',message)
-        pass
