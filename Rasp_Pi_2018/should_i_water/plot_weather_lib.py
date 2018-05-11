@@ -22,7 +22,8 @@ class PlotWeather:
         rain that will fall if it does rain, the cloud cover, and the temperature into a prediction_list.
         '''
         http = urllib3.PoolManager(cert_reqs='CERT_REQUIRED',ca_certs=certifi.where())
-        url = "https://api.darksky.net/forecast/d3fbc403cc28523a125c3c5ab8e43ded/47.649093,-122.199153"
+        WEATHER_URL = os.environ.get("WEATHER_URL")
+        url = WEATHER_URL
         request = http.request('GET',url)
         # Try a five times in case there is a failure to connect
         for i in range(5):

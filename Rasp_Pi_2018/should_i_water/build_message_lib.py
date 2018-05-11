@@ -51,7 +51,9 @@ class BuildMessage:
         # Avoid multiple calls to get the weather...
         if weather is not None:
             message += weather + "\n\n"
-        message += ("Please find many things to smile about."
+            message += ('I put together more detailed weather info.  You can '
+                        'click on the iddy-biddy image to make it bigger.')
+        message += ("\n\nPlease find many things to smile about."
                     "\n\nWith love,\nThor's little helper")
         return message
 
