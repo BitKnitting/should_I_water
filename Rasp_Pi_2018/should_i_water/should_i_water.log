@@ -1102,3 +1102,59 @@ ERROR:root:05/10/2018 16:05:27 | /Users/margaret/Documents/myLadybugHelper/shoul
 SQL: SELECT "t1"."id", "t1"."nodeID", "t1"."timestamp", "t1"."measurement", "t1"."battery_level" FROM "reading" AS "t1" WHERE ("t1"."timestamp" BETWEEN ? AND ?) LIMIT 1 OFFSET 0
 Params: [datetime.datetime(2018, 5, 10, 0, 0), datetime.datetime(2018, 5, 10, 16, 5, 34, 671114)]
 ERROR:root:05/10/2018 16:05:27 | /Users/margaret/Documents/myLadybugHelper/should_I_water/Rasp_Pi_2018/should_i_water/build_message_lib.py | 84 | get_moisture_puck_advice : Error - a reading does not exist.
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.darksky.net
+DEBUG:urllib3.connectionpool:https://api.darksky.net:443 "GET /forecast/d3fbc403cc28523a125c3c5ab8e43ded/47.649093,-122.199153 HTTP/1.1" 200 28493
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.darksky.net
+DEBUG:urllib3.connectionpool:https://api.darksky.net:443 "GET /forecast/d3fbc403cc28523a125c3c5ab8e43ded/47.649093,-122.199153 HTTP/1.1" 200 28461
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.darksky.net
+DEBUG:urllib3.connectionpool:https://api.darksky.net:443 "GET /forecast/d3fbc403cc28523a125c3c5ab8e43ded/47.649093,-122.199153 HTTP/1.1" 200 28461
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.darksky.net
+DEBUG:urllib3.connectionpool:https://api.darksky.net:443 "GET /forecast/d3fbc403cc28523a125c3c5ab8e43ded/47.649093,-122.199153 HTTP/1.1" 200 28456
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "node" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "threshold" INTEGER NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "reading" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "timestamp" DATETIME NOT NULL, "measurement" INTEGER NOT NULL, "battery_level" REAL NOT NULL)', [])
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.darksky.net
+DEBUG:urllib3.connectionpool:https://api.darksky.net:443 "GET /forecast/d3fbc403cc28523a125c3c5ab8e43ded/47.649093,-122.199153 HTTP/1.1" 200 28456
+DEBUG:peewee:('SELECT "t1"."id", "t1"."nodeID", "t1"."timestamp", "t1"."measurement", "t1"."battery_level" FROM "reading" AS "t1" WHERE ("t1"."timestamp" BETWEEN ? AND ?) LIMIT 1 OFFSET 0', [datetime.datetime(2018, 5, 11, 0, 0), datetime.datetime(2018, 5, 11, 5, 44, 28, 24463)])
+ERROR:root:05/11/2018 05:44:23 | /Users/margaret/Documents/myLadybugHelper/should_I_water/Rasp_Pi_2018/should_i_water/build_message_lib.py | 41 | _is_a_reading : <class 'reading_model.Reading'> instance matching query does not exist:
+SQL: SELECT "t1"."id", "t1"."nodeID", "t1"."timestamp", "t1"."measurement", "t1"."battery_level" FROM "reading" AS "t1" WHERE ("t1"."timestamp" BETWEEN ? AND ?) LIMIT 1 OFFSET 0
+Params: [datetime.datetime(2018, 5, 11, 0, 0), datetime.datetime(2018, 5, 11, 5, 44, 28, 24463)]
+ERROR:root:05/11/2018 05:44:23 | /Users/margaret/Documents/myLadybugHelper/should_I_water/Rasp_Pi_2018/should_i_water/build_message_lib.py | 84 | get_moisture_puck_advice : Error - a reading does not exist.
+WARNING:googleapiclient.discovery_cache:file_cache is unavailable when using oauth2client >= 4.0.0
+Traceback (most recent call last):
+  File "/anaconda3/lib/python3.6/site-packages/googleapiclient/discovery_cache/__init__.py", line 36, in autodetect
+    from google.appengine.api import memcache
+ModuleNotFoundError: No module named 'google'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/anaconda3/lib/python3.6/site-packages/googleapiclient/discovery_cache/file_cache.py", line 33, in <module>
+    from oauth2client.contrib.locked_file import LockedFile
+ModuleNotFoundError: No module named 'oauth2client.contrib.locked_file'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/anaconda3/lib/python3.6/site-packages/googleapiclient/discovery_cache/file_cache.py", line 37, in <module>
+    from oauth2client.locked_file import LockedFile
+ModuleNotFoundError: No module named 'oauth2client.locked_file'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/anaconda3/lib/python3.6/site-packages/googleapiclient/discovery_cache/__init__.py", line 41, in autodetect
+    from . import file_cache
+  File "/anaconda3/lib/python3.6/site-packages/googleapiclient/discovery_cache/file_cache.py", line 41, in <module>
+    'file_cache is unavailable when using oauth2client >= 4.0.0')
+ImportError: file_cache is unavailable when using oauth2client >= 4.0.0
+INFO:googleapiclient.discovery:URL being requested: GET https://www.googleapis.com/discovery/v1/apis/gmail/v1/rest
+INFO:googleapiclient.discovery:URL being requested: POST https://www.googleapis.com/gmail/v1/users/me/messages/send?alt=json
+INFO:oauth2client.transport:Refreshing due to a 401 (attempt 1/2)
+INFO:oauth2client.client:Refreshing access_token
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.darksky.net
+DEBUG:urllib3.connectionpool:https://api.darksky.net:443 "GET /forecast/d3fbc403cc28523a125c3c5ab8e43ded/47.649093,-122.199153 HTTP/1.1" 200 28456
+DEBUG:peewee:('SELECT "t1"."id", "t1"."nodeID", "t1"."timestamp", "t1"."measurement", "t1"."battery_level" FROM "reading" AS "t1" WHERE ("t1"."timestamp" BETWEEN ? AND ?) LIMIT 1 OFFSET 0', [datetime.datetime(2018, 5, 11, 0, 0), datetime.datetime(2018, 5, 11, 5, 44, 31, 995427)])
+ERROR:root:05/11/2018 05:44:23 | /Users/margaret/Documents/myLadybugHelper/should_I_water/Rasp_Pi_2018/should_i_water/build_message_lib.py | 41 | _is_a_reading : <class 'reading_model.Reading'> instance matching query does not exist:
+SQL: SELECT "t1"."id", "t1"."nodeID", "t1"."timestamp", "t1"."measurement", "t1"."battery_level" FROM "reading" AS "t1" WHERE ("t1"."timestamp" BETWEEN ? AND ?) LIMIT 1 OFFSET 0
+Params: [datetime.datetime(2018, 5, 11, 0, 0), datetime.datetime(2018, 5, 11, 5, 44, 31, 995427)]
+ERROR:root:05/11/2018 05:44:23 | /Users/margaret/Documents/myLadybugHelper/should_I_water/Rasp_Pi_2018/should_i_water/build_message_lib.py | 84 | get_moisture_puck_advice : Error - a reading does not exist.

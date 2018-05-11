@@ -47,7 +47,6 @@ class BuildMessage:
             message = "Good Morning, " +to_name+"!\n\n\n"
         else:
             message = "Good Morning!"
-        import pdb;pdb.set_trace()
         message += self.get_moisture_puck_advice(summary_message) + "\n\n"
         # Avoid multiple calls to get the weather...
         if weather is not None:
@@ -67,7 +66,6 @@ class BuildMessage:
                 node_threshold = node_info.threshold
             except Node.DoesNotExist as e:
                 self.handle_logging.print_error(e)
-            import pdb;pdb.set_trace()
             if summary_message:
                 reading_details = ""
             else:
