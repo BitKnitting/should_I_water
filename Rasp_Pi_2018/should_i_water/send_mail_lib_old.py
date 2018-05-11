@@ -53,7 +53,7 @@ class SendMail:
         if len(to_name) > 0:
             message = "Good Morning, " +to_name+"!\n\n\n"
         else:
-            message = "Good Morning!"    
+            message = "Good Morning!"
         message += self.get_moisture_puck_advice(level_of_detail) + "\n\n"
         # Avoid multiple calls to get the weather...
         if weather is not None:
@@ -102,7 +102,7 @@ class SendMail:
             try:
                 weather_stuff = json.loads(request.data.decode('utf8'))
                 return weather_stuff['hourly']['summary']
-            except HTTPError as e:
+            except urllib3.HTTPError as e:
                 self.handle_logging.print_error(e)
         return "Sorry about this.  The elves refuse to get today's forecast."
 
@@ -113,9 +113,9 @@ class SendMail:
 
     def send_email(self):
         weather = self.get_weather()
-        message = self._put_message_together('Thor',weather,_SUMMARY)
-        thor_mail = OutlookProvider()
-        thor_mail.send_mail('thor_johnson@msn.com',message)
         message = self._put_message_together('Margaret',weather,_DETAILED)
         me_mail = GmailProvider()
         me_mail.send_mail('happyday.mjohnson@gmail.com',message)
+        message = self._put_message_together('Thor',weather,_SUMMARY)
+        thor_mail = OutlookProvider()
+        thor_mail.send_mail('thor_johnson@msn.com',message)

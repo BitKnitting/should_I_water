@@ -13,7 +13,7 @@ except KeyError as e:
 
 
 
-db = SqliteDatabase("DATABASE_FILE")
+db = SqliteDatabase(DATABASE_FILE)
 
 class BaseModel(Model):
     def initialize():

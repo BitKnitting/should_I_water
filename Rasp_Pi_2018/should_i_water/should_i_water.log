@@ -672,3 +672,433 @@ DEBUG:urllib3.connectionpool:https://api.darksky.net:443 "GET /forecast/d3fbc403
 DEBUG:matplotlib.font_manager:findfont: Matching :family=sans-serif:style=normal:variant=normal:weight=normal:stretch=normal:size=10.0 to DejaVu Sans ('/home/pi/.local/lib/python3.5/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSans.ttf') with score of 0.050000
 DEBUG:matplotlib.font_manager:findfont: Matching :family=sans-serif:style=normal:variant=normal:weight=normal:stretch=normal:size=14.0 to DejaVu Sans ('/home/pi/.local/lib/python3.5/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSans.ttf') with score of 0.050000
 DEBUG:matplotlib.font_manager:findfont: Matching :family=sans-serif:style=normal:variant=normal:weight=normal:stretch=normal:size=16.0 to DejaVu Sans ('/home/pi/.local/lib/python3.5/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSans.ttf') with score of 0.050000
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "node" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "threshold" INTEGER NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "reading" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "timestamp" DATETIME NOT NULL, "measurement" INTEGER NOT NULL, "battery_level" REAL NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "node" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "threshold" INTEGER NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "reading" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "timestamp" DATETIME NOT NULL, "measurement" INTEGER NOT NULL, "battery_level" REAL NOT NULL)', [])
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.darksky.net
+DEBUG:urllib3.connectionpool:https://api.darksky.net:443 "GET /forecast/d3fbc403cc28523a125c3c5ab8e43ded/47.649093,-122.199153 HTTP/1.1" 200 29796
+DEBUG:peewee:('SELECT "t1"."id", "t1"."nodeID", "t1"."timestamp", "t1"."measurement", "t1"."battery_level" FROM "reading" AS "t1" WHERE ("t1"."timestamp" BETWEEN ? AND ?) LIMIT 1 OFFSET 0', [datetime.datetime(2018, 5, 8, 0, 0), datetime.datetime(2018, 5, 8, 13, 44, 52, 279567)])
+ERROR:root:05/08/2018 13:44:37 | /home/pi/myLadybugHelper/should_i_water/send_mail_lib.py | 47 | _is_a_reading : <class 'reading_model.Reading'> instance matching query does not exist:
+SQL: SELECT "t1"."id", "t1"."nodeID", "t1"."timestamp", "t1"."measurement", "t1"."battery_level" FROM "reading" AS "t1" WHERE ("t1"."timestamp" BETWEEN ? AND ?) LIMIT 1 OFFSET 0
+Params: [datetime.datetime(2018, 5, 8, 0, 0), datetime.datetime(2018, 5, 8, 13, 44, 52, 279567)]
+ERROR:root:05/08/2018 13:44:37 | /home/pi/myLadybugHelper/should_i_water/send_mail_lib.py | 90 | get_moisture_puck_advice : Error - a reading does not exist.
+WARNING:googleapiclient.discovery_cache:file_cache is unavailable when using oauth2client >= 4.0.0
+Traceback (most recent call last):
+  File "/home/pi/.local/lib/python3.5/site-packages/googleapiclient/discovery_cache/__init__.py", line 36, in autodetect
+    from google.appengine.api import memcache
+ImportError: No module named 'google'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/pi/.local/lib/python3.5/site-packages/googleapiclient/discovery_cache/file_cache.py", line 33, in <module>
+    from oauth2client.contrib.locked_file import LockedFile
+ImportError: No module named 'oauth2client.contrib.locked_file'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/pi/.local/lib/python3.5/site-packages/googleapiclient/discovery_cache/file_cache.py", line 37, in <module>
+    from oauth2client.locked_file import LockedFile
+ImportError: No module named 'oauth2client.locked_file'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/pi/.local/lib/python3.5/site-packages/googleapiclient/discovery_cache/__init__.py", line 41, in autodetect
+    from . import file_cache
+  File "/home/pi/.local/lib/python3.5/site-packages/googleapiclient/discovery_cache/file_cache.py", line 41, in <module>
+    'file_cache is unavailable when using oauth2client >= 4.0.0')
+ImportError: file_cache is unavailable when using oauth2client >= 4.0.0
+INFO:googleapiclient.discovery:URL being requested: GET https://www.googleapis.com/discovery/v1/apis/gmail/v1/rest
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "node" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "threshold" INTEGER NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "reading" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "timestamp" DATETIME NOT NULL, "measurement" INTEGER NOT NULL, "battery_level" REAL NOT NULL)', [])
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.darksky.net
+DEBUG:urllib3.connectionpool:https://api.darksky.net:443 "GET /forecast/d3fbc403cc28523a125c3c5ab8e43ded/47.649093,-122.199153 HTTP/1.1" 200 29795
+DEBUG:peewee:('SELECT "t1"."id", "t1"."nodeID", "t1"."timestamp", "t1"."measurement", "t1"."battery_level" FROM "reading" AS "t1" WHERE ("t1"."timestamp" BETWEEN ? AND ?) LIMIT 1 OFFSET 0', [datetime.datetime(2018, 5, 8, 0, 0), datetime.datetime(2018, 5, 8, 13, 47, 31, 353027)])
+ERROR:root:05/08/2018 13:47:21 | /home/pi/myLadybugHelper/should_i_water/send_mail_lib.py | 47 | _is_a_reading : <class 'reading_model.Reading'> instance matching query does not exist:
+SQL: SELECT "t1"."id", "t1"."nodeID", "t1"."timestamp", "t1"."measurement", "t1"."battery_level" FROM "reading" AS "t1" WHERE ("t1"."timestamp" BETWEEN ? AND ?) LIMIT 1 OFFSET 0
+Params: [datetime.datetime(2018, 5, 8, 0, 0), datetime.datetime(2018, 5, 8, 13, 47, 31, 353027)]
+ERROR:root:05/08/2018 13:47:21 | /home/pi/myLadybugHelper/should_i_water/send_mail_lib.py | 90 | get_moisture_puck_advice : Error - a reading does not exist.
+WARNING:googleapiclient.discovery_cache:file_cache is unavailable when using oauth2client >= 4.0.0
+Traceback (most recent call last):
+  File "/home/pi/.local/lib/python3.5/site-packages/googleapiclient/discovery_cache/__init__.py", line 36, in autodetect
+    from google.appengine.api import memcache
+ImportError: No module named 'google'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/pi/.local/lib/python3.5/site-packages/googleapiclient/discovery_cache/file_cache.py", line 33, in <module>
+    from oauth2client.contrib.locked_file import LockedFile
+ImportError: No module named 'oauth2client.contrib.locked_file'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/pi/.local/lib/python3.5/site-packages/googleapiclient/discovery_cache/file_cache.py", line 37, in <module>
+    from oauth2client.locked_file import LockedFile
+ImportError: No module named 'oauth2client.locked_file'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/pi/.local/lib/python3.5/site-packages/googleapiclient/discovery_cache/__init__.py", line 41, in autodetect
+    from . import file_cache
+  File "/home/pi/.local/lib/python3.5/site-packages/googleapiclient/discovery_cache/file_cache.py", line 41, in <module>
+    'file_cache is unavailable when using oauth2client >= 4.0.0')
+ImportError: file_cache is unavailable when using oauth2client >= 4.0.0
+INFO:googleapiclient.discovery:URL being requested: GET https://www.googleapis.com/discovery/v1/apis/gmail/v1/rest
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "node" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "threshold" INTEGER NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "reading" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "timestamp" DATETIME NOT NULL, "measurement" INTEGER NOT NULL, "battery_level" REAL NOT NULL)', [])
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.darksky.net
+DEBUG:urllib3.connectionpool:https://api.darksky.net:443 "GET /forecast/d3fbc403cc28523a125c3c5ab8e43ded/47.649093,-122.199153 HTTP/1.1" 200 29795
+DEBUG:peewee:('SELECT "t1"."id", "t1"."nodeID", "t1"."timestamp", "t1"."measurement", "t1"."battery_level" FROM "reading" AS "t1" WHERE ("t1"."timestamp" BETWEEN ? AND ?) LIMIT 1 OFFSET 0', [datetime.datetime(2018, 5, 8, 0, 0), datetime.datetime(2018, 5, 8, 13, 50, 34, 149484)])
+DEBUG:peewee:('SELECT "t1"."id", "t1"."nodeID", "t1"."description", "t1"."threshold" FROM "node" AS "t1" WHERE ("t1"."nodeID" = ?) LIMIT 1 OFFSET 0', [1])
+WARNING:googleapiclient.discovery_cache:file_cache is unavailable when using oauth2client >= 4.0.0
+Traceback (most recent call last):
+  File "/home/pi/.local/lib/python3.5/site-packages/googleapiclient/discovery_cache/__init__.py", line 36, in autodetect
+    from google.appengine.api import memcache
+ImportError: No module named 'google'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/pi/.local/lib/python3.5/site-packages/googleapiclient/discovery_cache/file_cache.py", line 33, in <module>
+    from oauth2client.contrib.locked_file import LockedFile
+ImportError: No module named 'oauth2client.contrib.locked_file'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/pi/.local/lib/python3.5/site-packages/googleapiclient/discovery_cache/file_cache.py", line 37, in <module>
+    from oauth2client.locked_file import LockedFile
+ImportError: No module named 'oauth2client.locked_file'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/pi/.local/lib/python3.5/site-packages/googleapiclient/discovery_cache/__init__.py", line 41, in autodetect
+    from . import file_cache
+  File "/home/pi/.local/lib/python3.5/site-packages/googleapiclient/discovery_cache/file_cache.py", line 41, in <module>
+    'file_cache is unavailable when using oauth2client >= 4.0.0')
+ImportError: file_cache is unavailable when using oauth2client >= 4.0.0
+INFO:googleapiclient.discovery:URL being requested: GET https://www.googleapis.com/discovery/v1/apis/gmail/v1/rest
+INFO:googleapiclient.discovery:URL being requested: POST https://www.googleapis.com/gmail/v1/users/me/messages/send?alt=json
+INFO:oauth2client.transport:Refreshing due to a 401 (attempt 1/2)
+INFO:oauth2client.client:Refreshing access_token
+INFO:root:05/08/2018 13:50:35 | /home/pi/myLadybugHelper/should_i_water/mail_providers_lib.py | 102 | _send_gmail: Message sent. ID = 16341853a8f825b9
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "node" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "threshold" INTEGER NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "reading" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "timestamp" DATETIME NOT NULL, "measurement" INTEGER NOT NULL, "battery_level" REAL NOT NULL)', [])
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.darksky.net
+DEBUG:urllib3.connectionpool:https://api.darksky.net:443 "GET /forecast/d3fbc403cc28523a125c3c5ab8e43ded/47.649093,-122.199153 HTTP/1.1" 200 29795
+DEBUG:peewee:('SELECT "t1"."id", "t1"."nodeID", "t1"."timestamp", "t1"."measurement", "t1"."battery_level" FROM "reading" AS "t1" WHERE ("t1"."timestamp" BETWEEN ? AND ?) LIMIT 1 OFFSET 0', [datetime.datetime(2018, 5, 8, 0, 0), datetime.datetime(2018, 5, 8, 13, 51, 37, 735272)])
+DEBUG:peewee:('SELECT "t1"."id", "t1"."nodeID", "t1"."description", "t1"."threshold" FROM "node" AS "t1" WHERE ("t1"."nodeID" = ?) LIMIT 1 OFFSET 0', [1])
+WARNING:googleapiclient.discovery_cache:file_cache is unavailable when using oauth2client >= 4.0.0
+Traceback (most recent call last):
+  File "/home/pi/.local/lib/python3.5/site-packages/googleapiclient/discovery_cache/__init__.py", line 36, in autodetect
+    from google.appengine.api import memcache
+ImportError: No module named 'google'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/pi/.local/lib/python3.5/site-packages/googleapiclient/discovery_cache/file_cache.py", line 33, in <module>
+    from oauth2client.contrib.locked_file import LockedFile
+ImportError: No module named 'oauth2client.contrib.locked_file'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/pi/.local/lib/python3.5/site-packages/googleapiclient/discovery_cache/file_cache.py", line 37, in <module>
+    from oauth2client.locked_file import LockedFile
+ImportError: No module named 'oauth2client.locked_file'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/pi/.local/lib/python3.5/site-packages/googleapiclient/discovery_cache/__init__.py", line 41, in autodetect
+    from . import file_cache
+  File "/home/pi/.local/lib/python3.5/site-packages/googleapiclient/discovery_cache/file_cache.py", line 41, in <module>
+    'file_cache is unavailable when using oauth2client >= 4.0.0')
+ImportError: file_cache is unavailable when using oauth2client >= 4.0.0
+INFO:googleapiclient.discovery:URL being requested: GET https://www.googleapis.com/discovery/v1/apis/gmail/v1/rest
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "node" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "threshold" INTEGER NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "reading" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "timestamp" DATETIME NOT NULL, "measurement" INTEGER NOT NULL, "battery_level" REAL NOT NULL)', [])
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.darksky.net
+DEBUG:urllib3.connectionpool:https://api.darksky.net:443 "GET /forecast/d3fbc403cc28523a125c3c5ab8e43ded/47.649093,-122.199153 HTTP/1.1" 200 29795
+DEBUG:peewee:('SELECT "t1"."id", "t1"."nodeID", "t1"."timestamp", "t1"."measurement", "t1"."battery_level" FROM "reading" AS "t1" WHERE ("t1"."timestamp" BETWEEN ? AND ?) LIMIT 1 OFFSET 0', [datetime.datetime(2018, 5, 8, 0, 0), datetime.datetime(2018, 5, 8, 13, 52, 43, 446859)])
+DEBUG:peewee:('SELECT "t1"."id", "t1"."nodeID", "t1"."description", "t1"."threshold" FROM "node" AS "t1" WHERE ("t1"."nodeID" = ?) LIMIT 1 OFFSET 0', [1])
+WARNING:googleapiclient.discovery_cache:file_cache is unavailable when using oauth2client >= 4.0.0
+Traceback (most recent call last):
+  File "/home/pi/.local/lib/python3.5/site-packages/googleapiclient/discovery_cache/__init__.py", line 36, in autodetect
+    from google.appengine.api import memcache
+ImportError: No module named 'google'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/pi/.local/lib/python3.5/site-packages/googleapiclient/discovery_cache/file_cache.py", line 33, in <module>
+    from oauth2client.contrib.locked_file import LockedFile
+ImportError: No module named 'oauth2client.contrib.locked_file'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/pi/.local/lib/python3.5/site-packages/googleapiclient/discovery_cache/file_cache.py", line 37, in <module>
+    from oauth2client.locked_file import LockedFile
+ImportError: No module named 'oauth2client.locked_file'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/pi/.local/lib/python3.5/site-packages/googleapiclient/discovery_cache/__init__.py", line 41, in autodetect
+    from . import file_cache
+  File "/home/pi/.local/lib/python3.5/site-packages/googleapiclient/discovery_cache/file_cache.py", line 41, in <module>
+    'file_cache is unavailable when using oauth2client >= 4.0.0')
+ImportError: file_cache is unavailable when using oauth2client >= 4.0.0
+INFO:googleapiclient.discovery:URL being requested: GET https://www.googleapis.com/discovery/v1/apis/gmail/v1/rest
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "node" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "threshold" INTEGER NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "reading" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "timestamp" DATETIME NOT NULL, "measurement" INTEGER NOT NULL, "battery_level" REAL NOT NULL)', [])
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.darksky.net
+DEBUG:urllib3.connectionpool:https://api.darksky.net:443 "GET /forecast/d3fbc403cc28523a125c3c5ab8e43ded/47.649093,-122.199153 HTTP/1.1" 200 29837
+DEBUG:peewee:('SELECT "t1"."id", "t1"."nodeID", "t1"."timestamp", "t1"."measurement", "t1"."battery_level" FROM "reading" AS "t1" WHERE ("t1"."timestamp" BETWEEN ? AND ?) LIMIT 1 OFFSET 0', [datetime.datetime(2018, 5, 8, 0, 0), datetime.datetime(2018, 5, 8, 14, 5, 31, 812593)])
+DEBUG:peewee:('SELECT "t1"."id", "t1"."nodeID", "t1"."description", "t1"."threshold" FROM "node" AS "t1" WHERE ("t1"."nodeID" = ?) LIMIT 1 OFFSET 0', [1])
+WARNING:googleapiclient.discovery_cache:file_cache is unavailable when using oauth2client >= 4.0.0
+Traceback (most recent call last):
+  File "/home/pi/.local/lib/python3.5/site-packages/googleapiclient/discovery_cache/__init__.py", line 36, in autodetect
+    from google.appengine.api import memcache
+ImportError: No module named 'google'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/pi/.local/lib/python3.5/site-packages/googleapiclient/discovery_cache/file_cache.py", line 33, in <module>
+    from oauth2client.contrib.locked_file import LockedFile
+ImportError: No module named 'oauth2client.contrib.locked_file'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/pi/.local/lib/python3.5/site-packages/googleapiclient/discovery_cache/file_cache.py", line 37, in <module>
+    from oauth2client.locked_file import LockedFile
+ImportError: No module named 'oauth2client.locked_file'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/pi/.local/lib/python3.5/site-packages/googleapiclient/discovery_cache/__init__.py", line 41, in autodetect
+    from . import file_cache
+  File "/home/pi/.local/lib/python3.5/site-packages/googleapiclient/discovery_cache/file_cache.py", line 41, in <module>
+    'file_cache is unavailable when using oauth2client >= 4.0.0')
+ImportError: file_cache is unavailable when using oauth2client >= 4.0.0
+INFO:googleapiclient.discovery:URL being requested: GET https://www.googleapis.com/discovery/v1/apis/gmail/v1/rest
+INFO:googleapiclient.discovery:URL being requested: POST https://www.googleapis.com/gmail/v1/users/me/messages/send?alt=json
+INFO:root:05/08/2018 14:05:31 | /home/pi/myLadybugHelper/should_i_water/mail_providers_lib.py | 107 | _send_gmail: Message sent. ID = 163419310e315381
+INFO:root:05/08/2018 09:11:26 | /home/pi/myLadybugHelper/should_i_water/collect_readings_lib.py | 50 | _receive_done: Received a _MOISTURE_INFO_PACKET
+DEBUG:peewee:('INSERT INTO "reading" ("nodeID", "timestamp", "measurement", "battery_level") VALUES (?, ?, ?, ?)', [1, datetime.datetime(2018, 5, 9, 4, 0, 2, 462727), 160, 3.77])
+INFO:root:05/08/2018 09:11:25 | /home/pi/myLadybugHelper/should_i_water/collect_readings_task.py | 22 | store_measurement: Measurement stored.  nodeID: 1, measurement: 160, battery_level: 3.77
+DEBUG:matplotlib:$HOME=/home/pi
+DEBUG:matplotlib:matplotlib data path /home/pi/.local/lib/python3.5/site-packages/matplotlib/mpl-data
+DEBUG:matplotlib:loaded rc file /home/pi/.local/lib/python3.5/site-packages/matplotlib/mpl-data/matplotlibrc
+DEBUG:matplotlib:matplotlib version 2.2.2
+DEBUG:matplotlib:interactive is False
+DEBUG:matplotlib:platform is linux
+DEBUG:matplotlib:loaded modules: ['hashlib', 'matplotlib.fontconfig_pattern', 'numpy.random', 'json', 'numpy.lib.type_check', 'matplotlib.rcsetup', 'sre_parse', 'http.client', 'json.decoder', 'calendar', 'numpy.matrixlib', 'linecache', 'lzma', 'numpy.core.info', 'email._parseaddr', 'numpy.lib.ufunclike', 'six.moves.urllib.request', 'mpl_toolkits', '_datetime', 'unittest.runner', 'functools', '_stat', 'numpy.lib.format', 'unittest.main', '_frozen_importlib', 'numpy.linalg', 'email.parser', 'numpy.linalg._umath_linalg', 'encodings.aliases', '_collections', 'gettext', 'numpy.core._internal', 'plot_weather_lib', 'locale', 'rlcompleter', '_locale', 'struct', 'numpy.lib.financial', 'numpy.fft.fftpack', 'numpy.lib.scimath', 'numpy.testing.nosetester', 'six', 'numpy.core.umath', 'ast', 'opcode', 'urllib.error', 'sre_constants', 'numpy.lib.shape_base', 'certifi', 'io', 'numpy.lib._iotools', 'handle_logging_lib', 'signal', 'numpy.testing.nose_tools.decorators', 'grp', 'matplotlib.compat.subprocess', 'numpy.core.fromnumeric', 'numpy', 'distutils.sysconfig', 'fnmatch', 'distutils.errors', '_sre', 'mtrand', 'matplotlib._version', '_bootlocale', 'atexit', '_weakref', 'numpy.polynomial.hermite', 'argparse', 'numpy.fft', 'numpy.random.info', 'select', 'itertools', 'collections.abc', 'importlib.machinery', 'numpy.linalg.lapack_lite', 'logging', 'numpy.ma', 'numpy.lib.info', 'email._encoded_words', '_io', 'tempfile', 'matplotlib.compat', 'numpy.ma.extras', 'textwrap', 'numpy.core.machar', 'numpy.lib.polynomial', 'numpy.core._methods', 'heapq', 'email.charset', 'numpy.core.memmap', 'email.encoders', 'numpy.linalg.info', 'builtins', 'codecs', '_socket', '__main__', 'cycler', 'pathlib', 'ctypes._endian', 'numpy.lib.utils', 'readline', '_thread', 'pyparsing', 'numpy.testing.utils', 'email.quoprimime', 'numpy.core.getlimits', 'decimal', 'genericpath', 'numpy.fft.info', 'copy', 'zlib', 'numpy._globals', 'six.moves.urllib', 'bisect', 'numpy.lib.nanfunctions', '_opcode', 'ipaddress', 'pwd', 'urllib.response', 'numpy._import_tools', 're', 'numpy.lib.arrayterator', 'stat', '_operator', 'numpy.polynomial.polynomial', '_codecs', '_string', '_sysconfigdata', 'posix', 'quopri', 'traceback', 'email.header', 'dateutil', 'numpy.testing', '_json', 'dis', '_sysconfigdata_m', 'operator', 'ctypes', 'certifi.core', 'numpy.core.numeric', 'abc', 'difflib', 'weakref', 'numpy.lib.stride_tricks', 'urllib.parse', 'numpy.compat._inspect', 'email.utils', 'numpy.lib.function_base', 'matplotlib._color_data', '_frozen_importlib_external', 'matplotlib.cbook', 'ssl', 'shutil', 'numpy.linalg.linalg', '_imp', 'importlib._bootstrap', 'email.iterators', 'numpy.lib.twodim_base', 'numbers', 'urllib', 'numpy.lib.npyio', 'threading', 'numpy.add_newdocs', 'numpy.polynomial.laguerre', '_lzma', 'subprocess', 'numpy.compat.py3k', '_random', 'contextlib', 'unittest.case', 'marshal', 'warnings', 'dateutil._version', 'os', 'numpy.fft.helper', 'numpy.core.arrayprint', 'pprint', 'tokenize', 'numpy.polynomial.legendre', '_sitebuiltins', 'json.encoder', 'socket', 'numpy.polynomial._polybase', 'keyword', 'numpy.testing.decorators', 'email.base64mime', 'numpy.lib.index_tricks', 'sre_compile', 'numpy.fft.fftpack_lite', 'numpy.core.shape_base', 'numpy.__config__', 'numpy.matrixlib.defmatrix', 'numpy.core.function_base', 'numpy.lib', 'posixpath', 'collections', 'glob', 'numpy.polynomial.chebyshev', 'matplotlib.cbook.deprecation', 'uu', 'cython_runtime', '_functools', 'numpy.lib.arraysetops', 'numpy.testing.nose_tools', 'encodings.latin_1', 'math', 'email.message', 'numpy.lib._version', 'numpy.lib.arraypad', 'sitecustomize', 'unittest.signals', 'email', 'distutils.version', 'matplotlib.cbook._backports', 'email.errors', 'numpy.core.defchararray', '_ast', 'numpy.polynomial', 'numpy.version', '_collections_abc', 'matplotlib', 'numpy.random.mtrand', 'encodings.utf_8', 'enum', 'zipimport', 'pickle', 'types', 'importlib.abc', 'importlib.util', 'numpy.lib._datasource', 'numpy.compat', '_struct', 'unittest.util', 'importlib', 'urllib.request', 'time', '_posixsubprocess', 'os.path', 'numpy.testing.nose_tools.nosetester', 'encodings', 'numpy.ma.core', 'importlib._bootstrap_external', 'matplotlib.testing', 'token', 'reprlib', 'numpy.core.einsumfunc', '_ssl', 'numpy.core.numerictypes', '__future__', 'unittest.result', 'ntpath', 'six.moves', '_bisect', '_compat_pickle', '_pickle', 'unittest.loader', 'numpy.ctypeslib', 'email._policybase', 'numpy.lib.mixins', 'numpy.polynomial.hermite_e', 'copyreg', 'binascii', 'datetime', 'numpy.core.multiarray', 'errno', 'numpy.core', 'unittest', 'bz2', '_compression', 'selectors', '_ctypes', 'email.feedparser', '_weakrefset', 'string', 'sys', '_hashlib', '_decimal', 'numpy.testing.nose_tools.utils', 'inspect', 'numpy.core.records', 'gzip', 'matplotlib.colors', 'json.scanner', 'distutils', '_signal', 'site', 'http', 'numpy.polynomial.polyutils', 'base64', 'unittest.suite', '_bz2', 'sysconfig', '_warnings', 'numpy._distributor_init', 'random', '_heapq']
+DEBUG:matplotlib:CACHEDIR=/home/pi/.cache/matplotlib
+DEBUG:matplotlib.font_manager:Using fontManager instance from /home/pi/.cache/matplotlib/fontList.json
+DEBUG:matplotlib.backends:backend agg version v2.2
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.darksky.net
+DEBUG:urllib3.connectionpool:https://api.darksky.net:443 "GET /forecast/d3fbc403cc28523a125c3c5ab8e43ded/47.649093,-122.199153 HTTP/1.1" 200 31639
+DEBUG:matplotlib.font_manager:findfont: Matching :family=sans-serif:style=normal:variant=normal:weight=normal:stretch=normal:size=10.0 to DejaVu Sans ('/home/pi/.local/lib/python3.5/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSans.ttf') with score of 0.050000
+DEBUG:matplotlib.font_manager:findfont: Matching :family=sans-serif:style=normal:variant=normal:weight=normal:stretch=normal:size=14.0 to DejaVu Sans ('/home/pi/.local/lib/python3.5/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSans.ttf') with score of 0.050000
+DEBUG:matplotlib.font_manager:findfont: Matching :family=sans-serif:style=normal:variant=normal:weight=normal:stretch=normal:size=16.0 to DejaVu Sans ('/home/pi/.local/lib/python3.5/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSans.ttf') with score of 0.050000
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.darksky.net
+DEBUG:urllib3.connectionpool:https://api.darksky.net:443 "GET /forecast/d3fbc403cc28523a125c3c5ab8e43ded/47.649093,-122.199153 HTTP/1.1" 200 31638
+DEBUG:matplotlib:$HOME=/home/pi
+DEBUG:matplotlib:matplotlib data path /home/pi/.local/lib/python3.5/site-packages/matplotlib/mpl-data
+DEBUG:matplotlib:loaded rc file /home/pi/.local/lib/python3.5/site-packages/matplotlib/mpl-data/matplotlibrc
+DEBUG:matplotlib:matplotlib version 2.2.2
+DEBUG:matplotlib:interactive is False
+DEBUG:matplotlib:platform is linux
+DEBUG:matplotlib:loaded modules: ['calendar', 'ipaddress', 'reprlib', 're', 'token', 'plot_weather_lib', 'numpy.compat.py3k', 'distutils.sysconfig', 'numpy.polynomial.hermite_e', 'numpy.lib.twodim_base', 'six', 'abc', 'distutils.version', '_bootlocale', 'sitecustomize', 'tokenize', '_opcode', 'threading', '_sitebuiltins', 'distutils.errors', '_functools', 'numpy.matrixlib', 'numpy.linalg.lapack_lite', 'mtrand', 'functools', 'numpy', 'numpy.core.umath', 'encodings.latin_1', 'copy', '_compat_pickle', 'email.encoders', 'numpy.core.info', 'bisect', 'importlib._bootstrap_external', 'glob', 'json.encoder', '_json', 'matplotlib.cbook.deprecation', 'numbers', 'marshal', 'email.header', 'pprint', 'numpy.core.multiarray', 'textwrap', 'numpy.lib.info', 'linecache', 'socket', 'fnmatch', 'rlcompleter', '_sysconfigdata_m', 'numpy.linalg.info', 'numpy._distributor_init', 'unittest.signals', 'urllib.response', 'sysconfig', 'ctypes._endian', '_thread', 'email.iterators', 'contextlib', 'argparse', 'numpy.ma.core', 'numpy.lib.scimath', 'numpy.polynomial.polynomial', 'base64', 'numpy.random.info', 'matplotlib', '_socket', 'genericpath', '_bisect', 'numpy.polynomial.chebyshev', '_sre', 'numpy.compat._inspect', 'numpy.polynomial.laguerre', 'urllib.error', 'numpy.fft.fftpack_lite', 'logging', 'email.charset', 'importlib.machinery', 'mpl_toolkits', '_collections_abc', '_datetime', 'email._encoded_words', 'posix', '_operator', 'email._policybase', 'certifi.core', 'itertools', 'email.base64mime', '_frozen_importlib_external', '_compression', 'unittest.loader', 'posixpath', 'email.utils', 'tempfile', 'uu', 'matplotlib.colors', '_weakrefset', 'numpy.lib.arraypad', 'numpy.testing.decorators', '_random', 'bz2', 'selectors', 'numpy.fft.fftpack', 'six.moves.urllib', 'numpy.testing.utils', 'hashlib', 'zlib', 'ntpath', 'numpy.core.records', '_sysconfigdata', 'traceback', 'numpy.core.function_base', 'keyword', 'subprocess', 'numpy.lib', 'email.parser', 'unittest.runner', 'numpy.matrixlib.defmatrix', 'numpy.ma.extras', 'urllib.parse', '_posixsubprocess', 'numpy.lib.polynomial', '_decimal', 'time', 'numpy.testing.nose_tools', 'numpy.testing.nosetester', 'numpy.random.mtrand', 'numpy.core.shape_base', '_warnings', 'zipimport', 'numpy.add_newdocs', 'importlib', 'numpy.core.numeric', 'numpy.fft', 'numpy.version', '__main__', '_bz2', 'importlib._bootstrap', 'unittest', 'collections.abc', 'heapq', 'struct', '_lzma', 'ctypes', 'importlib.util', 'http', 'pyparsing', 'os', 'encodings.aliases', 'lzma', 'difflib', 'numpy._import_tools', 'numpy.core.defchararray', 'pathlib', 'binascii', '_io', 'sre_parse', 'importlib.abc', 'distutils', 'weakref', 'encodings.utf_8', 'matplotlib._color_data', 'dateutil._version', 'numpy.polynomial', 'pickle', 'numpy.lib.arraysetops', 'enum', '_frozen_importlib', '_pickle', 'numpy.polynomial.hermite', 'numpy.core.memmap', 'sys', 'matplotlib.cbook._backports', 'json.scanner', 'numpy.lib._version', '_weakref', 'matplotlib.compat.subprocess', 'numpy.core._methods', 'signal', 'pwd', 'copyreg', 'numpy.lib.function_base', 'http.client', '_ssl', 'numpy.core.arrayprint', 'opcode', 'operator', '_collections', 'numpy.core.machar', 'numpy.testing.nose_tools.decorators', 'numpy.lib.financial', 'numpy.polynomial.polyutils', 'numpy.lib.ufunclike', 'numpy.lib.utils', 'numpy.ma', 'numpy.lib.arrayterator', 'encodings', 'stat', 'email.errors', 'matplotlib._version', 'certifi', 'atexit', 'site', 'email', '_codecs', 'ast', 'random', 'urllib', 'datetime', 'grp', 'cython_runtime', '_ctypes', 'numpy.testing.nose_tools.nosetester', 'numpy.core._internal', 'unittest.case', 'numpy.linalg.linalg', 'numpy.testing.nose_tools.utils', 'numpy.lib.mixins', 'codecs', 'numpy.lib.index_tricks', 'matplotlib.compat', 'sre_constants', 'matplotlib.fontconfig_pattern', 'six.moves', 'email.feedparser', '_imp', 'email.message', 'numpy.lib.type_check', 'six.moves.urllib.request', '_stat', 'json.decoder', 'numpy.fft.info', 'builtins', 'sre_compile', '_heapq', 'email.quoprimime', 'numpy.lib.stride_tricks', 'io', 'gettext', 'inspect', 'numpy.lib._iotools', '__future__', 'numpy.polynomial._polybase', 'errno', 'numpy.linalg', '_hashlib', 'matplotlib.cbook', 'numpy.polynomial.legendre', 'numpy.core.numerictypes', 'select', 'quopri', 'numpy.core.fromnumeric', 'os.path', 'numpy.fft.helper', 'cycler', 'numpy.random', 'math', 'unittest.suite', 'numpy.lib._datasource', 'numpy.linalg._umath_linalg', 'numpy.core.einsumfunc', 'dis', 'numpy.core', 'dateutil', '_signal', '_struct', '_string', 'numpy.lib.nanfunctions', 'numpy.lib.format', 'email._parseaddr', 'unittest.result', 'handle_logging_lib', 'numpy.testing', 'gzip', 'unittest.main', 'json', 'numpy._globals', 'numpy.ctypeslib', 'matplotlib.testing', 'warnings', 'collections', 'numpy.compat', 'numpy.core.getlimits', 'numpy.lib.npyio', 'types', '_ast', 'shutil', 'decimal', 'matplotlib.rcsetup', '_locale', 'numpy.__config__', 'ssl', 'readline', 'string', 'unittest.util', 'locale', 'urllib.request', 'numpy.lib.shape_base']
+DEBUG:matplotlib:CACHEDIR=/home/pi/.cache/matplotlib
+DEBUG:matplotlib.font_manager:Using fontManager instance from /home/pi/.cache/matplotlib/fontList.json
+DEBUG:matplotlib.backends:backend agg version v2.2
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.darksky.net
+DEBUG:urllib3.connectionpool:https://api.darksky.net:443 "GET /forecast/d3fbc403cc28523a125c3c5ab8e43ded/47.649093,-122.199153 HTTP/1.1" 200 31694
+DEBUG:matplotlib.font_manager:findfont: Matching :family=sans-serif:style=normal:variant=normal:weight=normal:stretch=normal:size=10.0 to DejaVu Sans ('/home/pi/.local/lib/python3.5/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSans.ttf') with score of 0.050000
+DEBUG:matplotlib.font_manager:findfont: Matching :family=sans-serif:style=normal:variant=normal:weight=normal:stretch=normal:size=14.0 to DejaVu Sans ('/home/pi/.local/lib/python3.5/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSans.ttf') with score of 0.050000
+DEBUG:matplotlib.font_manager:findfont: Matching :family=sans-serif:style=normal:variant=normal:weight=normal:stretch=normal:size=16.0 to DejaVu Sans ('/home/pi/.local/lib/python3.5/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSans.ttf') with score of 0.050000
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "node" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "threshold" INTEGER NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "reading" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "timestamp" DATETIME NOT NULL, "measurement" INTEGER NOT NULL, "battery_level" REAL NOT NULL)', [])
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.darksky.net
+DEBUG:urllib3.connectionpool:https://api.darksky.net:443 "GET /forecast/d3fbc403cc28523a125c3c5ab8e43ded/47.649093,-122.199153 HTTP/1.1" 200 29972
+DEBUG:peewee:('SELECT "t1"."id", "t1"."nodeID", "t1"."timestamp", "t1"."measurement", "t1"."battery_level" FROM "reading" AS "t1" WHERE ("t1"."timestamp" BETWEEN ? AND ?) LIMIT 1 OFFSET 0', [datetime.datetime(2018, 5, 9, 0, 0), datetime.datetime(2018, 5, 9, 5, 0, 45, 496159)])
+DEBUG:peewee:('SELECT "t1"."id", "t1"."nodeID", "t1"."description", "t1"."threshold" FROM "node" AS "t1" WHERE ("t1"."nodeID" = ?) LIMIT 1 OFFSET 0', [1])
+WARNING:googleapiclient.discovery_cache:file_cache is unavailable when using oauth2client >= 4.0.0
+Traceback (most recent call last):
+  File "/home/pi/.local/lib/python3.5/site-packages/googleapiclient/discovery_cache/__init__.py", line 36, in autodetect
+    from google.appengine.api import memcache
+ImportError: No module named 'google'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/pi/.local/lib/python3.5/site-packages/googleapiclient/discovery_cache/file_cache.py", line 33, in <module>
+    from oauth2client.contrib.locked_file import LockedFile
+ImportError: No module named 'oauth2client.contrib.locked_file'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/pi/.local/lib/python3.5/site-packages/googleapiclient/discovery_cache/file_cache.py", line 37, in <module>
+    from oauth2client.locked_file import LockedFile
+ImportError: No module named 'oauth2client.locked_file'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/pi/.local/lib/python3.5/site-packages/googleapiclient/discovery_cache/__init__.py", line 41, in autodetect
+    from . import file_cache
+  File "/home/pi/.local/lib/python3.5/site-packages/googleapiclient/discovery_cache/file_cache.py", line 41, in <module>
+    'file_cache is unavailable when using oauth2client >= 4.0.0')
+ImportError: file_cache is unavailable when using oauth2client >= 4.0.0
+INFO:googleapiclient.discovery:URL being requested: GET https://www.googleapis.com/discovery/v1/apis/gmail/v1/rest
+INFO:googleapiclient.discovery:URL being requested: POST https://www.googleapis.com/gmail/v1/users/me/messages/send?alt=json
+INFO:oauth2client.transport:Refreshing due to a 401 (attempt 1/2)
+INFO:oauth2client.client:Refreshing access_token
+INFO:root:05/09/2018 05:00:45 | /home/pi/myLadybugHelper/should_i_water/mail_providers_lib.py | 105 | _send_gmail: Message sent. ID = 16344c674837b562
+DEBUG:peewee:('SELECT "t1"."id", "t1"."nodeID", "t1"."timestamp", "t1"."measurement", "t1"."battery_level" FROM "reading" AS "t1" WHERE ("t1"."timestamp" BETWEEN ? AND ?) LIMIT 1 OFFSET 0', [datetime.datetime(2018, 5, 9, 0, 0), datetime.datetime(2018, 5, 9, 5, 0, 47, 90783)])
+DEBUG:peewee:('SELECT "t1"."id", "t1"."nodeID", "t1"."description", "t1"."threshold" FROM "node" AS "t1" WHERE ("t1"."nodeID" = ?) LIMIT 1 OFFSET 0', [1])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "node" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "threshold" INTEGER NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "reading" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "timestamp" DATETIME NOT NULL, "measurement" INTEGER NOT NULL, "battery_level" REAL NOT NULL)', [])
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.darksky.net
+DEBUG:urllib3.connectionpool:https://api.darksky.net:443 "GET /forecast/d3fbc403cc28523a125c3c5ab8e43ded/47.649093,-122.199153 HTTP/1.1" 200 29972
+DEBUG:peewee:('SELECT "t1"."id", "t1"."nodeID", "t1"."timestamp", "t1"."measurement", "t1"."battery_level" FROM "reading" AS "t1" WHERE ("t1"."timestamp" BETWEEN ? AND ?) LIMIT 1 OFFSET 0', [datetime.datetime(2018, 5, 9, 0, 0), datetime.datetime(2018, 5, 9, 5, 2, 33, 594649)])
+DEBUG:peewee:('SELECT "t1"."id", "t1"."nodeID", "t1"."description", "t1"."threshold" FROM "node" AS "t1" WHERE ("t1"."nodeID" = ?) LIMIT 1 OFFSET 0', [1])
+WARNING:googleapiclient.discovery_cache:file_cache is unavailable when using oauth2client >= 4.0.0
+Traceback (most recent call last):
+  File "/home/pi/.local/lib/python3.5/site-packages/googleapiclient/discovery_cache/__init__.py", line 36, in autodetect
+    from google.appengine.api import memcache
+ImportError: No module named 'google'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/pi/.local/lib/python3.5/site-packages/googleapiclient/discovery_cache/file_cache.py", line 33, in <module>
+    from oauth2client.contrib.locked_file import LockedFile
+ImportError: No module named 'oauth2client.contrib.locked_file'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/pi/.local/lib/python3.5/site-packages/googleapiclient/discovery_cache/file_cache.py", line 37, in <module>
+    from oauth2client.locked_file import LockedFile
+ImportError: No module named 'oauth2client.locked_file'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/pi/.local/lib/python3.5/site-packages/googleapiclient/discovery_cache/__init__.py", line 41, in autodetect
+    from . import file_cache
+  File "/home/pi/.local/lib/python3.5/site-packages/googleapiclient/discovery_cache/file_cache.py", line 41, in <module>
+    'file_cache is unavailable when using oauth2client >= 4.0.0')
+ImportError: file_cache is unavailable when using oauth2client >= 4.0.0
+INFO:googleapiclient.discovery:URL being requested: GET https://www.googleapis.com/discovery/v1/apis/gmail/v1/rest
+INFO:googleapiclient.discovery:URL being requested: POST https://www.googleapis.com/gmail/v1/users/me/messages/send?alt=json
+INFO:root:05/09/2018 05:02:33 | /home/pi/myLadybugHelper/should_i_water/mail_providers_lib.py | 105 | _send_gmail: Message sent. ID = 16344c9df5494d08
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "node" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "threshold" INTEGER NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "reading" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "timestamp" DATETIME NOT NULL, "measurement" INTEGER NOT NULL, "battery_level" REAL NOT NULL)', [])
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.darksky.net
+DEBUG:urllib3.connectionpool:https://api.darksky.net:443 "GET /forecast/d3fbc403cc28523a125c3c5ab8e43ded/47.649093,-122.199153 HTTP/1.1" 200 29166
+DEBUG:peewee:('SELECT "t1"."id", "t1"."nodeID", "t1"."timestamp", "t1"."measurement", "t1"."battery_level" FROM "reading" AS "t1" LIMIT 1 OFFSET 0', [])
+DEBUG:peewee:('SELECT "t1"."id", "t1"."nodeID", "t1"."description", "t1"."threshold" FROM "node" AS "t1" WHERE ("t1"."nodeID" = ?) LIMIT 1 OFFSET 0', [1])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "node" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "threshold" INTEGER NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "reading" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "timestamp" DATETIME NOT NULL, "measurement" INTEGER NOT NULL, "battery_level" REAL NOT NULL)', [])
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.darksky.net
+DEBUG:urllib3.connectionpool:https://api.darksky.net:443 "GET /forecast/d3fbc403cc28523a125c3c5ab8e43ded/47.649093,-122.199153 HTTP/1.1" 200 29125
+DEBUG:peewee:('SELECT "t1"."id", "t1"."nodeID", "t1"."timestamp", "t1"."measurement", "t1"."battery_level" FROM "reading" AS "t1" WHERE ("t1"."timestamp" BETWEEN ? AND ?) LIMIT 1 OFFSET 0', [datetime.datetime(2018, 5, 10, 0, 0), datetime.datetime(2018, 5, 10, 16, 0, 9, 279035)])
+ERROR:root:05/10/2018 15:59:42 | /Users/margaret/Documents/myLadybugHelper/should_I_water/Rasp_Pi_2018/should_i_water/build_message_lib.py | 41 | _is_a_reading : <class 'reading_model.Reading'> instance matching query does not exist:
+SQL: SELECT "t1"."id", "t1"."nodeID", "t1"."timestamp", "t1"."measurement", "t1"."battery_level" FROM "reading" AS "t1" WHERE ("t1"."timestamp" BETWEEN ? AND ?) LIMIT 1 OFFSET 0
+Params: [datetime.datetime(2018, 5, 10, 0, 0), datetime.datetime(2018, 5, 10, 16, 0, 9, 279035)]
+ERROR:root:05/10/2018 15:59:42 | /Users/margaret/Documents/myLadybugHelper/should_I_water/Rasp_Pi_2018/should_i_water/build_message_lib.py | 84 | get_moisture_puck_advice : Error - a reading does not exist.
+WARNING:googleapiclient.discovery_cache:file_cache is unavailable when using oauth2client >= 4.0.0
+Traceback (most recent call last):
+  File "/anaconda3/lib/python3.6/site-packages/googleapiclient/discovery_cache/__init__.py", line 36, in autodetect
+    from google.appengine.api import memcache
+ModuleNotFoundError: No module named 'google'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/anaconda3/lib/python3.6/site-packages/googleapiclient/discovery_cache/file_cache.py", line 33, in <module>
+    from oauth2client.contrib.locked_file import LockedFile
+ModuleNotFoundError: No module named 'oauth2client.contrib.locked_file'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/anaconda3/lib/python3.6/site-packages/googleapiclient/discovery_cache/file_cache.py", line 37, in <module>
+    from oauth2client.locked_file import LockedFile
+ModuleNotFoundError: No module named 'oauth2client.locked_file'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/anaconda3/lib/python3.6/site-packages/googleapiclient/discovery_cache/__init__.py", line 41, in autodetect
+    from . import file_cache
+  File "/anaconda3/lib/python3.6/site-packages/googleapiclient/discovery_cache/file_cache.py", line 41, in <module>
+    'file_cache is unavailable when using oauth2client >= 4.0.0')
+ImportError: file_cache is unavailable when using oauth2client >= 4.0.0
+INFO:googleapiclient.discovery:URL being requested: GET https://www.googleapis.com/discovery/v1/apis/gmail/v1/rest
+INFO:googleapiclient.discovery:URL being requested: POST https://www.googleapis.com/gmail/v1/users/me/messages/send?alt=json
+INFO:oauth2client.transport:Refreshing due to a 401 (attempt 1/2)
+INFO:oauth2client.client:Refreshing access_token
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "node" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "threshold" INTEGER NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "reading" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "timestamp" DATETIME NOT NULL, "measurement" INTEGER NOT NULL, "battery_level" REAL NOT NULL)', [])
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.darksky.net
+DEBUG:urllib3.connectionpool:https://api.darksky.net:443 "GET /forecast/d3fbc403cc28523a125c3c5ab8e43ded/47.649093,-122.199153 HTTP/1.1" 200 29124
+DEBUG:peewee:('SELECT "t1"."id", "t1"."nodeID", "t1"."timestamp", "t1"."measurement", "t1"."battery_level" FROM "reading" AS "t1" WHERE ("t1"."timestamp" BETWEEN ? AND ?) LIMIT 1 OFFSET 0', [datetime.datetime(2018, 5, 10, 0, 0), datetime.datetime(2018, 5, 10, 16, 5, 32, 135235)])
+ERROR:root:05/10/2018 16:05:27 | /Users/margaret/Documents/myLadybugHelper/should_I_water/Rasp_Pi_2018/should_i_water/build_message_lib.py | 41 | _is_a_reading : <class 'reading_model.Reading'> instance matching query does not exist:
+SQL: SELECT "t1"."id", "t1"."nodeID", "t1"."timestamp", "t1"."measurement", "t1"."battery_level" FROM "reading" AS "t1" WHERE ("t1"."timestamp" BETWEEN ? AND ?) LIMIT 1 OFFSET 0
+Params: [datetime.datetime(2018, 5, 10, 0, 0), datetime.datetime(2018, 5, 10, 16, 5, 32, 135235)]
+ERROR:root:05/10/2018 16:05:27 | /Users/margaret/Documents/myLadybugHelper/should_I_water/Rasp_Pi_2018/should_i_water/build_message_lib.py | 84 | get_moisture_puck_advice : Error - a reading does not exist.
+WARNING:googleapiclient.discovery_cache:file_cache is unavailable when using oauth2client >= 4.0.0
+Traceback (most recent call last):
+  File "/anaconda3/lib/python3.6/site-packages/googleapiclient/discovery_cache/__init__.py", line 36, in autodetect
+    from google.appengine.api import memcache
+ModuleNotFoundError: No module named 'google'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/anaconda3/lib/python3.6/site-packages/googleapiclient/discovery_cache/file_cache.py", line 33, in <module>
+    from oauth2client.contrib.locked_file import LockedFile
+ModuleNotFoundError: No module named 'oauth2client.contrib.locked_file'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/anaconda3/lib/python3.6/site-packages/googleapiclient/discovery_cache/file_cache.py", line 37, in <module>
+    from oauth2client.locked_file import LockedFile
+ModuleNotFoundError: No module named 'oauth2client.locked_file'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/anaconda3/lib/python3.6/site-packages/googleapiclient/discovery_cache/__init__.py", line 41, in autodetect
+    from . import file_cache
+  File "/anaconda3/lib/python3.6/site-packages/googleapiclient/discovery_cache/file_cache.py", line 41, in <module>
+    'file_cache is unavailable when using oauth2client >= 4.0.0')
+ImportError: file_cache is unavailable when using oauth2client >= 4.0.0
+INFO:googleapiclient.discovery:URL being requested: GET https://www.googleapis.com/discovery/v1/apis/gmail/v1/rest
+INFO:googleapiclient.discovery:URL being requested: POST https://www.googleapis.com/gmail/v1/users/me/messages/send?alt=json
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.darksky.net
+DEBUG:urllib3.connectionpool:https://api.darksky.net:443 "GET /forecast/d3fbc403cc28523a125c3c5ab8e43ded/47.649093,-122.199153 HTTP/1.1" 200 29125
+DEBUG:peewee:('SELECT "t1"."id", "t1"."nodeID", "t1"."timestamp", "t1"."measurement", "t1"."battery_level" FROM "reading" AS "t1" WHERE ("t1"."timestamp" BETWEEN ? AND ?) LIMIT 1 OFFSET 0', [datetime.datetime(2018, 5, 10, 0, 0), datetime.datetime(2018, 5, 10, 16, 5, 34, 671114)])
+ERROR:root:05/10/2018 16:05:27 | /Users/margaret/Documents/myLadybugHelper/should_I_water/Rasp_Pi_2018/should_i_water/build_message_lib.py | 41 | _is_a_reading : <class 'reading_model.Reading'> instance matching query does not exist:
+SQL: SELECT "t1"."id", "t1"."nodeID", "t1"."timestamp", "t1"."measurement", "t1"."battery_level" FROM "reading" AS "t1" WHERE ("t1"."timestamp" BETWEEN ? AND ?) LIMIT 1 OFFSET 0
+Params: [datetime.datetime(2018, 5, 10, 0, 0), datetime.datetime(2018, 5, 10, 16, 5, 34, 671114)]
+ERROR:root:05/10/2018 16:05:27 | /Users/margaret/Documents/myLadybugHelper/should_I_water/Rasp_Pi_2018/should_i_water/build_message_lib.py | 84 | get_moisture_puck_advice : Error - a reading does not exist.

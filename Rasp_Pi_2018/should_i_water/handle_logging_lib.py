@@ -1,10 +1,11 @@
 import datetime
 import inspect
 import logging
+import os
 import sys
 
-
-logging.basicConfig(filename='/home/pi/myLadybugHelper/should_i_water/should_i_water.log',level=logging.DEBUG)
+LOGFILE = os.environ.get("LOGFILE")
+logging.basicConfig(filename=LOGFILE,level=logging.DEBUG)
 
 class BaseClass:
     def __init__(self):

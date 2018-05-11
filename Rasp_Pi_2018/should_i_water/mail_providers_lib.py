@@ -7,6 +7,9 @@ from googleapiclient.errors import HttpError
 from oauth2client.client import flow_from_clientsecrets
 from oauth2client.file import Storage
 from oauth2client.tools import argparser
+from email.encoders import encode_base64
+from email.mime.image import MIMEImage
+from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 import smtplib
 
@@ -20,6 +23,36 @@ class MailProviders:
         self.handle_logging = HandleLogging()
         today_string = datetime.datetime.now().strftime("%m/%d/%Y")
         self.subject_string = "Watering advice for {}".format(today_string)
+
+
+    def _create_message(self,sender, to, subject, message_text):
+        """Create a message for an email.
+        Args:
+          sender: Email address of the sender.
+          to: Email address of the receiver.
+          subject: The subject of the email message.
+          message_text: The text of the email message.
+
+        Returns:
+          An object containing a base64url encoded email object.
+        """
+        message = MIMEMultipart('alternative')
+        message['to'] = to
+        message['from'] = sender
+        message['subject'] = subject
+        text = MIMEText(message_text)
+        message.attach(text)
+        WEATHER_PNG = os.environ.get("WEATHER_PNG")
+        with open(WEATHER_PNG, 'rb') as fp:
+            weather_image = MIMEImage(fp.read(), _subtype='png')
+            import pdb;pdb.set_trace()
+        message.attach(weather_image)
+        # UGH!  See:
+        # https://stackoverflow.com/questions/43352496/gmail-api-error-from-code-sample-a-bytes-like-object-is-required-not-str
+        # return {'raw': base64.urlsafe_b64encode(message.as_string().encode()).decode()}
+        return {'raw': base64.urlsafe_b64encode(message.as_bytes()).decode()}
+
+
 
 class GmailProvider(MailProviders):
     """send gmail"""
@@ -49,26 +82,12 @@ class GmailProvider(MailProviders):
         # Authorize the httplib2.Http object with our credentials
         return credentials.authorize(http)
 
-    def _create_message(self,sender, to, subject, message_text):
-        """Create a message for an email.
-        Args:
-          sender: Email address of the sender.
-          to: Email address of the receiver.
-          subject: The subject of the email message.
-          message_text: The text of the email message.
 
-        Returns:
-          An object containing a base64url encoded email object.
-        """
-        message = MIMEText(message_text)
-        message['to'] = to
-        message['from'] = sender
-        message['subject'] = subject
-        # UGH!  See:
-        # https://stackoverflow.com/questions/43352496/gmail-api-error-from-code-sample-a-bytes-like-object-is-required-not-str
-        return {'raw': base64.urlsafe_b64encode(message.as_string().encode()).decode()}
 
-    def _send_message(self,service, user_id, message):
+
+
+
+    def _send_gmail(self,service, user_id, message):
         """Send an email message.
         Args:
           service: Authorized Gmail API service instance.
@@ -101,16 +120,16 @@ class GmailProvider(MailProviders):
                                        to_string,
                                        self.subject_string, message_string)
         # Send message
-        self._send_message(gmail_service, 'me', message)
+        self._send_gmail(gmail_service, 'me', message)
 
 class OutlookProvider(MailProviders):
     '''send mail to outlook'''
 
     def send_mail(self,to_string,message_string):
-        msg = MIMEText(message_string)
-        msg['Subject'] = self.subject_string
-        msg['To'] = to_string
-        msg['From'] = to_string
+        msg = self._create_message(to_string,
+                                   to_string,
+                                   self.subject_string,
+                                   message_string)
 
         try:
            server = smtplib.SMTP('smtp-mail.outlook.com',587)
