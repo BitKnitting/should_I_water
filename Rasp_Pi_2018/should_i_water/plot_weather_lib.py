@@ -23,8 +23,14 @@ class PlotWeather:
         '''
         http = urllib3.PoolManager(cert_reqs='CERT_REQUIRED',ca_certs=certifi.where())
         WEATHER_URL = os.environ.get("WEATHER_URL")
+
         url = WEATHER_URL
-        request = http.request('GET',url)
+        try:
+            request = http.request('GET',url)
+        except urllib3.exceptions.LocationValueError as e:
+            error_string = "WEATHER_URL is not set.  The error message is: " + str(e)
+            self.handle_logging.print_error(error_string)
+            return None
         # Try a five times in case there is a failure to connect
         for i in range(5):
             try:
@@ -50,7 +56,10 @@ class PlotWeather:
         cloud cover, and temperature.  Each reading will be in it's own graph.
         store in PNG file.
         '''
+
         prediction_list = self.get_weather_forecast()
+        if prediction_list == None:
+            return False
         # Set up the numpy array.
         array = np.array(prediction_list)
         # Set up the x-axis. The array's columns = hour, intensity, probability, cloud_cover, temperature.
@@ -68,20 +77,20 @@ class PlotWeather:
         # make room for 4 subplots.  We picked a size that looks good when the plot is saved as a png.
         fig, (ax1,ax2,ax3,ax4) = plt.subplots(nrows=4,figsize=(6,7))
         # The first plot will be the probability of rain.
-        ax1.set_ylim([0,1])
-        ax1.plot(hour,probability)
-        ax1.set_ylabel('probability')
+        ax1.set_ylim([0,100]) # Show probability in %
+        ax1.plot(hour,probability*100)
+        ax1.set_ylabel('probability in %')
         ax1.set_title('Probability of rain',fontsize = 14)
         # The second plot will be the expected intensity of rain (assuming it rains at all).
         ax2.set_ylim([0,1])
         ax2.set_title('Rain Intensity',fontsize = 14)
-        ax2.set_ylabel('intensity')
+        ax2.set_ylabel('inches / hour')
         ax2.plot(hour,intensity)
         # Plot the cloud cover
-        ax3.set_ylim([0,1])
+        ax3.set_ylim([0,100])
         ax3.set_title('Cloud Cover',fontsize = 14)
         ax3.set_ylabel('cloud cover')
-        ax3.plot(hour,cloud_cover)
+        ax3.plot(hour,cloud_cover*100)
         # Plot the temperature
         ax4.set_xlabel('Hour (24 hour clock)',fontsize = 16)
         ax4.set_title('Temperature',fontsize = 14)
@@ -102,7 +111,8 @@ class PlotWeather:
         try:
             WEATHER_PNG = os.environ.get("WEATHER_PNG")
         except KeyError as e:
-            handle_logging.print_error(e)
+            self.handle_logging.print_error(e)
         else:
             fig.savefig(WEATHER_PNG)
             plt.close(fig)
+        return True

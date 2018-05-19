@@ -5,7 +5,13 @@ import os
 import sys
 
 LOGFILE = os.environ.get("LOGFILE")
+# set DEBUG for everything
 logging.basicConfig(filename=LOGFILE,level=logging.DEBUG)
+# matplotlib was clogging up the logfile.
+# From https://matplotlib.org/faq/troubleshooting_faq.html
+logger = logging.getLogger('matplotlib')
+# set WARNING for Matplotlib
+logger.setLevel(logging.WARNING)
 
 class BaseClass:
     def __init__(self):
