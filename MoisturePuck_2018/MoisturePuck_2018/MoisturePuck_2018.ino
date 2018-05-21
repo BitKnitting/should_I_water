@@ -25,6 +25,8 @@ RTCZero rtc;
 
 const int NUMBER_OF_TRIES = 10;
 
+const int POWER = 12;
+
 bool bHaveTimeInfo = false;
 int  num_test_packets_sent = 0;
 
@@ -198,18 +200,21 @@ void get_reading() {
  *******************************************************************/
 
 int read_moisture() {
-  
-  delay(10);
+  digitalWrite(POWER, HIGH);
+  delay(1000);
   // Average over nReadings.
+  // turn the sensor on and wait a moment...
   const int num_readings = 30;
   // Take readings for a minute or so
-  const int delay_between_readings = 300;
+  const int delay_between_readings = 10;
   float tot_readings = 0.;
   for (int i = 0; i < num_readings; i++) {
     int current_reading = analogRead(A0);  // !!!The moisture sensor must be on this analog pin.!!!
     tot_readings += current_reading;
     delay(delay_between_readings );
   }
+  // Turn off power to the moisture sensor.
+  digitalWrite(POWER, LOW);
   // Return an average of the values read.
   int reading = round(tot_readings / num_readings);
   DEBUG_PRINTF("Reading: ");
@@ -233,6 +238,8 @@ float read_battery_level() {
   init_stuff
 ********************************************************/
 void init_stuff() {
+  // The Moisture sensor's v + is connected to the POWER GPIO pin.
+  pinMode(POWER, OUTPUT);
   pinMode(LED, OUTPUT);
   digitalWrite(LED, LOW);
   init_radio();
@@ -279,7 +286,7 @@ void set_rtc() {
   rtc.setTime(timeInfo.values.hour, timeInfo.values.minute, timeInfo.values.second);
   // Now that we have a time packet, we can set an alarm to fire when we should send a moisture info packet to the Controller.'
   print_rtc_time();
-  // TESTING....
+  
   rtc.setAlarmTime(timeInfo.values.wateringHour, 00, 00);
   rtc.enableAlarm(rtc.MATCH_HHMMSS);
   //rtc.enableAlarm(rtc.MATCH_SS);
@@ -294,6 +301,8 @@ void print_rtc_time() {
   DEBUG_PRINT(rtc.getMinutes());
   DEBUG_PRINTF(":");
   DEBUG_PRINTLN(rtc.getSeconds());
+  DEBUG_PRINTF("Watering hour: ");
+  DEBUG_PRINTLN(timeInfo.values.wateringHour);
 }
 /********************************************************
   go_to_sleep

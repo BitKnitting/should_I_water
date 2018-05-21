@@ -5,9 +5,12 @@
 #define LED           LED_BUILTIN
 #endif
 
+const int POWER = 12;
 
 void setup() {
   Serial.begin(115200);
+  // The Moisture sensor's v + is connected to the POWER GPIO pin.
+  pinMode(POWER, OUTPUT);
 }
 
 void loop() {
@@ -23,16 +26,20 @@ void loop() {
 int read_moisture() {
 
   // Average over nReadings.
-  const int num_readings = 30;
+  // turn the sensor on and wait a moment...
+  digitalWrite(POWER, HIGH);
+  delay(1000);
+  const int num_readings = 10;
   // Take readings for a minute or so
-  const int delay_between_readings = 300;
+  const int delay_between_readings = 10;
   float tot_readings = 0.;
   for (int i = 0; i < num_readings; i++) {
     int current_reading = analogRead(A0);  // !!!The moisture sensor must be on this analog pin.!!!
     tot_readings += current_reading;
     delay(delay_between_readings );
   }
-
+  // Turn off power to the moisture sensor.
+  digitalWrite(POWER, LOW);
   // Return an average of the values read.
   int reading = round(tot_readings / num_readings);
 
