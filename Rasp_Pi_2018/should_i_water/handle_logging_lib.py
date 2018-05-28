@@ -4,18 +4,18 @@ import logging
 import os
 import sys
 
-LOGFILE = os.environ.get("LOGFILE")
-# set DEBUG for everything
-logging.basicConfig(filename=LOGFILE,level=logging.DEBUG)
-# matplotlib was clogging up the logfile.
-# From https://matplotlib.org/faq/troubleshooting_faq.html
-logger = logging.getLogger('matplotlib')
-# set WARNING for Matplotlib
-logger.setLevel(logging.WARNING)
+
 
 class BaseClass:
     def __init__(self):
-        self.date_and_time = datetime.datetime.now().strftime("%m/%d/%Y %H:%M:%S")
+        LOGFILE = os.environ.get("LOGFILE")
+        # set DEBUG for everything
+        logging.basicConfig(filename=LOGFILE,level=logging.DEBUG)
+        # matplotlib was clogging up the logfile.
+        # From https://matplotlib.org/faq/troubleshooting_faq.html
+        logger = logging.getLogger('matplotlib')
+        # set WARNING for Matplotlib
+        logger.setLevel(logging.WARNING)
 
 class HandleLogging(BaseClass):
 
@@ -28,11 +28,9 @@ class HandleLogging(BaseClass):
         return (filename, line_number, name)
 
     def print_error(self,message):
-        (filename,line_number,name) = self._get_caller_info()
-        logging.error('{} | {} | {} | {} : {}'.format(self.date_and_time,
-        filename,line_number,name, message))
+        (filename, line_number, name) = self._get_caller_info()
+        logging.error('{} | {} | {} : {}'.format(filename,line_number,name, message))
 
     def print_info(self,message):
         (filename,line_number,name) = self._get_caller_info()
-        logging.info('{} | {} | {} | {}: {}'.format(self.date_and_time,
-        filename,line_number,name, message))
+        logging.info('{} | {} | {}: {}'.format(filename,line_number,name, message))

@@ -16,8 +16,10 @@ def store_measurement(nodeID,measurement,battery_level):
     try:
         battery_level = round(battery_level,2)
         # Use time's default value.
+        Reading.initialize()
         Reading.create(nodeID=nodeID,measurement=measurement,
                  battery_level=battery_level)
+        Reading.close()         
         handle_logging.print_info('Measurement stored.  nodeID: {}, measurement: {}, battery_level: {}'
                 .format(nodeID,measurement,battery_level))
     except ValueError as e:
@@ -27,6 +29,5 @@ def store_measurement(nodeID,measurement,battery_level):
 
 ###############
 if __name__ == "__main__":
-    Reading.initialize()
     measurement = Measurement(store_measurement)
     measurement.begin()

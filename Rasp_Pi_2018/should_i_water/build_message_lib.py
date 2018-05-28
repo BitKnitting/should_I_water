@@ -8,8 +8,6 @@ import urllib3
 
 class BuildMessage:
     def __init__(self):
-        ''' Get Ready to use the database containing moisture readings'''
-        Reading.initialize()
         self.nodeID = None
         self.measurement = None
         self.battery_level = None
@@ -30,8 +28,9 @@ class BuildMessage:
         # While we expect just one reading for today...um...who knows?  Maybe there
         # will be multiple readings.  By adding get() we'll get the first one.
         try:
-            #
+            Reading.initialize()
             reading = Reading.get(Reading.timestamp.between(today_beginning,now))
+            Reading.close()
             self.nodeID = reading.nodeID
             self.measurement = reading.measurement
             self.battery_level = reading.battery_level

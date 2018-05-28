@@ -659,12 +659,14 @@ class RFM69:
         assert 0 < len(data_string) <= 60
         # pylint: enable=len-as-condition
         self.idle()  # Stop receiving to clear FIFO and keep it clear.
-        # Fill the FIFO with a packet to send.
-        # # Add 4 bytes of headers to match RadioHead library.
-        # # Just use the defaults for global broadcast to all receivers
-        # # for now.
-        stuff_to_send=[_REG_FIFO | 0x80,len(data_string) + 4, _RH_BROADCAST_ADDRESS,
-        _RH_BROADCAST_ADDRESS,0,0]
+        stuff_to_send=[_REG_FIFO | 0x80] # Set top bit to 1 to indicate a write.
+        # Add 4 bytes for  RadhioHead Library
+        stuff_to_send += [(len(data_string) + 4)&0xFF]
+        # Send over broadcast address.
+        stuff_to_send += [_RH_BROADCAST_ADDRESS, _RH_BROADCAST_ADDRESS]
+        # Add txHeaderId and txHeaderFlag bytes
+        stuff_to_send += [0,0]
+        # Add in the data
         if isinstance(data_string,str):
             stuff_to_send += [int(ord(i)) for i in list(data_string)]
         else: # assume bytearray...
