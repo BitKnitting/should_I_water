@@ -8,27 +8,20 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 //#define DEBUG
 #include <DebugLib.h>
-#include <RH_RF69.h>
 #include <RTCZero.h>
 RTCZero rtc;
 #include "GardenDataTypes.h"
 timeUnion_t timeInfo;
 testUnion_t testPacket;
 moistureUnion_t moistureInfo;
-#if defined(ARDUINO_SAMD_FEATHER_M0) // Feather M0 w/Radio
-#define RFM69_CS      8
-#define RFM69_INT     3
-#define RFM69_RST     4
-#define LED           LED_BUILTIN
-#endif
-RH_RF69 rf69(RFM69_CS, RFM69_INT);
 // LED is used in Blinks.h.
 #define LED_DEBUG
 #include "Blinks.h"
 /************************************************
    The NODE_ID is Unique to each node.
  ************************************************/
-const int NODE_ID = 1;
+ const uint8_t   _NODE_ID                         =   1;
+
 const int NUMBER_OF_TRIES = 10;
 
 const int POWER = 12;
@@ -208,9 +201,9 @@ void init_stuff() {
   pinMode(POWER, OUTPUT);
   pinMode(LED, OUTPUT);
   digitalWrite(LED, LOW);
-  timeInfo.values.node_id = NODE_ID;
-  testPacket.values.node_id = NODE_ID;
-  moistureInfo.values.node_id = NODE_ID;
+  timeInfo.values.node_id = _NODE_ID;
+  testPacket.values.node_id = _NODE_ID;
+  moistureInfo.values.node_id = _NODE_ID;
   init_radio();
   init_rtc();
 }
