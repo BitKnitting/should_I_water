@@ -89,6 +89,7 @@ struct __attribute__((packed)) wateringInfo_t // not sending battery info becaus
 {
   uint8_t packet_type;
   uint8_t node_id;
+  uint8_t valve_id;
   uint8_t watering_minutes;
 };
 const time_t MAX_WATERING_MINUTES = 30;
@@ -96,7 +97,7 @@ union wateringUnion_t
 {
   wateringInfo_t values;
   uint8_t b[sizeof(wateringInfo_t)];
-} wateringInfo;
+} ;
 /*********************************************************************************/
 // A control packet can be used any time we're sending a control message to the
 // Raspberry pi.  So far this is "busy" and "done watering"
@@ -109,4 +110,4 @@ union control_packet_Union_t
 {
   control_packet_t values;
   uint8_t b[sizeof(control_packet_t)];
-} control_packet;
+} ;
