@@ -20,15 +20,14 @@ moistureUnion_t moistureInfo;
 /************************************************
    The NODE_ID is Unique to each node.
  ************************************************/
- const uint8_t   _NODE_ID                         =   1;
+const uint8_t   _NODE_ID                         =   1;
 
 const int NUMBER_OF_TRIES = 10;
 
 const int POWER = 12;
 
 
-bool bHaveTimeInfo = false;
-int  num_test_packets_sent = 0;
+//int  num_test_packets_sent = 0;
 
 
 /********************************************************
@@ -43,34 +42,16 @@ void setup() {
    The chip wakes up when the watering hour happens.
  ********************************************************/
 void loop() {
-  // Send a few test packets to see if we're talking to the Rasp Pi...
-  // The logfile on the Rasp Pi needs to be checked to see if it received
-  // test packets.
-  //  if (num_test_packets_sent < 2) {
-  //    DEBUG_PRINTLNF("Sending test packet...");
-  //    if (send_test_packet() ) {
-  //      num_test_packets_sent += 1;
-  //      DEBUG_PRINTLN(num_test_packets_sent);
-  //    }
-  //    delay(1000); // Put a delay in between sending packets...
-  // Now that "a few" test packets have been sent, we need the current time and watering
-  // hour from the Raspberry Pi..
-  //  } else {
-  if (!bHaveTimeInfo)  {
-    DEBUG_PRINTLNF("Getting time info");
-    get_time_info();
-    //We're awake, which means we have time info...so take a moisture reading then
-    //go back to sleep.
+  if (!have_time_info())  {
   } else {
     DEBUG_PRINTLNF("Sending moisture reading");
     send_moisture_reading();
     DEBUG_PRINTLNF("Going to sleep.");
     go_to_sleep();
   }
-  //  }
 }
 /********************************************************
-   send_test_packet()
+   send_test_packet() - decided not to use.
  ********************************************************/
 bool send_test_packet() {
   testPacket.values.packetType = _TEST_PACKET;
@@ -83,23 +64,22 @@ bool send_test_packet() {
   return false;
 }
 /********************************************************
-   get_time_info
+   have_time_info()
  ********************************************************/
-void get_time_info() {
+bool have_time_info() {
+  DEBUG_PRINTLNF("--> asking for a Time Info packet. ");
   timeInfo.values.packetType = _TIME_INFO_PACKET;
   if (send_packet(timeInfo.b, sizeof(timeInfo))) {
-    DEBUG_PRINTLN("***> Got a time info packet <***");
-    bHaveTimeInfo = true;
-    DEBUG_PRINTF("length of timeInfo: ");
-    DEBUG_PRINTLN(sizeof(timeInfo.b));
-    for (int i = 0; i < sizeof(timeInfo.b); i++) {
-      DEBUG_PRINTLN(timeInfo.b[i]);
-    }
+    DEBUG_PRINTLNF("***> Got a time info packet <***");
+    DEBUG_PRINTF("Packet contents: ");
+    print_bytes_in_hex(timeInfo.b, sizeof(timeInfo_t));
+    print_time_info();
     // Now that we have the time, let's set up the RTC and
     // an alarm to wake up...
     set_rtc();
-    print_time_info();
+    return true;
   }
+  return false;
 }
 /********************************************************
    send_moisture_reading
@@ -113,9 +93,6 @@ void send_moisture_reading() {
    send_packet
  *******************************************************************/
 bool send_packet(uint8_t *packet, uint8_t len) {
-  DEBUG_PRINTF("Packet length: ");
-  uint8_t buff[40];
-  DEBUG_PRINTLN(len);
   for (int i = 0; i < NUMBER_OF_TRIES; i++) {
     rf69.send(packet, len);
     rf69.waitPacketSent();
@@ -124,8 +101,8 @@ bool send_packet(uint8_t *packet, uint8_t len) {
     if (rf69.waitAvailableTimeout(500)) {
       // Message..hopefully...
       if (rf69.recv(packet, &len)) {
-          DEBUG_PRINTLNF("Received a packet.");
-          DEBUG_PRINTLN(len);
+        DEBUG_PRINTLNF("Received a packet.");
+        DEBUG_PRINTLN(len);
         if (packet[0] ==  _ERROR_IN_PACKET_RECEIVED) {
           DEBUG_PRINTLNF("!!! OOPS! Error in the packet we sent....");
           // Keep sending packets until the Rasp Pi can read it.
@@ -197,6 +174,9 @@ float read_battery_level() {
   init_stuff
 ********************************************************/
 void init_stuff() {
+  DEBUG_BEGIN;
+  DEBUG_WAIT;
+  DEBUG_PRINTLNF("...initializing stuff for the moisture puck...");
   // The Moisture sensor's v + is connected to the POWER GPIO pin.
   pinMode(POWER, OUTPUT);
   pinMode(LED, OUTPUT);
@@ -245,8 +225,6 @@ void set_rtc() {
   // set the rtc library's time so the watering alarm time is correct.
   // ...well, approximately correct.  Given it will take several seconds from when the Rasp Pi sent
   // the packet...however, this amount of time won't make enough of a difference.
-  DEBUG_PRINTF("Hour: ");
-  DEBUG_PRINTLN(timeInfo.values.hour);
   rtc.setTime(timeInfo.values.hour, timeInfo.values.minute, timeInfo.values.second);
   // Now that we have a time packet, we can set an alarm to fire when we should send a moisture info packet to the Controller.'
   print_rtc_time();
@@ -294,3 +272,17 @@ void print_time_info() {
   Serial.print(F("Watering hour: ")); Serial.println(timeInfo.values.wateringHour);
 #endif
 }
+/********************************************************************
+   print_bytes_in_hex
+ *******************************************************************/
+void print_bytes_in_hex(uint8_t *data, uint8_t length) {
+#ifdef DEBUG  
+  char tmp[6];
+  for (int i = 0; i < length; i++) {
+    sprintf(tmp, "0x%.2X", data[i]);
+    DEBUG_PRINT(tmp); DEBUG_PRINT(" ");
+  }
+  DEBUG_PRINTLNF(" ");
+#endif  
+}
+

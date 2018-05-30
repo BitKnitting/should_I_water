@@ -2,7 +2,7 @@ import certifi
 from datetime import datetime, date, time,timedelta
 from handle_logging_lib import HandleLogging
 import json
-from reading_model import Reading,Node
+from reading_model import Reading,MoisturePucks
 import urllib3
 
 
@@ -37,6 +37,7 @@ class BuildMessage:
             return True
         # no records exists for today....this isn't expected...
         except Reading.DoesNotExist as e:
+            Reading.close()
             self.handle_logging.print_error(e)
             return False
 
@@ -62,25 +63,26 @@ class BuildMessage:
         if self._is_a_reading():
             node_description="node" + str(self.nodeID)
             try:
-                node_info = Node.get(Node.nodeID == self.nodeID)
+                MoisturePucks.initialize()
+                node_info = MoisturePucks.get(MoisturePucks.nodeID == self.nodeID)
+                MoisturePucks.close()
                 node_description = node_info.description
                 node_threshold = node_info.threshold
-            except Node.DoesNotExist as e:
-                self.handle_logging.print_error(e)
-            if summary_message:
-                reading_details = ""
-            else:
-                reading_details = (" The reading is {}, the threshold is {}, "
-                            "the battery level is {}."
-                            .format(self.measurement,node_threshold,self.battery_level))
-            if (self.measurement <= node_threshold):
-                return node_description+" - Unless the weather says otherwise, you should water."+ reading_details
-            else:
-                return node_description+" - No need to water today." + reading_details
+                if summary_message:
+                    reading_details = ""
+                else:
+                    reading_details = (" The reading is {}, the threshold is {}, "
+                                "the battery level is {}."
+                                .format(self.measurement,node_threshold,self.battery_level))
+                if (self.measurement <= node_threshold):
+                    return node_description+" - Unless the weather says otherwise, you should water."+ reading_details
+                else:
+                    return node_description+" - No need to water today." + reading_details
 
-                return node_description+" - No need to water today."
-        else:
-            self.handle_logging.print_error("Error - a reading does not exist.")
+                    return node_description+" - No need to water today."
+            except MoisturePucks.DoesNotExist as e:
+                MoisturePucks.close()
+                self.handle_logging.print_error(e)
             return ''
 
 

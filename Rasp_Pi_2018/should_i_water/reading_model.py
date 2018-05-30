@@ -20,7 +20,7 @@ class BaseModel(Model):
         '''Create the database and the table if they don't exist.'''
         db.connect() # originally used connect().  However, if already connected
         # better to use get_conn()
-        db.create_tables([Reading,Node],safe=True)
+        db.create_tables([Reading,MoisturePucks,Valves],safe=True)
     def close():
         db.close()
     class Meta:
@@ -32,9 +32,12 @@ class Reading(BaseModel):
     measurement = IntegerField()
     battery_level = FloatField()
 
-class Node(BaseModel):
+class MoisturePucks(BaseModel):
     nodeID = IntegerField()
     description = CharField(max_length=255)
     threshold = IntegerField()
-    water_minutes = IntegerField()
-    puck_type = CharField(max_length=50)
+
+class Valves(BaseModel):
+    nodeID = IntegerField()
+    description = CharField(max_length=255)
+    watering_time = IntegerField()

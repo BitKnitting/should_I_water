@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from collect_readings_lib import Measurement
+from receive_moisture_packets_lib import ReceiveMoisturePackets
 from handle_logging_lib import HandleLogging
 from reading_model import Reading
 
@@ -19,7 +19,7 @@ def store_measurement(nodeID,measurement,battery_level):
         Reading.initialize()
         Reading.create(nodeID=nodeID,measurement=measurement,
                  battery_level=battery_level)
-        Reading.close()         
+        Reading.close()
         handle_logging.print_info('Measurement stored.  nodeID: {}, measurement: {}, battery_level: {}'
                 .format(nodeID,measurement,battery_level))
     except ValueError as e:
@@ -29,5 +29,5 @@ def store_measurement(nodeID,measurement,battery_level):
 
 ###############
 if __name__ == "__main__":
-    measurement = Measurement(store_measurement)
-    measurement.begin()
+    moisture_packet = ReceiveMoisturePackets(store_measurement)
+    moisture_packet.begin()

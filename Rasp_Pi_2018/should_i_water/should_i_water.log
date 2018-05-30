@@ -702,3 +702,429 @@ DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "node" ("id" INTEGER NOT NULL PRIMARY 
 DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "reading" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "timestamp" DATETIME NOT NULL, "measurement" INTEGER NOT NULL, "battery_level" REAL NOT NULL)', [])
 DEBUG:peewee:('SELECT "t1"."id", "t1"."nodeID", "t1"."description", "t1"."threshold", "t1"."water_minutes", "t1"."puck_type" FROM "node" AS "t1" WHERE ("t1"."nodeID" = ?) LIMIT 1 OFFSET 0', [1])
 INFO:root:/home/pi/myLadybugHelper/should_i_water/collect_readings_lib.py | 83 | _receive_done: Received a _MOISTURE_INFO_PACKET
+INFO:root:/home/pi/myLadybugHelper/should_i_water/receive_packets_lib.py | 39 | __init__: Initializing ReceivePackets class.
+INFO:root:/home/pi/myLadybugHelper/should_i_water/receive_packets_lib.py | 58 | _receive_done: Received a _TIME_INFO_PACKET from node 1.
+INFO:root:/home/pi/myLadybugHelper/should_i_water/receive_moisture_packets_lib.py | 8 | _receive_done: Received a _MOISTURE_INFO_PACKET from node 1.
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "moisturepucks" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "threshold" INTEGER NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "reading" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "timestamp" DATETIME NOT NULL, "measurement" INTEGER NOT NULL, "battery_level" REAL NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "valves" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "watering_time" INTEGER NOT NULL)', [])
+DEBUG:peewee:('INSERT INTO "reading" ("nodeID", "timestamp", "measurement", "battery_level") VALUES (?, ?, ?, ?)', [1, datetime.datetime(2018, 5, 30, 2, 56, 2, 141873), 404, 4.1])
+INFO:root:collect_readings_task.py | 24 | store_measurement: Measurement stored.  nodeID: 1, measurement: 404, battery_level: 4.1
+INFO:root:/home/pi/myLadybugHelper/should_i_water/receive_moisture_packets_lib.py | 8 | _receive_done: Received a _MOISTURE_INFO_PACKET from node 1.
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "moisturepucks" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "threshold" INTEGER NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "reading" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "timestamp" DATETIME NOT NULL, "measurement" INTEGER NOT NULL, "battery_level" REAL NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "valves" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "watering_time" INTEGER NOT NULL)', [])
+DEBUG:peewee:('INSERT INTO "reading" ("nodeID", "timestamp", "measurement", "battery_level") VALUES (?, ?, ?, ?)', [1, datetime.datetime(2018, 5, 30, 2, 56, 2, 821796), 404, 4.1])
+INFO:root:collect_readings_task.py | 24 | store_measurement: Measurement stored.  nodeID: 1, measurement: 404, battery_level: 4.1
+INFO:root:/home/pi/myLadybugHelper/should_i_water/receive_moisture_packets_lib.py | 8 | _receive_done: Received a _MOISTURE_INFO_PACKET from node 1.
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "moisturepucks" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "threshold" INTEGER NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "reading" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "timestamp" DATETIME NOT NULL, "measurement" INTEGER NOT NULL, "battery_level" REAL NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "valves" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "watering_time" INTEGER NOT NULL)', [])
+DEBUG:peewee:('INSERT INTO "reading" ("nodeID", "timestamp", "measurement", "battery_level") VALUES (?, ?, ?, ?)', [1, datetime.datetime(2018, 5, 30, 2, 56, 3, 517524), 404, 4.1])
+INFO:root:collect_readings_task.py | 24 | store_measurement: Measurement stored.  nodeID: 1, measurement: 404, battery_level: 4.1
+INFO:root:/home/pi/myLadybugHelper/should_i_water/receive_moisture_packets_lib.py | 8 | _receive_done: Received a _MOISTURE_INFO_PACKET from node 1.
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "moisturepucks" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "threshold" INTEGER NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "reading" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "timestamp" DATETIME NOT NULL, "measurement" INTEGER NOT NULL, "battery_level" REAL NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "valves" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "watering_time" INTEGER NOT NULL)', [])
+DEBUG:peewee:('INSERT INTO "reading" ("nodeID", "timestamp", "measurement", "battery_level") VALUES (?, ?, ?, ?)', [1, datetime.datetime(2018, 5, 30, 2, 56, 4, 208681), 404, 4.1])
+INFO:root:collect_readings_task.py | 24 | store_measurement: Measurement stored.  nodeID: 1, measurement: 404, battery_level: 4.1
+INFO:root:/home/pi/myLadybugHelper/should_i_water/receive_moisture_packets_lib.py | 8 | _receive_done: Received a _MOISTURE_INFO_PACKET from node 1.
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "moisturepucks" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "threshold" INTEGER NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "reading" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "timestamp" DATETIME NOT NULL, "measurement" INTEGER NOT NULL, "battery_level" REAL NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "valves" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "watering_time" INTEGER NOT NULL)', [])
+DEBUG:peewee:('INSERT INTO "reading" ("nodeID", "timestamp", "measurement", "battery_level") VALUES (?, ?, ?, ?)', [1, datetime.datetime(2018, 5, 30, 2, 56, 4, 915505), 404, 4.1])
+INFO:root:collect_readings_task.py | 24 | store_measurement: Measurement stored.  nodeID: 1, measurement: 404, battery_level: 4.1
+INFO:root:/home/pi/myLadybugHelper/should_i_water/receive_moisture_packets_lib.py | 8 | _receive_done: Received a _MOISTURE_INFO_PACKET from node 1.
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "moisturepucks" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "threshold" INTEGER NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "reading" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "timestamp" DATETIME NOT NULL, "measurement" INTEGER NOT NULL, "battery_level" REAL NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "valves" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "watering_time" INTEGER NOT NULL)', [])
+DEBUG:peewee:('INSERT INTO "reading" ("nodeID", "timestamp", "measurement", "battery_level") VALUES (?, ?, ?, ?)', [1, datetime.datetime(2018, 5, 30, 2, 56, 5, 626406), 404, 4.1])
+INFO:root:collect_readings_task.py | 24 | store_measurement: Measurement stored.  nodeID: 1, measurement: 404, battery_level: 4.1
+INFO:root:/home/pi/myLadybugHelper/should_i_water/receive_moisture_packets_lib.py | 8 | _receive_done: Received a _MOISTURE_INFO_PACKET from node 1.
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "moisturepucks" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "threshold" INTEGER NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "reading" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "timestamp" DATETIME NOT NULL, "measurement" INTEGER NOT NULL, "battery_level" REAL NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "valves" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "watering_time" INTEGER NOT NULL)', [])
+DEBUG:peewee:('INSERT INTO "reading" ("nodeID", "timestamp", "measurement", "battery_level") VALUES (?, ?, ?, ?)', [1, datetime.datetime(2018, 5, 30, 2, 56, 6, 327652), 404, 4.1])
+INFO:root:collect_readings_task.py | 24 | store_measurement: Measurement stored.  nodeID: 1, measurement: 404, battery_level: 4.1
+INFO:root:/home/pi/myLadybugHelper/should_i_water/receive_moisture_packets_lib.py | 8 | _receive_done: Received a _MOISTURE_INFO_PACKET from node 1.
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "moisturepucks" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "threshold" INTEGER NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "reading" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "timestamp" DATETIME NOT NULL, "measurement" INTEGER NOT NULL, "battery_level" REAL NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "valves" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "watering_time" INTEGER NOT NULL)', [])
+DEBUG:peewee:('INSERT INTO "reading" ("nodeID", "timestamp", "measurement", "battery_level") VALUES (?, ?, ?, ?)', [1, datetime.datetime(2018, 5, 30, 2, 56, 7, 23869), 404, 4.1])
+INFO:root:collect_readings_task.py | 24 | store_measurement: Measurement stored.  nodeID: 1, measurement: 404, battery_level: 4.1
+INFO:root:/home/pi/myLadybugHelper/should_i_water/receive_moisture_packets_lib.py | 8 | _receive_done: Received a _MOISTURE_INFO_PACKET from node 1.
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "moisturepucks" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "threshold" INTEGER NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "reading" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "timestamp" DATETIME NOT NULL, "measurement" INTEGER NOT NULL, "battery_level" REAL NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "valves" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "watering_time" INTEGER NOT NULL)', [])
+DEBUG:peewee:('INSERT INTO "reading" ("nodeID", "timestamp", "measurement", "battery_level") VALUES (?, ?, ?, ?)', [1, datetime.datetime(2018, 5, 30, 2, 56, 7, 735384), 404, 4.1])
+INFO:root:collect_readings_task.py | 24 | store_measurement: Measurement stored.  nodeID: 1, measurement: 404, battery_level: 4.1
+INFO:root:/home/pi/myLadybugHelper/should_i_water/receive_moisture_packets_lib.py | 8 | _receive_done: Received a _MOISTURE_INFO_PACKET from node 1.
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "moisturepucks" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "threshold" INTEGER NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "reading" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "timestamp" DATETIME NOT NULL, "measurement" INTEGER NOT NULL, "battery_level" REAL NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "valves" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "watering_time" INTEGER NOT NULL)', [])
+DEBUG:peewee:('INSERT INTO "reading" ("nodeID", "timestamp", "measurement", "battery_level") VALUES (?, ?, ?, ?)', [1, datetime.datetime(2018, 5, 30, 2, 56, 8, 431564), 404, 4.1])
+INFO:root:collect_readings_task.py | 24 | store_measurement: Measurement stored.  nodeID: 1, measurement: 404, battery_level: 4.1
+INFO:root:/home/pi/myLadybugHelper/should_i_water/receive_packets_lib.py | 58 | _receive_done: Received a _TIME_INFO_PACKET from node 1.
+INFO:root:/home/pi/myLadybugHelper/should_i_water/receive_moisture_packets_lib.py | 8 | _receive_done: Received a _MOISTURE_INFO_PACKET from node 1.
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "moisturepucks" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "threshold" INTEGER NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "reading" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "timestamp" DATETIME NOT NULL, "measurement" INTEGER NOT NULL, "battery_level" REAL NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "valves" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "watering_time" INTEGER NOT NULL)', [])
+DEBUG:peewee:('INSERT INTO "reading" ("nodeID", "timestamp", "measurement", "battery_level") VALUES (?, ?, ?, ?)', [1, datetime.datetime(2018, 5, 30, 2, 57, 48, 375930), 405, 4.09])
+INFO:root:collect_readings_task.py | 24 | store_measurement: Measurement stored.  nodeID: 1, measurement: 405, battery_level: 4.09
+INFO:root:/home/pi/myLadybugHelper/should_i_water/receive_moisture_packets_lib.py | 8 | _receive_done: Received a _MOISTURE_INFO_PACKET from node 1.
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "moisturepucks" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "threshold" INTEGER NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "reading" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "timestamp" DATETIME NOT NULL, "measurement" INTEGER NOT NULL, "battery_level" REAL NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "valves" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "watering_time" INTEGER NOT NULL)', [])
+DEBUG:peewee:('INSERT INTO "reading" ("nodeID", "timestamp", "measurement", "battery_level") VALUES (?, ?, ?, ?)', [1, datetime.datetime(2018, 5, 30, 2, 57, 49, 67506), 405, 4.09])
+INFO:root:collect_readings_task.py | 24 | store_measurement: Measurement stored.  nodeID: 1, measurement: 405, battery_level: 4.09
+INFO:root:/home/pi/myLadybugHelper/should_i_water/receive_moisture_packets_lib.py | 8 | _receive_done: Received a _MOISTURE_INFO_PACKET from node 1.
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "moisturepucks" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "threshold" INTEGER NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "reading" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "timestamp" DATETIME NOT NULL, "measurement" INTEGER NOT NULL, "battery_level" REAL NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "valves" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "watering_time" INTEGER NOT NULL)', [])
+DEBUG:peewee:('INSERT INTO "reading" ("nodeID", "timestamp", "measurement", "battery_level") VALUES (?, ?, ?, ?)', [1, datetime.datetime(2018, 5, 30, 2, 57, 49, 779191), 405, 4.09])
+INFO:root:collect_readings_task.py | 24 | store_measurement: Measurement stored.  nodeID: 1, measurement: 405, battery_level: 4.09
+INFO:root:/home/pi/myLadybugHelper/should_i_water/receive_moisture_packets_lib.py | 8 | _receive_done: Received a _MOISTURE_INFO_PACKET from node 1.
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "moisturepucks" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "threshold" INTEGER NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "reading" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "timestamp" DATETIME NOT NULL, "measurement" INTEGER NOT NULL, "battery_level" REAL NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "valves" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "watering_time" INTEGER NOT NULL)', [])
+DEBUG:peewee:('INSERT INTO "reading" ("nodeID", "timestamp", "measurement", "battery_level") VALUES (?, ?, ?, ?)', [1, datetime.datetime(2018, 5, 30, 2, 57, 50, 475518), 405, 4.09])
+INFO:root:collect_readings_task.py | 24 | store_measurement: Measurement stored.  nodeID: 1, measurement: 405, battery_level: 4.09
+INFO:root:/home/pi/myLadybugHelper/should_i_water/receive_moisture_packets_lib.py | 8 | _receive_done: Received a _MOISTURE_INFO_PACKET from node 1.
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "moisturepucks" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "threshold" INTEGER NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "reading" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "timestamp" DATETIME NOT NULL, "measurement" INTEGER NOT NULL, "battery_level" REAL NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "valves" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "watering_time" INTEGER NOT NULL)', [])
+DEBUG:peewee:('INSERT INTO "reading" ("nodeID", "timestamp", "measurement", "battery_level") VALUES (?, ?, ?, ?)', [1, datetime.datetime(2018, 5, 30, 2, 57, 51, 172086), 405, 4.09])
+INFO:root:collect_readings_task.py | 24 | store_measurement: Measurement stored.  nodeID: 1, measurement: 405, battery_level: 4.09
+INFO:root:/home/pi/myLadybugHelper/should_i_water/receive_moisture_packets_lib.py | 8 | _receive_done: Received a _MOISTURE_INFO_PACKET from node 1.
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "moisturepucks" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "threshold" INTEGER NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "reading" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "timestamp" DATETIME NOT NULL, "measurement" INTEGER NOT NULL, "battery_level" REAL NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "valves" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "watering_time" INTEGER NOT NULL)', [])
+DEBUG:peewee:('INSERT INTO "reading" ("nodeID", "timestamp", "measurement", "battery_level") VALUES (?, ?, ?, ?)', [1, datetime.datetime(2018, 5, 30, 2, 57, 51, 883335), 405, 4.09])
+INFO:root:collect_readings_task.py | 24 | store_measurement: Measurement stored.  nodeID: 1, measurement: 405, battery_level: 4.09
+INFO:root:/home/pi/myLadybugHelper/should_i_water/receive_moisture_packets_lib.py | 8 | _receive_done: Received a _MOISTURE_INFO_PACKET from node 1.
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "moisturepucks" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "threshold" INTEGER NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "reading" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "timestamp" DATETIME NOT NULL, "measurement" INTEGER NOT NULL, "battery_level" REAL NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "valves" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "watering_time" INTEGER NOT NULL)', [])
+DEBUG:peewee:('INSERT INTO "reading" ("nodeID", "timestamp", "measurement", "battery_level") VALUES (?, ?, ?, ?)', [1, datetime.datetime(2018, 5, 30, 2, 57, 52, 589888), 405, 4.09])
+INFO:root:collect_readings_task.py | 24 | store_measurement: Measurement stored.  nodeID: 1, measurement: 405, battery_level: 4.09
+INFO:root:/home/pi/myLadybugHelper/should_i_water/receive_moisture_packets_lib.py | 8 | _receive_done: Received a _MOISTURE_INFO_PACKET from node 1.
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "moisturepucks" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "threshold" INTEGER NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "reading" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "timestamp" DATETIME NOT NULL, "measurement" INTEGER NOT NULL, "battery_level" REAL NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "valves" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "watering_time" INTEGER NOT NULL)', [])
+DEBUG:peewee:('INSERT INTO "reading" ("nodeID", "timestamp", "measurement", "battery_level") VALUES (?, ?, ?, ?)', [1, datetime.datetime(2018, 5, 30, 2, 57, 53, 286247), 405, 4.09])
+INFO:root:collect_readings_task.py | 24 | store_measurement: Measurement stored.  nodeID: 1, measurement: 405, battery_level: 4.09
+INFO:root:/home/pi/myLadybugHelper/should_i_water/receive_moisture_packets_lib.py | 8 | _receive_done: Received a _MOISTURE_INFO_PACKET from node 1.
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "moisturepucks" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "threshold" INTEGER NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "reading" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "timestamp" DATETIME NOT NULL, "measurement" INTEGER NOT NULL, "battery_level" REAL NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "valves" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "watering_time" INTEGER NOT NULL)', [])
+DEBUG:peewee:('INSERT INTO "reading" ("nodeID", "timestamp", "measurement", "battery_level") VALUES (?, ?, ?, ?)', [1, datetime.datetime(2018, 5, 30, 2, 57, 53, 982539), 405, 4.09])
+INFO:root:collect_readings_task.py | 24 | store_measurement: Measurement stored.  nodeID: 1, measurement: 405, battery_level: 4.09
+INFO:root:/home/pi/myLadybugHelper/should_i_water/receive_moisture_packets_lib.py | 8 | _receive_done: Received a _MOISTURE_INFO_PACKET from node 1.
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "moisturepucks" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "threshold" INTEGER NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "reading" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "timestamp" DATETIME NOT NULL, "measurement" INTEGER NOT NULL, "battery_level" REAL NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "valves" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "watering_time" INTEGER NOT NULL)', [])
+DEBUG:peewee:('INSERT INTO "reading" ("nodeID", "timestamp", "measurement", "battery_level") VALUES (?, ?, ?, ?)', [1, datetime.datetime(2018, 5, 30, 2, 57, 54, 688993), 405, 4.09])
+INFO:root:collect_readings_task.py | 24 | store_measurement: Measurement stored.  nodeID: 1, measurement: 405, battery_level: 4.09
+INFO:root:/home/pi/myLadybugHelper/should_i_water/receive_packets_lib.py | 58 | _receive_done: Received a _TIME_INFO_PACKET from node 1.
+INFO:root:/home/pi/myLadybugHelper/should_i_water/receive_moisture_packets_lib.py | 8 | _receive_done: Received a _MOISTURE_INFO_PACKET from node 1.
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "moisturepucks" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "threshold" INTEGER NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "reading" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "timestamp" DATETIME NOT NULL, "measurement" INTEGER NOT NULL, "battery_level" REAL NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "valves" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "watering_time" INTEGER NOT NULL)', [])
+DEBUG:peewee:('INSERT INTO "reading" ("nodeID", "timestamp", "measurement", "battery_level") VALUES (?, ?, ?, ?)', [1, datetime.datetime(2018, 5, 30, 3, 0, 5, 643358), 403, 4.1])
+INFO:root:collect_readings_task.py | 24 | store_measurement: Measurement stored.  nodeID: 1, measurement: 403, battery_level: 4.1
+INFO:root:/home/pi/myLadybugHelper/should_i_water/receive_moisture_packets_lib.py | 8 | _receive_done: Received a _MOISTURE_INFO_PACKET from node 1.
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "moisturepucks" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "threshold" INTEGER NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "reading" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "timestamp" DATETIME NOT NULL, "measurement" INTEGER NOT NULL, "battery_level" REAL NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "valves" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "watering_time" INTEGER NOT NULL)', [])
+DEBUG:peewee:('INSERT INTO "reading" ("nodeID", "timestamp", "measurement", "battery_level") VALUES (?, ?, ?, ?)', [1, datetime.datetime(2018, 5, 30, 3, 0, 6, 345003), 403, 4.1])
+INFO:root:collect_readings_task.py | 24 | store_measurement: Measurement stored.  nodeID: 1, measurement: 403, battery_level: 4.1
+INFO:root:/home/pi/myLadybugHelper/should_i_water/receive_moisture_packets_lib.py | 8 | _receive_done: Received a _MOISTURE_INFO_PACKET from node 1.
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "moisturepucks" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "threshold" INTEGER NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "reading" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "timestamp" DATETIME NOT NULL, "measurement" INTEGER NOT NULL, "battery_level" REAL NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "valves" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "watering_time" INTEGER NOT NULL)', [])
+DEBUG:peewee:('INSERT INTO "reading" ("nodeID", "timestamp", "measurement", "battery_level") VALUES (?, ?, ?, ?)', [1, datetime.datetime(2018, 5, 30, 3, 0, 7, 36310), 403, 4.1])
+INFO:root:collect_readings_task.py | 24 | store_measurement: Measurement stored.  nodeID: 1, measurement: 403, battery_level: 4.1
+INFO:root:/home/pi/myLadybugHelper/should_i_water/receive_moisture_packets_lib.py | 8 | _receive_done: Received a _MOISTURE_INFO_PACKET from node 1.
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "moisturepucks" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "threshold" INTEGER NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "reading" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "timestamp" DATETIME NOT NULL, "measurement" INTEGER NOT NULL, "battery_level" REAL NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "valves" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "watering_time" INTEGER NOT NULL)', [])
+DEBUG:peewee:('INSERT INTO "reading" ("nodeID", "timestamp", "measurement", "battery_level") VALUES (?, ?, ?, ?)', [1, datetime.datetime(2018, 5, 30, 3, 0, 7, 742659), 403, 4.1])
+INFO:root:collect_readings_task.py | 24 | store_measurement: Measurement stored.  nodeID: 1, measurement: 403, battery_level: 4.1
+INFO:root:/home/pi/myLadybugHelper/should_i_water/receive_moisture_packets_lib.py | 8 | _receive_done: Received a _MOISTURE_INFO_PACKET from node 1.
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "moisturepucks" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "threshold" INTEGER NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "reading" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "timestamp" DATETIME NOT NULL, "measurement" INTEGER NOT NULL, "battery_level" REAL NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "valves" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "watering_time" INTEGER NOT NULL)', [])
+DEBUG:peewee:('INSERT INTO "reading" ("nodeID", "timestamp", "measurement", "battery_level") VALUES (?, ?, ?, ?)', [1, datetime.datetime(2018, 5, 30, 3, 0, 8, 449077), 403, 4.1])
+INFO:root:collect_readings_task.py | 24 | store_measurement: Measurement stored.  nodeID: 1, measurement: 403, battery_level: 4.1
+INFO:root:/home/pi/myLadybugHelper/should_i_water/receive_moisture_packets_lib.py | 8 | _receive_done: Received a _MOISTURE_INFO_PACKET from node 1.
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "moisturepucks" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "threshold" INTEGER NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "reading" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "timestamp" DATETIME NOT NULL, "measurement" INTEGER NOT NULL, "battery_level" REAL NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "valves" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "watering_time" INTEGER NOT NULL)', [])
+DEBUG:peewee:('INSERT INTO "reading" ("nodeID", "timestamp", "measurement", "battery_level") VALUES (?, ?, ?, ?)', [1, datetime.datetime(2018, 5, 30, 3, 0, 9, 155429), 403, 4.1])
+INFO:root:collect_readings_task.py | 24 | store_measurement: Measurement stored.  nodeID: 1, measurement: 403, battery_level: 4.1
+INFO:root:/home/pi/myLadybugHelper/should_i_water/receive_moisture_packets_lib.py | 8 | _receive_done: Received a _MOISTURE_INFO_PACKET from node 1.
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "moisturepucks" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "threshold" INTEGER NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "reading" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "timestamp" DATETIME NOT NULL, "measurement" INTEGER NOT NULL, "battery_level" REAL NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "valves" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "watering_time" INTEGER NOT NULL)', [])
+DEBUG:peewee:('INSERT INTO "reading" ("nodeID", "timestamp", "measurement", "battery_level") VALUES (?, ?, ?, ?)', [1, datetime.datetime(2018, 5, 30, 3, 0, 9, 846685), 403, 4.1])
+INFO:root:collect_readings_task.py | 24 | store_measurement: Measurement stored.  nodeID: 1, measurement: 403, battery_level: 4.1
+INFO:root:/home/pi/myLadybugHelper/should_i_water/receive_moisture_packets_lib.py | 8 | _receive_done: Received a _MOISTURE_INFO_PACKET from node 1.
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "moisturepucks" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "threshold" INTEGER NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "reading" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "timestamp" DATETIME NOT NULL, "measurement" INTEGER NOT NULL, "battery_level" REAL NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "valves" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "watering_time" INTEGER NOT NULL)', [])
+DEBUG:peewee:('INSERT INTO "reading" ("nodeID", "timestamp", "measurement", "battery_level") VALUES (?, ?, ?, ?)', [1, datetime.datetime(2018, 5, 30, 3, 0, 10, 558061), 403, 4.1])
+INFO:root:collect_readings_task.py | 24 | store_measurement: Measurement stored.  nodeID: 1, measurement: 403, battery_level: 4.1
+INFO:root:/home/pi/myLadybugHelper/should_i_water/receive_moisture_packets_lib.py | 8 | _receive_done: Received a _MOISTURE_INFO_PACKET from node 1.
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "moisturepucks" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "threshold" INTEGER NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "reading" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "timestamp" DATETIME NOT NULL, "measurement" INTEGER NOT NULL, "battery_level" REAL NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "valves" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "watering_time" INTEGER NOT NULL)', [])
+DEBUG:peewee:('INSERT INTO "reading" ("nodeID", "timestamp", "measurement", "battery_level") VALUES (?, ?, ?, ?)', [1, datetime.datetime(2018, 5, 30, 3, 0, 11, 259391), 403, 4.1])
+INFO:root:collect_readings_task.py | 24 | store_measurement: Measurement stored.  nodeID: 1, measurement: 403, battery_level: 4.1
+INFO:root:/home/pi/myLadybugHelper/should_i_water/receive_moisture_packets_lib.py | 8 | _receive_done: Received a _MOISTURE_INFO_PACKET from node 1.
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "moisturepucks" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "threshold" INTEGER NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "reading" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "timestamp" DATETIME NOT NULL, "measurement" INTEGER NOT NULL, "battery_level" REAL NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "valves" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "watering_time" INTEGER NOT NULL)', [])
+DEBUG:peewee:('INSERT INTO "reading" ("nodeID", "timestamp", "measurement", "battery_level") VALUES (?, ?, ?, ?)', [1, datetime.datetime(2018, 5, 30, 3, 0, 11, 955449), 403, 4.1])
+INFO:root:collect_readings_task.py | 24 | store_measurement: Measurement stored.  nodeID: 1, measurement: 403, battery_level: 4.1
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.darksky.net
+DEBUG:urllib3.connectionpool:https://api.darksky.net:443 "GET /forecast/d3fbc403cc28523a125c3c5ab8e43ded/47.649093,-122.199153 HTTP/1.1" 200 29450
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "moisturepucks" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "threshold" INTEGER NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "reading" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "timestamp" DATETIME NOT NULL, "measurement" INTEGER NOT NULL, "battery_level" REAL NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "valves" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "watering_time" INTEGER NOT NULL)', [])
+DEBUG:peewee:('SELECT "t1"."id", "t1"."nodeID", "t1"."timestamp", "t1"."measurement", "t1"."battery_level" FROM "reading" AS "t1" WHERE ("t1"."timestamp" BETWEEN ? AND ?) LIMIT 1 OFFSET 0', [datetime.datetime(2018, 5, 30, 0, 0), datetime.datetime(2018, 5, 30, 3, 37, 10, 693293)])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "moisturepucks" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "threshold" INTEGER NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "reading" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "timestamp" DATETIME NOT NULL, "measurement" INTEGER NOT NULL, "battery_level" REAL NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "valves" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "watering_time" INTEGER NOT NULL)', [])
+DEBUG:peewee:('SELECT "t1"."id", "t1"."nodeID", "t1"."description", "t1"."threshold" FROM "moisturepucks" AS "t1" WHERE ("t1"."nodeID" = ?) LIMIT 1 OFFSET 0', [1])
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.darksky.net
+DEBUG:urllib3.connectionpool:https://api.darksky.net:443 "GET /forecast/d3fbc403cc28523a125c3c5ab8e43ded/47.649093,-122.199153 HTTP/1.1" 200 29451
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "moisturepucks" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "threshold" INTEGER NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "reading" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "timestamp" DATETIME NOT NULL, "measurement" INTEGER NOT NULL, "battery_level" REAL NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "valves" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "watering_time" INTEGER NOT NULL)', [])
+DEBUG:peewee:('SELECT "t1"."id", "t1"."nodeID", "t1"."timestamp", "t1"."measurement", "t1"."battery_level" FROM "reading" AS "t1" WHERE ("t1"."timestamp" BETWEEN ? AND ?) LIMIT 1 OFFSET 0', [datetime.datetime(2018, 5, 30, 0, 0), datetime.datetime(2018, 5, 30, 3, 37, 46, 556135)])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "moisturepucks" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "threshold" INTEGER NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "reading" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "timestamp" DATETIME NOT NULL, "measurement" INTEGER NOT NULL, "battery_level" REAL NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "valves" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "watering_time" INTEGER NOT NULL)', [])
+DEBUG:peewee:('SELECT "t1"."id", "t1"."nodeID", "t1"."description", "t1"."threshold" FROM "moisturepucks" AS "t1" WHERE ("t1"."nodeID" = ?) LIMIT 1 OFFSET 0', [1])
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.darksky.net
+DEBUG:urllib3.connectionpool:https://api.darksky.net:443 "GET /forecast/d3fbc403cc28523a125c3c5ab8e43ded/47.649093,-122.199153 HTTP/1.1" 200 29451
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "moisturepucks" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "threshold" INTEGER NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "reading" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "timestamp" DATETIME NOT NULL, "measurement" INTEGER NOT NULL, "battery_level" REAL NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "valves" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "watering_time" INTEGER NOT NULL)', [])
+DEBUG:peewee:('SELECT "t1"."id", "t1"."nodeID", "t1"."timestamp", "t1"."measurement", "t1"."battery_level" FROM "reading" AS "t1" WHERE ("t1"."timestamp" BETWEEN ? AND ?) LIMIT 1 OFFSET 0', [datetime.datetime(2018, 5, 30, 0, 0), datetime.datetime(2018, 5, 30, 3, 38, 3, 409388)])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "moisturepucks" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "threshold" INTEGER NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "reading" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "timestamp" DATETIME NOT NULL, "measurement" INTEGER NOT NULL, "battery_level" REAL NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "valves" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "watering_time" INTEGER NOT NULL)', [])
+DEBUG:peewee:('SELECT "t1"."id", "t1"."nodeID", "t1"."description", "t1"."threshold" FROM "moisturepucks" AS "t1" WHERE ("t1"."nodeID" = ?) LIMIT 1 OFFSET 0', [1])
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.darksky.net
+DEBUG:urllib3.connectionpool:https://api.darksky.net:443 "GET /forecast/d3fbc403cc28523a125c3c5ab8e43ded/47.649093,-122.199153 HTTP/1.1" 200 29448
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "moisturepucks" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "threshold" INTEGER NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "reading" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "timestamp" DATETIME NOT NULL, "measurement" INTEGER NOT NULL, "battery_level" REAL NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "valves" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "watering_time" INTEGER NOT NULL)', [])
+DEBUG:peewee:('SELECT "t1"."id", "t1"."nodeID", "t1"."timestamp", "t1"."measurement", "t1"."battery_level" FROM "reading" AS "t1" WHERE ("t1"."timestamp" BETWEEN ? AND ?) LIMIT 1 OFFSET 0', [datetime.datetime(2018, 5, 30, 0, 0), datetime.datetime(2018, 5, 30, 3, 42, 7, 168454)])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "moisturepucks" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "threshold" INTEGER NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "reading" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "timestamp" DATETIME NOT NULL, "measurement" INTEGER NOT NULL, "battery_level" REAL NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "valves" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "watering_time" INTEGER NOT NULL)', [])
+DEBUG:peewee:('SELECT "t1"."id", "t1"."nodeID", "t1"."description", "t1"."threshold" FROM "moisturepucks" AS "t1" WHERE ("t1"."nodeID" = ?) LIMIT 1 OFFSET 0', [1])
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.darksky.net
+DEBUG:urllib3.connectionpool:https://api.darksky.net:443 "GET /forecast/d3fbc403cc28523a125c3c5ab8e43ded/47.649093,-122.199153 HTTP/1.1" 200 29450
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "moisturepucks" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "threshold" INTEGER NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "reading" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "timestamp" DATETIME NOT NULL, "measurement" INTEGER NOT NULL, "battery_level" REAL NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "valves" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "watering_time" INTEGER NOT NULL)', [])
+DEBUG:peewee:('SELECT "t1"."id", "t1"."nodeID", "t1"."timestamp", "t1"."measurement", "t1"."battery_level" FROM "reading" AS "t1" WHERE ("t1"."timestamp" BETWEEN ? AND ?) LIMIT 1 OFFSET 0', [datetime.datetime(2018, 5, 30, 0, 0), datetime.datetime(2018, 5, 30, 3, 58, 4, 251376)])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "moisturepucks" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "threshold" INTEGER NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "reading" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "timestamp" DATETIME NOT NULL, "measurement" INTEGER NOT NULL, "battery_level" REAL NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "valves" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "watering_time" INTEGER NOT NULL)', [])
+DEBUG:peewee:('SELECT "t1"."id", "t1"."nodeID", "t1"."description", "t1"."threshold" FROM "moisturepucks" AS "t1" WHERE ("t1"."nodeID" = ?) LIMIT 1 OFFSET 0', [1])
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.darksky.net
+DEBUG:urllib3.connectionpool:https://api.darksky.net:443 "GET /forecast/d3fbc403cc28523a125c3c5ab8e43ded/47.649093,-122.199153 HTTP/1.1" 200 29449
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "moisturepucks" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "threshold" INTEGER NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "reading" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "timestamp" DATETIME NOT NULL, "measurement" INTEGER NOT NULL, "battery_level" REAL NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "valves" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "watering_time" INTEGER NOT NULL)', [])
+DEBUG:peewee:('SELECT "t1"."id", "t1"."nodeID", "t1"."timestamp", "t1"."measurement", "t1"."battery_level" FROM "reading" AS "t1" WHERE ("t1"."timestamp" BETWEEN ? AND ?) LIMIT 1 OFFSET 0', [datetime.datetime(2018, 5, 30, 0, 0), datetime.datetime(2018, 5, 30, 3, 59, 16, 887736)])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "moisturepucks" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "threshold" INTEGER NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "reading" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "timestamp" DATETIME NOT NULL, "measurement" INTEGER NOT NULL, "battery_level" REAL NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "valves" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "watering_time" INTEGER NOT NULL)', [])
+DEBUG:peewee:('SELECT "t1"."id", "t1"."nodeID", "t1"."description", "t1"."threshold" FROM "moisturepucks" AS "t1" WHERE ("t1"."nodeID" = ?) LIMIT 1 OFFSET 0', [1])
+ERROR:root:/home/pi/myLadybugHelper/should_i_water/build_message_lib.py | 67 | get_moisture_puck_advice : <class 'reading_model.MoisturePucks'> instance matching query does not exist:
+SQL: SELECT "t1"."id", "t1"."nodeID", "t1"."description", "t1"."threshold" FROM "moisturepucks" AS "t1" WHERE ("t1"."nodeID" = ?) LIMIT 1 OFFSET 0
+Params: [1]
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.darksky.net
+DEBUG:urllib3.connectionpool:https://api.darksky.net:443 "GET /forecast/d3fbc403cc28523a125c3c5ab8e43ded/47.649093,-122.199153 HTTP/1.1" 200 29455
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "moisturepucks" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "threshold" INTEGER NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "reading" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "timestamp" DATETIME NOT NULL, "measurement" INTEGER NOT NULL, "battery_level" REAL NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "valves" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "watering_time" INTEGER NOT NULL)', [])
+DEBUG:peewee:('SELECT "t1"."id", "t1"."nodeID", "t1"."timestamp", "t1"."measurement", "t1"."battery_level" FROM "reading" AS "t1" WHERE ("t1"."timestamp" BETWEEN ? AND ?) LIMIT 1 OFFSET 0', [datetime.datetime(2018, 5, 30, 0, 0), datetime.datetime(2018, 5, 30, 4, 0, 29, 418843)])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "moisturepucks" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "threshold" INTEGER NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "reading" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "timestamp" DATETIME NOT NULL, "measurement" INTEGER NOT NULL, "battery_level" REAL NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "valves" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "watering_time" INTEGER NOT NULL)', [])
+DEBUG:peewee:('SELECT "t1"."id", "t1"."nodeID", "t1"."description", "t1"."threshold" FROM "moisturepucks" AS "t1" WHERE ("t1"."nodeID" = ?) LIMIT 1 OFFSET 0', [1])
+ERROR:root:/home/pi/myLadybugHelper/should_i_water/build_message_lib.py | 72 | get_moisture_puck_advice : <class 'reading_model.MoisturePucks'> instance matching query does not exist:
+SQL: SELECT "t1"."id", "t1"."nodeID", "t1"."description", "t1"."threshold" FROM "moisturepucks" AS "t1" WHERE ("t1"."nodeID" = ?) LIMIT 1 OFFSET 0
+Params: [1]
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.darksky.net
+DEBUG:urllib3.connectionpool:https://api.darksky.net:443 "GET /forecast/d3fbc403cc28523a125c3c5ab8e43ded/47.649093,-122.199153 HTTP/1.1" 200 29455
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "moisturepucks" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "threshold" INTEGER NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "reading" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "timestamp" DATETIME NOT NULL, "measurement" INTEGER NOT NULL, "battery_level" REAL NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "valves" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "watering_time" INTEGER NOT NULL)', [])
+DEBUG:peewee:('SELECT "t1"."id", "t1"."nodeID", "t1"."timestamp", "t1"."measurement", "t1"."battery_level" FROM "reading" AS "t1" WHERE ("t1"."timestamp" BETWEEN ? AND ?) LIMIT 1 OFFSET 0', [datetime.datetime(2018, 5, 30, 0, 0), datetime.datetime(2018, 5, 30, 4, 3, 36, 498320)])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "moisturepucks" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "threshold" INTEGER NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "reading" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "timestamp" DATETIME NOT NULL, "measurement" INTEGER NOT NULL, "battery_level" REAL NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "valves" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "watering_time" INTEGER NOT NULL)', [])
+DEBUG:peewee:('SELECT "t1"."id", "t1"."nodeID", "t1"."description", "t1"."threshold" FROM "moisturepucks" AS "t1" WHERE ("t1"."nodeID" = ?) LIMIT 1 OFFSET 0', [1])
+ERROR:root:/home/pi/myLadybugHelper/should_i_water/build_message_lib.py | 72 | get_moisture_puck_advice : <class 'reading_model.MoisturePucks'> instance matching query does not exist:
+SQL: SELECT "t1"."id", "t1"."nodeID", "t1"."description", "t1"."threshold" FROM "moisturepucks" AS "t1" WHERE ("t1"."nodeID" = ?) LIMIT 1 OFFSET 0
+Params: [1]
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.darksky.net
+DEBUG:urllib3.connectionpool:https://api.darksky.net:443 "GET /forecast/d3fbc403cc28523a125c3c5ab8e43ded/47.649093,-122.199153 HTTP/1.1" 200 29456
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "moisturepucks" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "threshold" INTEGER NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "reading" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "timestamp" DATETIME NOT NULL, "measurement" INTEGER NOT NULL, "battery_level" REAL NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "valves" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "watering_time" INTEGER NOT NULL)', [])
+DEBUG:peewee:('SELECT "t1"."id", "t1"."nodeID", "t1"."timestamp", "t1"."measurement", "t1"."battery_level" FROM "reading" AS "t1" WHERE ("t1"."timestamp" BETWEEN ? AND ?) LIMIT 1 OFFSET 0', [datetime.datetime(2018, 5, 30, 0, 0), datetime.datetime(2018, 5, 30, 4, 6, 32, 43935)])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "moisturepucks" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "threshold" INTEGER NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "reading" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "timestamp" DATETIME NOT NULL, "measurement" INTEGER NOT NULL, "battery_level" REAL NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "valves" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "watering_time" INTEGER NOT NULL)', [])
+DEBUG:peewee:('SELECT "t1"."id", "t1"."nodeID", "t1"."description", "t1"."threshold" FROM "moisturepucks" AS "t1" WHERE ("t1"."nodeID" = ?) LIMIT 1 OFFSET 0', [1])
+ERROR:root:/home/pi/myLadybugHelper/should_i_water/build_message_lib.py | 84 | get_moisture_puck_advice : <class 'reading_model.MoisturePucks'> instance matching query does not exist:
+SQL: SELECT "t1"."id", "t1"."nodeID", "t1"."description", "t1"."threshold" FROM "moisturepucks" AS "t1" WHERE ("t1"."nodeID" = ?) LIMIT 1 OFFSET 0
+Params: [1]
+WARNING:googleapiclient.discovery_cache:file_cache is unavailable when using oauth2client >= 4.0.0
+Traceback (most recent call last):
+  File "/home/pi/.local/lib/python3.5/site-packages/googleapiclient/discovery_cache/__init__.py", line 36, in autodetect
+    from google.appengine.api import memcache
+ImportError: No module named 'google'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/pi/.local/lib/python3.5/site-packages/googleapiclient/discovery_cache/file_cache.py", line 33, in <module>
+    from oauth2client.contrib.locked_file import LockedFile
+ImportError: No module named 'oauth2client.contrib.locked_file'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/pi/.local/lib/python3.5/site-packages/googleapiclient/discovery_cache/file_cache.py", line 37, in <module>
+    from oauth2client.locked_file import LockedFile
+ImportError: No module named 'oauth2client.locked_file'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/pi/.local/lib/python3.5/site-packages/googleapiclient/discovery_cache/__init__.py", line 41, in autodetect
+    from . import file_cache
+  File "/home/pi/.local/lib/python3.5/site-packages/googleapiclient/discovery_cache/file_cache.py", line 41, in <module>
+    'file_cache is unavailable when using oauth2client >= 4.0.0')
+ImportError: file_cache is unavailable when using oauth2client >= 4.0.0
+INFO:googleapiclient.discovery:URL being requested: GET https://www.googleapis.com/discovery/v1/apis/gmail/v1/rest
+INFO:googleapiclient.discovery:URL being requested: POST https://www.googleapis.com/gmail/v1/users/me/messages/send?alt=json
+INFO:oauth2client.transport:Refreshing due to a 401 (attempt 1/2)
+INFO:oauth2client.client:Refreshing access_token
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.darksky.net
+DEBUG:urllib3.connectionpool:https://api.darksky.net:443 "GET /forecast/d3fbc403cc28523a125c3c5ab8e43ded/47.649093,-122.199153 HTTP/1.1" 200 29457
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.darksky.net
+DEBUG:urllib3.connectionpool:https://api.darksky.net:443 "GET /forecast/d3fbc403cc28523a125c3c5ab8e43ded/47.649093,-122.199153 HTTP/1.1" 200 29457
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "moisturepucks" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "threshold" INTEGER NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "reading" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "timestamp" DATETIME NOT NULL, "measurement" INTEGER NOT NULL, "battery_level" REAL NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "valves" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "watering_time" INTEGER NOT NULL)', [])
+DEBUG:peewee:('SELECT "t1"."id", "t1"."nodeID", "t1"."timestamp", "t1"."measurement", "t1"."battery_level" FROM "reading" AS "t1" WHERE ("t1"."timestamp" BETWEEN ? AND ?) LIMIT 1 OFFSET 0', [datetime.datetime(2018, 5, 30, 0, 0), datetime.datetime(2018, 5, 30, 4, 8, 47, 881602)])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "moisturepucks" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "threshold" INTEGER NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "reading" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "timestamp" DATETIME NOT NULL, "measurement" INTEGER NOT NULL, "battery_level" REAL NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "valves" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "watering_time" INTEGER NOT NULL)', [])
+DEBUG:peewee:('SELECT "t1"."id", "t1"."nodeID", "t1"."description", "t1"."threshold" FROM "moisturepucks" AS "t1" WHERE ("t1"."nodeID" = ?) LIMIT 1 OFFSET 0', [1])
+ERROR:root:/home/pi/myLadybugHelper/should_i_water/build_message_lib.py | 85 | get_moisture_puck_advice : <class 'reading_model.MoisturePucks'> instance matching query does not exist:
+SQL: SELECT "t1"."id", "t1"."nodeID", "t1"."description", "t1"."threshold" FROM "moisturepucks" AS "t1" WHERE ("t1"."nodeID" = ?) LIMIT 1 OFFSET 0
+Params: [1]
+WARNING:googleapiclient.discovery_cache:file_cache is unavailable when using oauth2client >= 4.0.0
+Traceback (most recent call last):
+  File "/home/pi/.local/lib/python3.5/site-packages/googleapiclient/discovery_cache/__init__.py", line 36, in autodetect
+    from google.appengine.api import memcache
+ImportError: No module named 'google'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/pi/.local/lib/python3.5/site-packages/googleapiclient/discovery_cache/file_cache.py", line 33, in <module>
+    from oauth2client.contrib.locked_file import LockedFile
+ImportError: No module named 'oauth2client.contrib.locked_file'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/pi/.local/lib/python3.5/site-packages/googleapiclient/discovery_cache/file_cache.py", line 37, in <module>
+    from oauth2client.locked_file import LockedFile
+ImportError: No module named 'oauth2client.locked_file'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/pi/.local/lib/python3.5/site-packages/googleapiclient/discovery_cache/__init__.py", line 41, in autodetect
+    from . import file_cache
+  File "/home/pi/.local/lib/python3.5/site-packages/googleapiclient/discovery_cache/file_cache.py", line 41, in <module>
+    'file_cache is unavailable when using oauth2client >= 4.0.0')
+ImportError: file_cache is unavailable when using oauth2client >= 4.0.0
+INFO:googleapiclient.discovery:URL being requested: GET https://www.googleapis.com/discovery/v1/apis/gmail/v1/rest
+INFO:googleapiclient.discovery:URL being requested: POST https://www.googleapis.com/gmail/v1/users/me/messages/send?alt=json
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.darksky.net
+DEBUG:urllib3.connectionpool:https://api.darksky.net:443 "GET /forecast/d3fbc403cc28523a125c3c5ab8e43ded/47.649093,-122.199153 HTTP/1.1" 200 29457
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "moisturepucks" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "threshold" INTEGER NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "reading" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "timestamp" DATETIME NOT NULL, "measurement" INTEGER NOT NULL, "battery_level" REAL NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "valves" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "watering_time" INTEGER NOT NULL)', [])
+DEBUG:peewee:('SELECT "t1"."id", "t1"."nodeID", "t1"."timestamp", "t1"."measurement", "t1"."battery_level" FROM "reading" AS "t1" WHERE ("t1"."timestamp" BETWEEN ? AND ?) LIMIT 1 OFFSET 0', [datetime.datetime(2018, 5, 30, 0, 0), datetime.datetime(2018, 5, 30, 4, 8, 58, 708599)])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "moisturepucks" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "threshold" INTEGER NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "reading" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "timestamp" DATETIME NOT NULL, "measurement" INTEGER NOT NULL, "battery_level" REAL NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "valves" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "watering_time" INTEGER NOT NULL)', [])
+DEBUG:peewee:('SELECT "t1"."id", "t1"."nodeID", "t1"."description", "t1"."threshold" FROM "moisturepucks" AS "t1" WHERE ("t1"."nodeID" = ?) LIMIT 1 OFFSET 0', [1])
+ERROR:root:/home/pi/myLadybugHelper/should_i_water/build_message_lib.py | 85 | get_moisture_puck_advice : <class 'reading_model.MoisturePucks'> instance matching query does not exist:
+SQL: SELECT "t1"."id", "t1"."nodeID", "t1"."description", "t1"."threshold" FROM "moisturepucks" AS "t1" WHERE ("t1"."nodeID" = ?) LIMIT 1 OFFSET 0
+Params: [1]
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.darksky.net
+DEBUG:urllib3.connectionpool:https://api.darksky.net:443 "GET /forecast/d3fbc403cc28523a125c3c5ab8e43ded/47.649093,-122.199153 HTTP/1.1" 200 29454
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "moisturepucks" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "threshold" INTEGER NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "reading" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "timestamp" DATETIME NOT NULL, "measurement" INTEGER NOT NULL, "battery_level" REAL NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "valves" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "watering_time" INTEGER NOT NULL)', [])
+DEBUG:peewee:('SELECT "t1"."id", "t1"."nodeID", "t1"."timestamp", "t1"."measurement", "t1"."battery_level" FROM "reading" AS "t1" WHERE ("t1"."timestamp" BETWEEN ? AND ?) LIMIT 1 OFFSET 0', [datetime.datetime(2018, 5, 30, 0, 0), datetime.datetime(2018, 5, 30, 4, 14, 15, 403188)])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "moisturepucks" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "threshold" INTEGER NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "reading" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "timestamp" DATETIME NOT NULL, "measurement" INTEGER NOT NULL, "battery_level" REAL NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "valves" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "watering_time" INTEGER NOT NULL)', [])
+DEBUG:peewee:('SELECT "t1"."id", "t1"."nodeID", "t1"."description", "t1"."threshold" FROM "moisturepucks" AS "t1" WHERE ("t1"."nodeID" = ?) LIMIT 1 OFFSET 0', [1])
+WARNING:googleapiclient.discovery_cache:file_cache is unavailable when using oauth2client >= 4.0.0
+Traceback (most recent call last):
+  File "/home/pi/.local/lib/python3.5/site-packages/googleapiclient/discovery_cache/__init__.py", line 36, in autodetect
+    from google.appengine.api import memcache
+ImportError: No module named 'google'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/pi/.local/lib/python3.5/site-packages/googleapiclient/discovery_cache/file_cache.py", line 33, in <module>
+    from oauth2client.contrib.locked_file import LockedFile
+ImportError: No module named 'oauth2client.contrib.locked_file'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/pi/.local/lib/python3.5/site-packages/googleapiclient/discovery_cache/file_cache.py", line 37, in <module>
+    from oauth2client.locked_file import LockedFile
+ImportError: No module named 'oauth2client.locked_file'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/pi/.local/lib/python3.5/site-packages/googleapiclient/discovery_cache/__init__.py", line 41, in autodetect
+    from . import file_cache
+  File "/home/pi/.local/lib/python3.5/site-packages/googleapiclient/discovery_cache/file_cache.py", line 41, in <module>
+    'file_cache is unavailable when using oauth2client >= 4.0.0')
+ImportError: file_cache is unavailable when using oauth2client >= 4.0.0
+INFO:googleapiclient.discovery:URL being requested: GET https://www.googleapis.com/discovery/v1/apis/gmail/v1/rest
+INFO:googleapiclient.discovery:URL being requested: POST https://www.googleapis.com/gmail/v1/users/me/messages/send?alt=json
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.darksky.net
+DEBUG:urllib3.connectionpool:https://api.darksky.net:443 "GET /forecast/d3fbc403cc28523a125c3c5ab8e43ded/47.649093,-122.199153 HTTP/1.1" 200 29457
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "moisturepucks" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "threshold" INTEGER NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "reading" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "timestamp" DATETIME NOT NULL, "measurement" INTEGER NOT NULL, "battery_level" REAL NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "valves" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "watering_time" INTEGER NOT NULL)', [])
+DEBUG:peewee:('SELECT "t1"."id", "t1"."nodeID", "t1"."timestamp", "t1"."measurement", "t1"."battery_level" FROM "reading" AS "t1" WHERE ("t1"."timestamp" BETWEEN ? AND ?) LIMIT 1 OFFSET 0', [datetime.datetime(2018, 5, 30, 0, 0), datetime.datetime(2018, 5, 30, 4, 14, 19, 36970)])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "moisturepucks" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "threshold" INTEGER NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "reading" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "timestamp" DATETIME NOT NULL, "measurement" INTEGER NOT NULL, "battery_level" REAL NOT NULL)', [])
+DEBUG:peewee:('CREATE TABLE IF NOT EXISTS "valves" ("id" INTEGER NOT NULL PRIMARY KEY, "nodeID" INTEGER NOT NULL, "description" VARCHAR(255) NOT NULL, "watering_time" INTEGER NOT NULL)', [])
+DEBUG:peewee:('SELECT "t1"."id", "t1"."nodeID", "t1"."description", "t1"."threshold" FROM "moisturepucks" AS "t1" WHERE ("t1"."nodeID" = ?) LIMIT 1 OFFSET 0', [1])

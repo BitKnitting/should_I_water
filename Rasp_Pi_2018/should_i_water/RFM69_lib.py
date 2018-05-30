@@ -670,7 +670,7 @@ class RFM69:
         if isinstance(data_string,str):
             stuff_to_send += [int(ord(i)) for i in list(data_string)]
         else: # assume bytearray...
-            stuff_to_send += [i for i in list(data_string)]
+            stuff_to_send += [i for i in list(data_string)] 
         self._device.xfer(stuff_to_send)
         # Turn on transmit mode to send out the packet.
         self.transmit()
