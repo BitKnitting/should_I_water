@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
 
+import os
+import sys
+LIB_PATH = os.environ['LADYBUG_LIB_PATH']
+sys.path.append(LIB_PATH)
 from build_message_lib import BuildMessage
 from plot_weather_lib import PlotWeather
 from send_message_lib import SendMessage

@@ -1,6 +1,5 @@
 .gitignore
-Rasp_Pi_2018/env_variables/
 Rasp_Pi_2018/should_i_water/__pycache__/
-Rasp_Pi_2018/should_i_water/set_env_mac.sh
-Rasp_Pi_2018/should_i_water/set_env_pi.sh
-Rasp_Pi_2018/should_i_water/test_env.py
+Rasp_Pi_2018/should_i_water/.*
+Rasp_Pi_2018/should_i_water/textfile
+Rasp_Pi_2018/should_i_water/threading_class.log

@@ -1,0 +1,11 @@
+# Environment variables used in should_i_water
+
+OUTLOOK_USERNAME=thor_johnson@msn.com
+OUTLOOK_PASSWORD=sarahchance
+CLIENT_SECRET_FILE=/home/pi/myLadybugHelper/env_variables/client_secret.json
+GMAIL_STORAGE=/home/pi/myLadybugHelper/env_variables/gmail.storage
+DATABASE_FILE=/home/pi/myLadybugHelper/databases/garden_readings.db
+WEATHER_URL=https://api.darksky.net/forecast/d3fbc403cc28523a125c3c5ab8e43ded/47.649093,-122.199153
+WEATHER_PNG=/home/pi/myLadybugHelper/weather_images/daily_weather.png
+LADYBUG_LIB_PATH = /home/pi/myLadybugHelper/libs
+LOGFILE=/home/pi/myLadybugHelper/myLadybugHelper.log

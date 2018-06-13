@@ -1,6 +1,5 @@
 # The MIT License (MIT)
 #
-# Copyright (c) 2018 Margaret Johnson for fun.
 # Copyright (c) 2017 Tony DiCola for Adafruit Industries
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -21,15 +20,10 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 """
-`RFM69_Pi`
+`adafruit_rfm69`
 ====================================================
 
-Very primitive Raspberry Pi RFM69 packet radio module. This is mostly Tony DiCola's
-code.  The major changes are in handling SPI and using an interrupt for knowing when
-a send or receive is completed.  The rest of this text comes from Tony's CircuitPython
-implementation.
-
-This supports basic RadioHead-compatible sending and
+CircuitPython RFM69 packet radio module. This supports basic RadioHead-compatible sending and
 receiving of packets with RFM69 series radios (433/915Mhz).
 
 .. note:: This does NOT support advanced RadioHead features like guaranteed delivery--only 'raw'
@@ -43,10 +37,41 @@ receiving of packets with RFM69 series radios (433/915Mhz).
     receiving a 60 byte packet at a time--don't try to receive many kilobytes of data at a time!
 
 * Author(s): Tony DiCola
+
+Implementation Notes
+--------------------
+
+**Hardware:**
+
+* Adafruit `RFM69HCW Transceiver Radio Breakout - 868 or 915 MHz - RadioFruit
+  <https://www.adafruit.com/product/3070>`_ (Product ID: 3070)
+
+* Adafruit `RFM69HCW Transceiver Radio Breakout - 433 MHz - RadioFruit
+  <https://www.adafruit.com/product/3071>`_ (Product ID: 3071)
+
+* Adafruit `Feather M0 RFM69HCW Packet Radio - 868 or 915 MHz - RadioFruit
+  <https://www.adafruit.com/product/3176>`_ (Product ID: 3176)
+
+* Adafruit `Feather M0 RFM69HCW Packet Radio - 433 MHz - RadioFruit
+  <https://www.adafruit.com/product/3177>`_ (Product ID: 3177)
+
+* Adafruit `Radio FeatherWing - RFM69HCW 900MHz - RadioFruit
+  <https://www.adafruit.com/product/3229>`_ (Product ID: 3229)
+
+* Adafruit `Radio FeatherWing - RFM69HCW 433MHz - RadioFruit
+  <https://www.adafruit.com/product/3230>`_ (Product ID: 3230)
+
+**Software and Dependencies:**
+
+* Adafruit CircuitPython firmware for the ESP8622 and M0-based boards:
+  https://github.com/adafruit/circuitpython/releases
+* Adafruit's Bus Device library: https://github.com/adafruit/Adafruit_CircuitPython_BusDevice
 """
-import RPi.GPIO as GPIO
-import spidev
 import time
+
+from micropython import const
+
+import adafruit_bus_device.spi_device as spi_device
 
 
 __version__ = "0.0.0-auto.0"
@@ -55,42 +80,42 @@ __repo__ = "https://github.com/adafruit/Adafruit_CircuitPython_RFM69.git"
 
 # pylint: disable=bad-whitespace
 # Internal constants:
-_REG_FIFO            = 0x00
-_REG_OP_MODE         = 0x01
-_REG_DATA_MOD        = 0x02
-_REG_BITRATE_MSB     = 0x03
-_REG_BITRATE_LSB     = 0x04
-_REG_FDEV_MSB        = 0x05
-_REG_FDEV_LSB        = 0x06
-_REG_FRF_MSB         = 0x07
-_REG_FRF_MID         = 0x08
-_REG_FRF_LSB         = 0x09
-_REG_VERSION         = 0x10
-_REG_PA_LEVEL        = 0x11
-_REG_RX_BW           = 0x19
-_REG_AFC_BW          = 0x1A
-_REG_RSSI_VALUE      = 0x24
-_REG_DIO_MAPPING1    = 0x25    # mapping of pins DIO0 to DIO3
-_REG_IRQ_FLAGS1      = 0x27
-_REG_IRQ_FLAGS2      = 0x28
-_REG_PREAMBLE_MSB    = 0x2C
-_REG_PREAMBLE_LSB    = 0x2D
-_REG_SYNC_CONFIG     = 0x2E
-_REG_SYNC_VALUE1     = 0x2F
-_REG_PACKET_CONFIG1  = 0x37
-_REG_FIFO_THRESH     = 0x3C
-_REG_PACKET_CONFIG2  = 0x3D
-_REG_AES_KEY1        = 0x3E
-_REG_TEMP1           = 0x4E
-_REG_TEMP2           = 0x4F
-_REG_TEST_PA1        = 0x5A
-_REG_TEST_PA2        = 0x5C
-_REG_TEST_DAGC       = 0x6F
+_REG_FIFO            = const(0x00)
+_REG_OP_MODE         = const(0x01)
+_REG_DATA_MOD        = const(0x02)
+_REG_BITRATE_MSB     = const(0x03)
+_REG_BITRATE_LSB     = const(0x04)
+_REG_FDEV_MSB        = const(0x05)
+_REG_FDEV_LSB        = const(0x06)
+_REG_FRF_MSB         = const(0x07)
+_REG_FRF_MID         = const(0x08)
+_REG_FRF_LSB         = const(0x09)
+_REG_VERSION         = const(0x10)
+_REG_PA_LEVEL        = const(0x11)
+_REG_RX_BW           = const(0x19)
+_REG_AFC_BW          = const(0x1A)
+_REG_RSSI_VALUE      = const(0x24)
+_REG_DIO_MAPPING1    = const(0x25)
+_REG_IRQ_FLAGS1      = const(0x27)
+_REG_IRQ_FLAGS2      = const(0x28)
+_REG_PREAMBLE_MSB    = const(0x2C)
+_REG_PREAMBLE_LSB    = const(0x2D)
+_REG_SYNC_CONFIG     = const(0x2E)
+_REG_SYNC_VALUE1     = const(0x2F)
+_REG_PACKET_CONFIG1  = const(0x37)
+_REG_FIFO_THRESH     = const(0x3C)
+_REG_PACKET_CONFIG2  = const(0x3D)
+_REG_AES_KEY1        = const(0x3E)
+_REG_TEMP1           = const(0x4E)
+_REG_TEMP2           = const(0x4F)
+_REG_TEST_PA1        = const(0x5A)
+_REG_TEST_PA2        = const(0x5C)
+_REG_TEST_DAGC       = const(0x6F)
 
-_TEST_PA1_NORMAL     = 0x55
-_TEST_PA1_BOOST      = 0x5D
-_TEST_PA2_NORMAL     = 0x70
-_TEST_PA2_BOOST      = 0x7C
+_TEST_PA1_NORMAL     = const(0x55)
+_TEST_PA1_BOOST      = const(0x5D)
+_TEST_PA2_NORMAL     = const(0x70)
+_TEST_PA2_BOOST      = const(0x7C)
 
 # The crystal oscillator frequency and frequency synthesizer step size.
 # See the datasheet for details of this calculation.
@@ -98,7 +123,7 @@ _FXOSC  = 32000000.0
 _FSTEP  = _FXOSC / 524288
 
 # RadioHead specific compatibility constants.
-_RH_BROADCAST_ADDRESS = 0xFF
+_RH_BROADCAST_ADDRESS = const(0xFF)
 
 # User facing constants:
 SLEEP_MODE   = 0b000
@@ -155,6 +180,12 @@ class RFM69:
     of packets to all listening radios is supported. Features like addressing and guaranteed
     delivery need to be implemented at an application level.
     """
+
+    # Global buffer to hold data sent and received with the chip.  This must be
+    # at least as large as the FIFO on the chip (66 bytes)!  Keep this on the
+    # class level to ensure only one copy ever exists (with the trade-off that
+    # this is NOT re-entrant or thread safe code by design).
+    _BUFFER = bytearray(66)
 
     class _RegisterBits:
         # Class to simplify access to the many configuration bits avaialable
@@ -257,23 +288,16 @@ class RFM69:
 
     payload_ready = _RegisterBits(_REG_IRQ_FLAGS2, offset=2)
 
-    def __init__(self, *, reset=22, intPin=18, frequency=915,sync_word=b'\x2D\xD4',
-                 preamble_length=4, encryption_key=None, high_power=True, baudrate=2000000):
+    def __init__(self, spi, cs, reset, frequency, *, sync_word=b'\x2D\xD4',
+                 preamble_length=4, encryption_key=None, high_power=True, baudrate=10000000):
         self._tx_power = 13
         self.high_power = high_power
-        GPIO.setmode(GPIO.BOARD)
-        GPIO.setwarnings(False)
-        #initialize SPI
-        self._device = spidev.SpiDev()
-        self._device.open(0, 0)
-        self._device.max_speed_hz = baudrate
-        self._device.mode = 0
+        # Device support SPI mode 0 (polarity & phase = 0) up to a max of 10mhz.
+        self._device = spi_device.SPIDevice(spi, cs, baudrate=baudrate,
+                                            polarity=0, phase=0)
+        # Setup reset as a digital output that's low.
         self._reset = reset
-        GPIO.setup(self._reset, GPIO.OUT)
-        self._intPin = intPin
-        GPIO.setup(self._intPin, GPIO.IN,pull_up_down=GPIO.PUD_DOWN)
-        GPIO.remove_event_detect(self._intPin)
-        GPIO.add_event_detect(self._intPin, GPIO.RISING, callback=self.interruptHandler)
+        self._reset.switch_to_output(value=False)
         # Reset the chip.
         self.reset()
         # Check the version of the chip.
@@ -322,50 +346,51 @@ class RFM69:
         # Set transmit power to 13 dBm, a safe value any module supports.
         self.tx_power = 13
 
-
-
     def _read_into(self, address, buf, length=None):
-        # buf is a bytearray that we'll fill with the list of bytes returned
-        # from the SPI read...
         # Read a number of bytes from the specified address into the provided
         # buffer.  If length is not specified (the default) the entire buffer
         # will be filled.
         if length is None:
             length = len(buf)
-        resp = self._device.xfer([address &0x7F])
-        buf = b''.join(resp)
+        with self._device as device:
+            self._BUFFER[0] = address & 0x7F  # Strip out top bit to set 0
+                                              # value (read).
+            device.write(self._BUFFER, end=1)
+            device.readinto(buf, end=length)
 
-    def _read_u8(self,address):
+    def _read_u8(self, address):
         # Read a single byte from the provided address and return it.
-        address = address & 0x7F  # Strip out top bit to set 0
-                                  # value (read).
-        resp = self._device.xfer([address,0x00]) # the second byte doesn't matter.  Just
-        # needs to be there...
-        return resp[1] # the return byte is in the 2nd element.
+        self._read_into(address, self._BUFFER, length=1)
+        return self._BUFFER[0]
 
     def _write_from(self, address, buf, length=None):
-        # From what I can tell, buf is a 2 byte byte array...
         # Write a number of bytes to the provided address and taken from the
         # provided buffer.  If no length is specified (the default) the entire
         # buffer is written.
         if length is None:
             length = len(buf)
-        stuff_to_send=[address | 0x80]+ list(buf)
-        self._device.xfer(stuff_to_send)
+        with self._device as device:
+            self._BUFFER[0] = (address | 0x80) & 0xFF  # Set top bit to 1 to
+                                                       # indicate a write.
+            device.write(self._BUFFER, end=1)
+            device.write(buf, end=length)
 
-
-    def _write_u8(self,address,value):
-        address = (address | 0x80) & 0xFF  # Set top bit to 1 to indicate write
-        value = value & 0xFF
-        self._device.xfer([address,value])
-
+    def _write_u8(self, address, val):
+        # Write a byte register to the chip.  Specify the 7-bit address and the
+        # 8-bit value to write to that address.
+        with self._device as device:
+            self._BUFFER[0] = (address | 0x80) & 0xFF  # Set top bit to 1 to
+                                                       # indicate a write.
+            self._BUFFER[1] = val & 0xFF
+            device.write(self._BUFFER, end=2)
 
     def reset(self):
         """Perform a reset of the chip."""
-        GPIO.output(self._reset, GPIO.HIGH);
-        time.sleep(0.0001)
-        GPIO.output(self._reset, GPIO.LOW);
-        time.sleep(0.005)
+        # See section 7.2.2 of the datasheet for reset description.
+        self._reset.value = True
+        time.sleep(0.0001)  # 100 us
+        self._reset.value = False
+        time.sleep(0.005)   # 5 ms
 
     def idle(self):
         """Enter idle standby mode (switching off high power amplifiers if necessary)."""
@@ -405,9 +430,6 @@ class RFM69:
         self.dio_0_mapping = 0b00
         # Enter TX mode (will clear FIFO!).
         self.operation_mode = TX_MODE
-
-        while not self.packet_sent:
-            pass
 
     @property
     def temperature(self):
@@ -651,33 +673,44 @@ class RFM69:
         self._write_u8(_REG_FDEV_MSB, fdev >> 8)
         self._write_u8(_REG_FDEV_LSB, fdev & 0xFF)
 
-    def send(self, data_string):
+    def send(self, data):
         """Send a string of data using the transmitter.  You can only send 60 bytes at a time
            (limited by chip's FIFO size and appended headers). Note this appends a 4 byte header to
            be compatible with the RadioHead library.
         """
-        assert 0 < len(data_string) <= 60
+        # Disable pylint warning to not use length as a check for zero.
+        # This is a puzzling warning as the below code is clearly the most
+        # efficient and proper way to ensure a precondition that the provided
+        # buffer be within an expected range of bounds.  Disable this check.
+        # pylint: disable=len-as-condition
+        assert 0 < len(data) <= 60
         # pylint: enable=len-as-condition
         self.idle()  # Stop receiving to clear FIFO and keep it clear.
-        stuff_to_send=[_REG_FIFO | 0x80] # Set top bit to 1 to indicate a write.
-        # Add 4 bytes for  RadhioHead Library
-        stuff_to_send += [(len(data_string) + 4)&0xFF]
-        # Send over broadcast address.
-        stuff_to_send += [_RH_BROADCAST_ADDRESS, _RH_BROADCAST_ADDRESS]
-        # Add txHeaderId and txHeaderFlag bytes
-        stuff_to_send += [0,0]
-        # Add in the data
-        if isinstance(data_string,str):
-            stuff_to_send += [int(ord(i)) for i in list(data_string)]
-        else: # assume bytearray...
-            stuff_to_send += [i for i in list(data_string)] 
-        self._device.xfer(stuff_to_send)
+        # Fill the FIFO with a packet to send.
+        with self._device as device:
+            self._BUFFER[0] = (_REG_FIFO | 0x80)  # Set top bit to 1 to
+                                                  # indicate a write.
+            self._BUFFER[1] = (len(data) + 4) & 0xFF
+            # Add 4 bytes of headers to match RadioHead library.
+            # Just use the defaults for global broadcast to all receivers
+            # for now.
+            self._BUFFER[2] = _RH_BROADCAST_ADDRESS # txHeaderTo
+            self._BUFFER[3] = _RH_BROADCAST_ADDRESS # txHeaderFrom
+            self._BUFFER[4] = 0 # txHeaderId
+            self._BUFFER[5] = 0 # txHeaderFlags
+            device.write(self._BUFFER, end=6)
+            # Now send the payload.
+            device.write(data)
         # Turn on transmit mode to send out the packet.
         self.transmit()
-
+        # Wait for packet sent interrupt with explicit polling (not ideal but
+        # best that can be done right now without interrupts).
+        while not self.packet_sent:
+            pass
+        # Go back to idle mode after transmit.
         self.idle()
 
-    def receive_begin(self, timeout_s=0.5, keep_listening=True,callback=None):
+    def receive(self, timeout_s=0.5, keep_listening=True):
         """Wait to receive a packet from the receiver. Will wait for up to timeout_s amount of
            seconds for a packet to be received and decoded. If a packet is found the payload bytes
            are returned, otherwise None is returned (which indicates the timeout elapsed with no
@@ -687,30 +720,43 @@ class RFM69:
            a packet, otherwise it will fall back to idle mode and ignore any future reception.
         """
         # Make sure we are listening for packets.
-        self.callback = callback
         self.listen()
-
-        while keep_listening:
-            pass
+        # Wait for the payload_ready interrupt.  This is not ideal and will
+        # surely miss or overflow the FIFO when packets aren't read fast
+        # enough, however it's the best that can be done from Python without
+        # interrupt supports.
+        start = time.monotonic()
+        while not self.payload_ready:
+            if (time.monotonic() - start) >= timeout_s:
+                return None  # Exceeded timeout.
+        # Payload ready is set, a packet is in the FIFO.
+        packet = None
+        # Enter idle mode to stop receiving other packets.
         self.idle()
-
-
-
-
-    def _get_packet(self):
-        address = _REG_FIFO
-        fifo_length, targetid, senderid, byte1,byte2 = self._device.xfer([_REG_FIFO & 0x7f,0,0,0,0,0])[1:]
-        fifo_length -=  4
-        received_data = bytearray(self._device.xfer([_REG_FIFO & 0x7f] +
-                                [0 for i in range(0, fifo_length)])[1:])
-        if (self.callback):
+        # Read the data from the FIFO.
+        with self._device as device:
+            self._BUFFER[0] = _REG_FIFO & 0x7F  # Strip out top bit to set 0
+                                                # value (read).
+            device.write(self._BUFFER, end=1)
+            # Read the length of the FIFO.
+            device.readinto(self._BUFFER, end=1)
+            fifo_length = self._BUFFER[0]
+            # Handle if the received packet is too small to include the 4 byte
+            # RadioHead header--reject this packet and ignore it.
+            if fifo_length < 4:
+                # Invalid packet, ignore it.  However finish reading the FIFO
+                # to clear the packet.
+                device.readinto(self._BUFFER, end=fifo_length)
+                packet = None
+            else:
+                # Read the 4 bytes of the RadioHead header.
+                device.readinto(self._BUFFER, end=4)
+                # Ignore validating any of the header bytes.
+                # Now read the remaining packet payload as the result.
+                fifo_length -= 4
+                packet = bytearray(fifo_length)
+                device.readinto(packet)
+        # Listen again if necessary and return the result packet.
+        if keep_listening:
             self.listen()
-            self.callback(received_data)
-
-
-    def interruptHandler(self,int):
-        if self.payload_ready:
-            self.idle()
-            self._get_packet()
-        else:
-            self.listen()
+        return packet

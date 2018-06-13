@@ -38,6 +38,8 @@ class MoisturePucks(BaseModel):
     threshold = IntegerField()
 
 class Valves(BaseModel):
-    nodeID = IntegerField()
+    valveID = IntegerField()
+    moisturePuckID = IntegerField()
+    wateringPuckID = IntegerField()
     description = CharField(max_length=255)
     watering_time = IntegerField()
