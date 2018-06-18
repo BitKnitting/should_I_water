@@ -102,6 +102,8 @@ void GardenCommon::get_time_info() {
 }
 /********************************************************************
   _time_passed_check
+  We received a valid time info packet.  The hour,
+  minutes, seconds look good.
 *******************************************************************/
 bool GardenCommon::_time_passed_check() {
   if ((timeInfo.values.hour == 0) && (timeInfo.values.minute == 0) && (timeInfo.values.minute == 0) ) {
@@ -125,20 +127,27 @@ void GardenCommon::_set_rtc() {
 }
 /********************************************************************
    watering_window
-   The watering window is a 3 hour time frame that starts at the
+   The watering window is an uint8__t hours time frame that starts at the
    watering hour.
+
+   Assumes watering early in the AM, i.e.: no time correction used.
  *******************************************************************/
 bool GardenCommon::is_in_watering_window() {
+
+  uint8_t window_hours = 2;
   uint8_t beginning_watering_hour = timeInfo.values.wateringHour;
-  uint8_t end_watering_hour = beginning_watering_hour + 3;
+  uint8_t end_watering_hour = beginning_watering_hour + window_hours;
   uint8_t current_hour = rtc.getHours();
-  //Adjust to 24 hour clock.
-  if (end_watering_hour > 23) {
-    current_hour += 24;
-  }
-  if ((current_hour >= beginning_watering_hour) && (current_hour) <= end_watering_hour) {
+  DEBUG_PRINTF("Current hour: ");
+  DEBUG_PRINT(current_hour);
+  DEBUG_PRINTF(" end_watering_hour: ");
+  DEBUG_PRINTLN(end_watering_hour);
+  // Is the current hour within the beginning and end?
+  if ( (current_hour >= beginning_watering_hour) && (current_hour <= end_watering_hour) ) {
+    DEBUG_PRINTLNF("In watering window");
     return true;
   }
+  DEBUG_PRINTLNF("NOT in watering window");
   return false;
 }
 /********************************************************************
@@ -167,20 +176,21 @@ bool GardenCommon:: send_packet(uint8_t *packet, uint8_t len) {
   uint8_t packet_type = packet[0];
   DEBUG_PRINTF(" Sent packet: ");
   print_bytes_in_hex(packet,len);
+  BlinkSentMessage
   rf69.send(packet, len);
   for (int i = 0; i < NUMBER_OF_TRIES; i++) {
 
     rf69.waitPacketSent();
     // Wait for a reply.
-    // Waiting will block for up to 1/2 second.
-    if (rf69.waitAvailableTimeout(500)) {
+    // Waiting blocks.
+    if (rf69.waitAvailableTimeout(200)) {
       if (recv_packet(packet, len)) {
         if (packet[0] == packet_type) {
           return true;
         }
       }
     }
-    delay(2000);  //Give the radio a chance to "calm down..."
+    delay(100);  //Give the radio a chance to "calm down..."
   }
   return false;
 }
@@ -191,6 +201,7 @@ bool GardenCommon:: send_packet(uint8_t *packet, uint8_t len) {
  *******************************************************************/
 bool GardenCommon::recv_watering_packet() {
     if (recv_packet(wateringInfo.b, sizeof(wateringInfo_t)) ) {
+      BlinkReceivedMessage
       // Set the current state to either just received a start watering
       // or stop watering packet.
       packet_type = wateringInfo.values.packet_type;

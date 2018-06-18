@@ -17,6 +17,8 @@ const uint8_t green_gpio = 6;
 */
 #include "Timer.h"
 Timer t;
+#include "Blinks_lib.h"
+Blinks Blink = Blinks();
 
 
 // The Valve class helps us control one of the valves to turn on/off for watering plants.
@@ -42,7 +44,7 @@ class Valve
        To clean up, we stop the timer and turn off the valve.
     */
     void start_watering(void (*callback)(), uint8_t watering_minutes) {
-      
+      BlinkStartWatering
       stop_watering();
       // Turn on the valve and start the timer.
       digitalWrite(id, HIGH);
@@ -55,6 +57,7 @@ class Valve
     }
     // To clean up, we stop the timer and turn off the valve.
     void stop_watering() {
+      BlinkStopWatering
       digitalWrite(id, LOW);
       if (timer) {
         t.stop(timer);

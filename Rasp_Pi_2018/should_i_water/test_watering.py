@@ -66,6 +66,7 @@ def getInput():
         raise WateringTimeTooLongError
     return valve_id,input_list[1],watering_time
 def receive_done(packet):
+    import pdb;pdb.set_trace()
     print("received packet {}".format(packet))
 ######################################################################################
 if __name__ == "__main__":
@@ -76,7 +77,7 @@ if __name__ == "__main__":
         if on_or_off == 'on':
             packet_to_send = [rf69._START_WATERING_PACKET, watering_puck_node_id, valve_id, watering_minutes]
         else:
-            packet_to_send = [rf69._STOP_WATERING_PACKET,watering_puck_node_id,valve_id]    
+            packet_to_send = [rf69._STOP_WATERING_PACKET,watering_puck_node_id,valve_id]
         rf69.radio.send(bytearray(packet_to_send))
         rf69.radio.receive_begin(keep_listening=False, callback= receive_done)
     except (Need3InputError,UnknownValveError,UnknownOnOffError,WateringTimeTooLongError) as e:

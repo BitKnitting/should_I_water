@@ -1,14 +1,6 @@
-INFO:root:Jun 13 10:15 | /home/pi/myLadybugHelper/libs/receive_and_send_packets_lib.py | 57 | _receive_done: Received a _TIME_INFO_PACKET from node 4.
-ERROR:root:Jun 13 10:16 | /home/pi/myLadybugHelper/libs/RFM69_lib.py | 419 | transmit : Timed out trying to send packet!
-INFO:root:Jun 13 10:16 | /home/pi/myLadybugHelper/libs/receive_and_send_packets_lib.py | 45 | _receive_done: Received a packet type, 0.  Not sure what this is
-ERROR:root:Jun 13 10:16 | /home/pi/myLadybugHelper/libs/receive_and_send_packets_lib.py | 40 | _receive_done : Did not receive any bytes.
-INFO:root:Jun 13 10:17 | /home/pi/myLadybugHelper/libs/receive_and_send_packets_lib.py | 57 | _receive_done: Received a _TIME_INFO_PACKET from node 4.
-INFO:root:Jun 13 10:21 | /home/pi/myLadybugHelper/libs/receive_and_send_packets_lib.py | 57 | _receive_done: Received a _TIME_INFO_PACKET from node 4.
-INFO:root:Jun 13 10:24 | /home/pi/myLadybugHelper/libs/receive_and_send_packets_lib.py | 57 | _receive_done: Received a _TIME_INFO_PACKET from node 4.
-INFO:root:Jun 13 10:27 | /home/pi/myLadybugHelper/libs/receive_and_send_packets_lib.py | 57 | _receive_done: Received a _TIME_INFO_PACKET from node 4.
-INFO:root:Jun 13 10:28 | /home/pi/myLadybugHelper/libs/receive_and_send_packets_lib.py | 57 | _receive_done: Received a _TIME_INFO_PACKET from node 4.
-INFO:root:Jun 13 10:36 | /home/pi/myLadybugHelper/libs/receive_and_send_packets_lib.py | 57 | _receive_done: Received a _TIME_INFO_PACKET from node 4.
-INFO:root:Jun 13 10:37 | /home/pi/myLadybugHelper/libs/receive_and_send_packets_lib.py | 57 | _receive_done: Received a _TIME_INFO_PACKET from node 4.
-INFO:root:Jun 13 10:38 | /home/pi/myLadybugHelper/libs/receive_and_send_packets_lib.py | 57 | _receive_done: Received a _TIME_INFO_PACKET from node 4.
-INFO:root:Jun 13 10:39 | /home/pi/myLadybugHelper/libs/receive_and_send_packets_lib.py | 57 | _receive_done: Received a _TIME_INFO_PACKET from node 4.
-INFO:root:Jun 13 12:42 | /home/pi/myLadybugHelper/libs/receive_and_send_packets_lib.py | 57 | _receive_done: Received a _TIME_INFO_PACKET from node 4.
+INFO:root:Jun 18 05:34 | /home/pi/myLadybugHelper/libs/receive_and_send_packets_lib.py | 58 | _receive_done: Received a _TIME_INFO_PACKET from node 4.
+INFO:root:Jun 18 05:41 | /home/pi/myLadybugHelper/libs/receive_and_send_packets_lib.py | 58 | _receive_done: Received a _TIME_INFO_PACKET from node 4.
+INFO:root:Jun 18 10:36 | /home/pi/myLadybugHelper/libs/receive_and_send_packets_lib.py | 58 | _receive_done: Received a _TIME_INFO_PACKET from node 4.
+INFO:root:Jun 18 10:45 | /home/pi/myLadybugHelper/libs/receive_and_send_packets_lib.py | 58 | _receive_done: Received a _TIME_INFO_PACKET from node 4.
+INFO:root:Jun 18 11:01 | /home/pi/myLadybugHelper/libs/receive_and_send_packets_lib.py | 58 | _receive_done: Received a _TIME_INFO_PACKET from node 4.
+INFO:root:Jun 18 11:13 | /home/pi/myLadybugHelper/libs/receive_and_send_packets_lib.py | 58 | _receive_done: Received a _TIME_INFO_PACKET from node 4.

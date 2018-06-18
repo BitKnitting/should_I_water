@@ -9,6 +9,7 @@
    times.
 */
 //********************DEBUG *********************************
+#define NO_SLEEP
 //#define DEBUG
 #include <DebugLib.h>
 //******************** Backyard Gardening *******************
@@ -45,30 +46,20 @@ void setup() {
 uint8_t cnt = 0;
 void loop() {
   // We want to sync with the Rasp Pi's time so that we will be
-  // awake when expecting a packet.s
+  // awake when expecting a packet.
   if (!gc.have_time_info) {
     DEBUG_PRINTLNF("---> Asking for time info packet");
     gc.get_time_info();
-  } else if (!gc.is_in_watering_window()) { // Is it currently within the watering window?  If not,
-    // go to sleep.
-    if (cnt > 20) {
-      cnt = 0;
-      DEBUG_PRINTLNF("");
-    } else {
-      cnt += 1;
-      DEBUG_PRINTF(".");
-    }
-#ifndef DEBUG:  // don't go to sleep if debugging with serial console.
-    // If we are awake, it means we are between the watering hour (typically 4 AM)
-    // and + 3 hours (typically 7AM).  If it is after +3 hours, go to sleep.  The
-    // rtc alarm will wake up up at the watering hour.
+#ifndef NO_SLEEP    
+  } else if (!gc.is_in_watering_window()) {
     gc.go_to_sleep();
-#endif
+#endif    
   } else {
     // Check if we received a start or stop watering packet.
     // the timer library works by running the update() method in the loop.
     t.update();
     if ( gc.recv_watering_packet()) {
+      DEBUG_PRINTLNF("---> received watering packet.");
       handle_watering_packet();
     }
   }
@@ -78,11 +69,15 @@ void loop() {
 ******************************************************/
 
 void handle_watering_packet() {
+  // Send back a packet just to acknowledge...
+  gc.send_control_packet(gc.packet_type,_NODE_ID);
   switch (gc.valve_id) {
     case _YELLOW_VALVE:
       DEBUG_PRINTF("-->Told yellow valve to ");
       if (gc.packet_type == _START_WATERING_PACKET) {
-        DEBUG_PRINTLNF("start watering.");
+        DEBUG_PRINTF("start watering for ");
+        DEBUG_PRINT(gc.watering_minutes);
+        DEBUG_PRINTLNF(" minutes.");
         yellow_valve.start_watering(yellow_valve_done_watering, gc.watering_minutes);
       }
       else if (gc.packet_type == _STOP_WATERING_PACKET) {
@@ -93,7 +88,9 @@ void handle_watering_packet() {
     case _BLUE_VALVE:
       DEBUG_PRINTF("-->Told blue valve to ");
       if (gc.packet_type == _START_WATERING_PACKET) {
-        DEBUG_PRINTLNF("start watering.");
+        DEBUG_PRINTF("start watering for ");
+        DEBUG_PRINT(gc.watering_minutes);
+        DEBUG_PRINTLNF(" minutes.");
         blue_valve.start_watering(blue_valve_done_watering, gc.watering_minutes);
       }
       else if (gc.packet_type == _STOP_WATERING_PACKET) {
@@ -105,7 +102,9 @@ void handle_watering_packet() {
     case _GREEN_VALVE:
       DEBUG_PRINTF("-->Told green valve to ");
       if (gc.packet_type == _START_WATERING_PACKET) {
-        DEBUG_PRINTLNF("start watering.");
+        DEBUG_PRINTF("start watering for ");
+        DEBUG_PRINT(gc.watering_minutes);
+        DEBUG_PRINTLNF(" minutes.");
         green_valve.start_watering(green_valve_done_watering, gc.watering_minutes);
       }
       else if (gc.packet_type == _STOP_WATERING_PACKET) {

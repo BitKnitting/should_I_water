@@ -41,6 +41,7 @@ class ReceiveAndSendPackets(RFM69Messages):
             return
         self.packet_list = list(packet)
         self.packet_type = self.packet_list[0]
+        # import pdb;pdb.set_trace()
         if (self.packet_type not in self.set_of_packet_types):
             self.handle_logging.print_info("Received a packet type, {}.  Not sure what this is".format(self.packet_list[0]))
             return

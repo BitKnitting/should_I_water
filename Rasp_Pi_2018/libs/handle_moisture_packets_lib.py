@@ -69,7 +69,7 @@ class HandleMoisturePackets(ReceiveAndSendPackets,MoistureReading):
         # Is the moisture reading saying it's dryer than we want?
         # TEST
         if measurement < node_info.threshold:
-            self.handle_logging.print_info("Watering.  The measuremet ({}) is less than the threshold ({}).".format(measurement,node_info.threshold))
+            self.handle_logging.print_info("Watering.  The measurement ({}) is less than the threshold ({}).".format(measurement,node_info.threshold))
             # Each entry in valves_list is a tuple (valveID, wateringPuckID,
             # watering_time).
             # The info is needed to know which watering puck to send the
@@ -82,7 +82,7 @@ class HandleMoisturePackets(ReceiveAndSendPackets,MoistureReading):
                 return
             _send_start_watering_packets(valves_list)
         else:
-            self.handle_logging.print_info("No need to water. The measuremet ({}) is greater than the threshold ({}).".format(measurement,node_info.threshold))
+            self.handle_logging.print_info("No need to water. The measurement ({}) is greater than the threshold ({}).".format(measurement,node_info.threshold))
 
     def _receive_done(self,packet):
         super()._receive_done(packet)

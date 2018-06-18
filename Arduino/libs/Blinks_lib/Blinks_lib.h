@@ -20,8 +20,8 @@
 #define BlinkStartWatering {Blink.blink(300,3);Blink.blink(500,2);Blink.blink(300,3);}
 #define BlinkStopWatering BlinkStartWatering
 #define BlinkFinishedWatering BlinkStartWatering
-#define BlinkReceivedMessage {Blink.blink(400,6);}
-#define BlinkSentMessage {Blink.blink(300,20);}
+#define BlinkReceivedMessage {Blink.blink(600,2);}
+#define BlinkSentMessage {Blink.blink(200,5);}
 
 class Blinks {
 public:

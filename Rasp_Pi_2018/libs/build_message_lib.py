@@ -43,7 +43,7 @@ class BuildMessage(MoistureReading):
                 reading_details = (" The reading is {}, the threshold is {}, "
                             "the battery level is {}."
                             .format(self.measurement,node_info.threshold,self.battery_level))
-            if self.measurement <= node_info.threshold:
+            if self.measurement < node_info.threshold:
                 return node_info.description+" - Unless the weather says otherwise, you should water."+ reading_details
             else:
                 return node_info.description+" - No need to water today." + reading_details
