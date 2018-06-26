@@ -52,6 +52,7 @@ class WaterPlants(MoistureReading,RFM69Messages):
             packet_to_send = [self._START_WATERING_PACKET,  item[0],item[1],item[2]]
             # Send the packet
             self.radio.send(bytearray(packet_to_send))
+            self.handle_logging.print_info("sent packet: {}".format(packet_to_send))
     def begin_water_if_needed(self,nodeID,measurement):
         '''
         Check the moisture puck readings.  If a reading is below the threshold,

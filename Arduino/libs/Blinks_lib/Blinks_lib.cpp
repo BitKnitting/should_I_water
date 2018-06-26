@@ -14,7 +14,7 @@ Blinks::Blinks(bool debug)
 /********************************************************
   BLINK
 ********************************************************/
-void Blinks::blink(byte DELAY_MS, byte loops) {
+void Blinks::blink(uint16_t DELAY_MS, byte loops) {
   if (_debug){
     for (byte i = 0; i < loops; i++)  {
       digitalWrite(LED, HIGH);

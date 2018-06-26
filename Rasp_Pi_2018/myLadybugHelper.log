@@ -1,6 +1,101 @@
-INFO:root:Jun 18 05:34 | /home/pi/myLadybugHelper/libs/receive_and_send_packets_lib.py | 58 | _receive_done: Received a _TIME_INFO_PACKET from node 4.
-INFO:root:Jun 18 05:41 | /home/pi/myLadybugHelper/libs/receive_and_send_packets_lib.py | 58 | _receive_done: Received a _TIME_INFO_PACKET from node 4.
-INFO:root:Jun 18 10:36 | /home/pi/myLadybugHelper/libs/receive_and_send_packets_lib.py | 58 | _receive_done: Received a _TIME_INFO_PACKET from node 4.
-INFO:root:Jun 18 10:45 | /home/pi/myLadybugHelper/libs/receive_and_send_packets_lib.py | 58 | _receive_done: Received a _TIME_INFO_PACKET from node 4.
-INFO:root:Jun 18 11:01 | /home/pi/myLadybugHelper/libs/receive_and_send_packets_lib.py | 58 | _receive_done: Received a _TIME_INFO_PACKET from node 4.
-INFO:root:Jun 18 11:13 | /home/pi/myLadybugHelper/libs/receive_and_send_packets_lib.py | 58 | _receive_done: Received a _TIME_INFO_PACKET from node 4.
+Jun 25,2018 05:00 DEBUG  Starting new HTTPS connection (1): api.darksky.net
+Jun 25,2018 05:00 DEBUG  https://api.darksky.net:443 "GET /forecast/d3fbc403cc28523a125c3c5ab8e43ded/47.649093,-122.199153 HTTP/1.1" 200 32213
+Jun 25,2018 12:36 INFO  : receive_and_send_packets_lib.py - 57 - _receive_done : Received a _TIME_INFO_PACKET from node 1.
+Jun 25,2018 12:37 INFO  : handle_moisture_packets_lib.py - 93 - _receive_done : Received a _MOISTURE_INFO_PACKET from node 1.
+Jun 25,2018 12:37 INFO  : handle_moisture_packets_lib.py - 21 - _store_measurement : Measurement stored.  nodeID: 1, measurement: 2, battery_level: 4.11
+Jun 25,2018 12:37 INFO  : handle_moisture_packets_lib.py - 75 - _water_if_needed : Watering.  The measurement (2) is less than the threshold (215).
+Jun 25,2018 12:37 INFO  : handle_moisture_packets_lib.py - 61 - _send_start_watering_packets : Waiting 25 seconds
+Jun 25,2018 12:37 INFO  : handle_moisture_packets_lib.py - 66 - _send_start_watering_packets : Sent start watering packet to node 4, valve 102.  Water for 3 minutes
+Jun 25,2018 12:37 INFO  : handle_moisture_packets_lib.py - 61 - _send_start_watering_packets : Waiting 25 seconds
+Jun 25,2018 12:38 INFO  : handle_moisture_packets_lib.py - 66 - _send_start_watering_packets : Sent start watering packet to node 4, valve 101.  Water for 3 minutes
+Jun 25,2018 12:39 INFO  : receive_and_send_packets_lib.py - 57 - _receive_done : Received a _TIME_INFO_PACKET from node 1.
+Jun 25,2018 12:39 INFO  : handle_moisture_packets_lib.py - 93 - _receive_done : Received a _MOISTURE_INFO_PACKET from node 1.
+Jun 25,2018 12:39 INFO  : handle_moisture_packets_lib.py - 21 - _store_measurement : Measurement stored.  nodeID: 1, measurement: 1, battery_level: 4.11
+Jun 25,2018 12:39 INFO  : handle_moisture_packets_lib.py - 75 - _water_if_needed : Watering.  The measurement (1) is less than the threshold (215).
+Jun 25,2018 12:39 INFO  : handle_moisture_packets_lib.py - 61 - _send_start_watering_packets : Waiting 25 seconds
+Jun 25,2018 12:40 INFO  : handle_moisture_packets_lib.py - 66 - _send_start_watering_packets : Sent start watering packet to node 4, valve 102.  Water for 3 minutes
+Jun 25,2018 12:40 INFO  : handle_moisture_packets_lib.py - 61 - _send_start_watering_packets : Waiting 25 seconds
+Jun 25,2018 12:40 INFO  : handle_moisture_packets_lib.py - 66 - _send_start_watering_packets : Sent start watering packet to node 4, valve 101.  Water for 3 minutes
+Jun 25,2018 12:44 INFO  : receive_and_send_packets_lib.py - 57 - _receive_done : Received a _TIME_INFO_PACKET from node 1.
+Jun 25,2018 12:44 INFO  : handle_moisture_packets_lib.py - 93 - _receive_done : Received a _MOISTURE_INFO_PACKET from node 1.
+Jun 25,2018 12:44 INFO  : handle_moisture_packets_lib.py - 21 - _store_measurement : Measurement stored.  nodeID: 1, measurement: 1, battery_level: 4.11
+Jun 25,2018 12:44 INFO  : handle_moisture_packets_lib.py - 75 - _water_if_needed : Watering.  The measurement (1) is less than the threshold (215).
+Jun 25,2018 12:44 INFO  : handle_moisture_packets_lib.py - 61 - _send_start_watering_packets : Waiting 25 seconds
+Jun 25,2018 12:45 INFO  : handle_moisture_packets_lib.py - 66 - _send_start_watering_packets : Sent start watering packet to node 4, valve 102.  Water for 3 minutes
+Jun 25,2018 12:45 INFO  : handle_moisture_packets_lib.py - 61 - _send_start_watering_packets : Waiting 25 seconds
+Jun 25,2018 12:50 INFO  : receive_and_send_packets_lib.py - 57 - _receive_done : Received a _TIME_INFO_PACKET from node 1.
+Jun 25,2018 12:51 INFO  : handle_moisture_packets_lib.py - 93 - _receive_done : Received a _MOISTURE_INFO_PACKET from node 1.
+Jun 25,2018 12:51 INFO  : handle_moisture_packets_lib.py - 21 - _store_measurement : Measurement stored.  nodeID: 1, measurement: 1, battery_level: 4.11
+Jun 25,2018 12:51 INFO  : handle_moisture_packets_lib.py - 75 - _water_if_needed : Watering.  The measurement (1) is less than the threshold (215).
+Jun 25,2018 12:51 INFO  : handle_moisture_packets_lib.py - 61 - _send_start_watering_packets : Waiting 25 seconds
+Jun 25,2018 12:51 INFO  : handle_moisture_packets_lib.py - 66 - _send_start_watering_packets : Sent start watering packet to node 4, valve 102.  Water for 3 minutes
+Jun 25,2018 12:51 INFO  : handle_moisture_packets_lib.py - 61 - _send_start_watering_packets : Waiting 25 seconds
+Jun 25,2018 12:51 INFO  : handle_moisture_packets_lib.py - 66 - _send_start_watering_packets : Sent start watering packet to node 4, valve 101.  Water for 3 minutes
+Jun 25,2018 13:12 INFO  : receive_and_send_packets_lib.py - 57 - _receive_done : Received a _TIME_INFO_PACKET from node 1.
+Jun 25,2018 13:12 INFO  : receive_and_send_packets_lib.py - 57 - _receive_done : Received a _TIME_INFO_PACKET from node 1.
+Jun 25,2018 13:12 INFO  : receive_and_send_packets_lib.py - 57 - _receive_done : Received a _TIME_INFO_PACKET from node 1.
+Jun 25,2018 13:13 INFO  : handle_moisture_packets_lib.py - 93 - _receive_done : Received a _MOISTURE_INFO_PACKET from node 1.
+Jun 25,2018 13:13 INFO  : handle_moisture_packets_lib.py - 21 - _store_measurement : Measurement stored.  nodeID: 1, measurement: 1, battery_level: 4.11
+Jun 25,2018 13:13 INFO  : handle_moisture_packets_lib.py - 75 - _water_if_needed : Watering.  The measurement (1) is less than the threshold (215).
+Jun 25,2018 13:13 INFO  : handle_moisture_packets_lib.py - 61 - _send_start_watering_packets : Waiting 25 seconds
+Jun 25,2018 13:13 INFO  : handle_moisture_packets_lib.py - 66 - _send_start_watering_packets : Sent start watering packet to node 4, valve 102.  Water for 3 minutes
+Jun 25,2018 13:13 INFO  : handle_moisture_packets_lib.py - 61 - _send_start_watering_packets : Waiting 25 seconds
+Jun 25,2018 13:13 INFO  : handle_moisture_packets_lib.py - 66 - _send_start_watering_packets : Sent start watering packet to node 4, valve 101.  Water for 3 minutes
+Jun 25,2018 13:15 INFO  : receive_and_send_packets_lib.py - 57 - _receive_done : Received a _TIME_INFO_PACKET from node 1.
+Jun 25,2018 13:15 INFO  : handle_moisture_packets_lib.py - 93 - _receive_done : Received a _MOISTURE_INFO_PACKET from node 1.
+Jun 25,2018 13:15 INFO  : handle_moisture_packets_lib.py - 21 - _store_measurement : Measurement stored.  nodeID: 1, measurement: 1, battery_level: 4.11
+Jun 25,2018 13:15 INFO  : handle_moisture_packets_lib.py - 75 - _water_if_needed : Watering.  The measurement (1) is less than the threshold (215).
+Jun 25,2018 13:15 INFO  : handle_moisture_packets_lib.py - 61 - _send_start_watering_packets : Waiting 25 seconds
+Jun 25,2018 13:16 INFO  : handle_moisture_packets_lib.py - 66 - _send_start_watering_packets : Sent start watering packet to node 4, valve 102.  Water for 3 minutes
+Jun 25,2018 13:16 INFO  : handle_moisture_packets_lib.py - 61 - _send_start_watering_packets : Waiting 25 seconds
+Jun 25,2018 13:16 INFO  : handle_moisture_packets_lib.py - 66 - _send_start_watering_packets : Sent start watering packet to node 4, valve 101.  Water for 3 minutes
+Jun 25,2018 13:16 INFO  : handle_moisture_packets_lib.py - 93 - _receive_done : Received a _MOISTURE_INFO_PACKET from node 1.
+Jun 25,2018 13:16 INFO  : handle_moisture_packets_lib.py - 21 - _store_measurement : Measurement stored.  nodeID: 1, measurement: 1, battery_level: 4.32
+Jun 25,2018 13:16 INFO  : handle_moisture_packets_lib.py - 75 - _water_if_needed : Watering.  The measurement (1) is less than the threshold (215).
+Jun 25,2018 13:16 INFO  : handle_moisture_packets_lib.py - 61 - _send_start_watering_packets : Waiting 25 seconds
+Jun 25,2018 13:16 ERROR  : RFM69_lib.py - 419 - transmit : Timed out trying to send packet!
+Jun 25,2018 13:16 INFO  : handle_moisture_packets_lib.py - 66 - _send_start_watering_packets : Sent start watering packet to node 4, valve 102.  Water for 3 minutes
+Jun 25,2018 13:16 INFO  : handle_moisture_packets_lib.py - 61 - _send_start_watering_packets : Waiting 25 seconds
+Jun 25,2018 13:17 INFO  : handle_moisture_packets_lib.py - 66 - _send_start_watering_packets : Sent start watering packet to node 4, valve 101.  Water for 3 minutes
+Jun 25,2018 13:17 INFO  : receive_and_send_packets_lib.py - 57 - _receive_done : Received a _TIME_INFO_PACKET from node 1.
+Jun 25,2018 13:17 INFO  : handle_moisture_packets_lib.py - 93 - _receive_done : Received a _MOISTURE_INFO_PACKET from node 1.
+Jun 25,2018 13:17 INFO  : handle_moisture_packets_lib.py - 21 - _store_measurement : Measurement stored.  nodeID: 1, measurement: 1, battery_level: 4.11
+Jun 25,2018 13:18 INFO  : handle_moisture_packets_lib.py - 75 - _water_if_needed : Watering.  The measurement (1) is less than the threshold (215).
+Jun 25,2018 13:18 INFO  : handle_moisture_packets_lib.py - 61 - _send_start_watering_packets : Waiting 25 seconds
+Jun 25,2018 13:18 INFO  : handle_moisture_packets_lib.py - 66 - _send_start_watering_packets : Sent start watering packet to node 4, valve 102.  Water for 3 minutes
+Jun 25,2018 13:18 INFO  : handle_moisture_packets_lib.py - 61 - _send_start_watering_packets : Waiting 25 seconds
+Jun 25,2018 13:18 INFO  : handle_moisture_packets_lib.py - 66 - _send_start_watering_packets : Sent start watering packet to node 4, valve 101.  Water for 3 minutes
+Jun 25,2018 13:18 INFO  : receive_and_send_packets_lib.py - 57 - _receive_done : Received a _TIME_INFO_PACKET from node 1.
+Jun 25,2018 13:18 INFO  : handle_moisture_packets_lib.py - 93 - _receive_done : Received a _MOISTURE_INFO_PACKET from node 1.
+Jun 25,2018 13:18 INFO  : handle_moisture_packets_lib.py - 21 - _store_measurement : Measurement stored.  nodeID: 1, measurement: 1, battery_level: 4.11
+Jun 25,2018 13:18 INFO  : handle_moisture_packets_lib.py - 75 - _water_if_needed : Watering.  The measurement (1) is less than the threshold (215).
+Jun 25,2018 13:18 INFO  : handle_moisture_packets_lib.py - 61 - _send_start_watering_packets : Waiting 25 seconds
+Jun 25,2018 13:19 INFO  : handle_moisture_packets_lib.py - 66 - _send_start_watering_packets : Sent start watering packet to node 4, valve 102.  Water for 3 minutes
+Jun 25,2018 13:19 INFO  : handle_moisture_packets_lib.py - 61 - _send_start_watering_packets : Waiting 25 seconds
+Jun 25,2018 13:19 INFO  : handle_moisture_packets_lib.py - 66 - _send_start_watering_packets : Sent start watering packet to node 4, valve 101.  Water for 3 minutes
+Jun 25,2018 13:20 INFO  : handle_moisture_packets_lib.py - 93 - _receive_done : Received a _MOISTURE_INFO_PACKET from node 1.
+Jun 25,2018 13:20 INFO  : handle_moisture_packets_lib.py - 21 - _store_measurement : Measurement stored.  nodeID: 1, measurement: 1, battery_level: 4.11
+Jun 25,2018 13:20 INFO  : handle_moisture_packets_lib.py - 75 - _water_if_needed : Watering.  The measurement (1) is less than the threshold (215).
+Jun 25,2018 13:20 INFO  : handle_moisture_packets_lib.py - 61 - _send_start_watering_packets : Waiting 25 seconds
+Jun 25,2018 13:20 INFO  : handle_moisture_packets_lib.py - 66 - _send_start_watering_packets : Sent start watering packet to node 4, valve 102.  Water for 3 minutes
+Jun 25,2018 13:20 INFO  : handle_moisture_packets_lib.py - 61 - _send_start_watering_packets : Waiting 25 seconds
+Jun 25,2018 13:20 INFO  : handle_moisture_packets_lib.py - 66 - _send_start_watering_packets : Sent start watering packet to node 4, valve 101.  Water for 3 minutes
+Jun 25,2018 13:23 INFO  : receive_and_send_packets_lib.py - 57 - _receive_done : Received a _TIME_INFO_PACKET from node 1.
+Jun 25,2018 13:23 INFO  : handle_moisture_packets_lib.py - 93 - _receive_done : Received a _MOISTURE_INFO_PACKET from node 1.
+Jun 25,2018 13:23 INFO  : handle_moisture_packets_lib.py - 21 - _store_measurement : Measurement stored.  nodeID: 1, measurement: 1, battery_level: 4.11
+Jun 25,2018 13:23 INFO  : handle_moisture_packets_lib.py - 75 - _water_if_needed : Watering.  The measurement (1) is less than the threshold (215).
+Jun 25,2018 13:23 INFO  : handle_moisture_packets_lib.py - 61 - _send_start_watering_packets : Waiting 25 seconds
+Jun 25,2018 13:23 INFO  : handle_moisture_packets_lib.py - 66 - _send_start_watering_packets : Sent start watering packet to node 4, valve 102.  Water for 3 minutes
+Jun 25,2018 13:23 INFO  : handle_moisture_packets_lib.py - 61 - _send_start_watering_packets : Waiting 25 seconds
+Jun 25,2018 13:24 INFO  : handle_moisture_packets_lib.py - 66 - _send_start_watering_packets : Sent start watering packet to node 4, valve 101.  Water for 3 minutes
+Jun 25,2018 13:29 INFO  : receive_and_send_packets_lib.py - 57 - _receive_done : Received a _TIME_INFO_PACKET from node 1.
+Jun 25,2018 13:29 INFO  : handle_moisture_packets_lib.py - 93 - _receive_done : Received a _MOISTURE_INFO_PACKET from node 1.
+Jun 25,2018 13:29 INFO  : handle_moisture_packets_lib.py - 21 - _store_measurement : Measurement stored.  nodeID: 1, measurement: 207, battery_level: 4.29
+Jun 25,2018 13:29 INFO  : handle_moisture_packets_lib.py - 75 - _water_if_needed : Watering.  The measurement (207) is less than the threshold (215).
+Jun 25,2018 13:29 INFO  : handle_moisture_packets_lib.py - 61 - _send_start_watering_packets : Waiting 25 seconds
+Jun 25,2018 13:30 INFO  : handle_moisture_packets_lib.py - 66 - _send_start_watering_packets : Sent start watering packet to node 4, valve 102.  Water for 3 minutes
+Jun 25,2018 13:30 INFO  : handle_moisture_packets_lib.py - 61 - _send_start_watering_packets : Waiting 25 seconds
+Jun 25,2018 13:30 INFO  : handle_moisture_packets_lib.py - 66 - _send_start_watering_packets : Sent start watering packet to node 4, valve 101.  Water for 3 minutes
+Jun 25,2018 18:06 ERROR  : receive_and_send_packets_lib.py - 40 - _receive_done : Did not receive any bytes.
+Jun 25,2018 18:55 INFO  : receive_and_send_packets_lib.py - 45 - _receive_done : Received a packet type, 204.  Not sure what this is
+Jun 25,2018 23:11 INFO  : receive_and_send_packets_lib.py - 45 - _receive_done : Received a packet type, 156.  Not sure what this is

@@ -20,6 +20,7 @@ public:
   error_t                 init_stuff();
   void                    get_time_info();
   bool                    have_time_info;
+  bool                    have_sent_moisture_reading;
   uint8_t                 packet_type;
   uint8_t                 valve_id;
   uint8_t                 watering_minutes;

@@ -14,6 +14,7 @@ GardenCommon::GardenCommon(uint8_t node_id) : rf69(RFM69_CS, RFM69_INT), Blink()
 {
   _node_id = node_id;
   have_time_info = false;
+  have_sent_moisture_reading = false;
 }
 /********************************************************
   init_stuff
@@ -64,16 +65,21 @@ error_t GardenCommon::_init_radio() {
 ********************************************************/
 void GardenCommon::go_to_sleep() {
   BlinkGoToSleep
-  print_rtc_time();
+  have_sent_moisture_reading = false;
   rf69.sleep();
   rtc.standbyMode();
 }
 /********************************************************
   wake_up - called back by rtc when it's alarm goes off.
+  Not part of the class....so need instance of Blinks
 ********************************************************/
-void wake_up() {
-  DEBUG_PRINTLNF("I AM AWAKE!");
+void wake_up(){
+
+//  Blinks Blink = Blinks();
+//  BlinkWokeUp
 }
+
+
 /********************************************************
   init_rtc
 ********************************************************/
@@ -88,7 +94,7 @@ void GardenCommon::get_time_info() {
   timeInfo.values.packetType = _TIME_INFO_PACKET;
   int num_tries = 0;
   while (!have_time_info && num_tries++ < NUMBER_OF_TRIES) {
-    BlinkGettingTime
+    //BlinkGettingTime
     if (send_packet(timeInfo.b, sizeof(timeInfo))) {
       if (_time_passed_check() ){
         have_time_info = true;
@@ -96,7 +102,7 @@ void GardenCommon::get_time_info() {
     }
   }
   if (have_time_info) {
-    BlinkGotTime
+    //BlinkGotTime(timeInfo.values.hour)
     _set_rtc();
   }
 }
@@ -123,6 +129,7 @@ void GardenCommon::_set_rtc() {
   // To conserve power, we'll put the chips to sleep when we don't need to access them.
   // The alarm wakes us up so we can either listen for or send packets.
   rtc.setAlarmTime(timeInfo.values.wateringHour, 00, 00);
+  //BlinkAlarmSet(timeInfo.values.wateringHour)
   rtc.enableAlarm(rtc.MATCH_HHMMSS);
 }
 /********************************************************************
@@ -155,6 +162,8 @@ bool GardenCommon::is_in_watering_window() {
  *******************************************************************/
 bool GardenCommon::recv_packet(uint8_t *packet, uint8_t len) {
   if (rf69.recv(packet, &len)) {
+    DEBUG_PRINTF("Length of packet received: ");
+    DEBUG_PRINTLN(len);
     DEBUG_PRINTF(" Received packet: ");
     print_bytes_in_hex(packet,len);
     if (packet[1] != _node_id) {
@@ -200,11 +209,16 @@ bool GardenCommon:: send_packet(uint8_t *packet, uint8_t len) {
    -> Tell which valve to turn off (i.e.: Stop)
  *******************************************************************/
 bool GardenCommon::recv_watering_packet() {
+    wateringInfo ={0};
     if (recv_packet(wateringInfo.b, sizeof(wateringInfo_t)) ) {
       BlinkReceivedMessage
       // Set the current state to either just received a start watering
       // or stop watering packet.
       packet_type = wateringInfo.values.packet_type;
+      DEBUG_PRINTF("Packet type: ");
+      DEBUG_PRINT(packet_type);
+      DEBUG_PRINTF("  Valve id: ");
+      DEBUG_PRINTLN(wateringInfo.values.valve_id);
       if (IS_VALVE(wateringInfo.values.valve_id) && wateringInfo.values.node_id == _node_id) {
         if (packet_type == _START_WATERING_PACKET) {
           // Send back a packet so the sender knows we got the watering packet.
@@ -217,10 +231,8 @@ bool GardenCommon::recv_watering_packet() {
           return true;
       }
     }
-    // In any case, the Rasp Pi expects a response.
-    rf69.send(wateringInfo.b,sizeof(wateringInfo.b));
-    return false;
   }
+  return false;
 }
 
 /********************************************************************

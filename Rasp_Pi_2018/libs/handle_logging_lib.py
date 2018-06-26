@@ -1,38 +1,41 @@
-import datetime
+
 import inspect
 import logging
 import os
 import sys
-from datetime import datetime
 
+class HandleLogging:
 
-
-class BaseClass:
     def __init__(self):
         LOGFILE = os.environ.get("LOGFILE")
         # set DEBUG for everything
-        logging.basicConfig(filename=LOGFILE,level=logging.DEBUG)
+        # In the docs: https://docs.python.org/3/library/logging.html
+        # 16.6.7 Talks about LogRecord Attributes.  I am using this to
+        # provide date/time info...i tried a few others to get stack
+        # info, however returned info on this module.  So used inspect.
+        logging.basicConfig(filename=LOGFILE,level=logging.DEBUG,
+        format='%(asctime)s %(levelname)s  %(message)s',
+        datefmt='%b %-d,%Y %H:%M')
         # matplotlib was clogging up the logfile.
         # From https://matplotlib.org/faq/troubleshooting_faq.html
         logger = logging.getLogger('matplotlib')
         # set WARNING for Matplotlib
         logger.setLevel(logging.WARNING)
+        # Also turn off peewee's debug logging lines
+        # See http://peewee.readthedocs.io/en/latest/peewee/database.html#logging-queries
+        logger = logging.getLogger('peewee')
+        logger.setLevel(logging.WARNING)
 
-class HandleLogging(BaseClass):
-
-    def _get_caller_info(self):
-        current_time = datetime.now().strftime('%b %-d %H:%M')
+    def _make_full_message(self,message):
         # getting to the caller's caller since
         # this function is called from within
-        # and we're interested in the 'ultimate' caller.
-        (filename, line_number,
+        (filepathname, line_number,
          name, lines, index) = inspect.getframeinfo(sys._getframe(2))
-        return (current_time,filename, line_number, name)
+        code_info_str = ": {} - {} - {} : ".format(os.path.basename(filepathname), line_number, name)
+        return (code_info_str + message)
 
     def print_error(self,message):
-        (current_time, filename, line_number, name) = self._get_caller_info()
-        logging.error('{} | {} | {} | {} : {}'.format(current_time,filename,line_number,name, message))
+        logging.error(self._make_full_message(message))
 
     def print_info(self,message):
-        (current_time, filename,line_number,name) = self._get_caller_info()
-        logging.info('{} | {} | {} | {}: {}'.format(current_time,filename,line_number,name, message))
+        logging.info(self._make_full_message(message))

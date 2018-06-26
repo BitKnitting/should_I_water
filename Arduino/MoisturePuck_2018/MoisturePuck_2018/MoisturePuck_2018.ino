@@ -23,7 +23,6 @@ const uint8_t   _NODE_ID                         =   1;
 
 GardenCommon gc(_NODE_ID);
 
-bool HaveSentMoistureReading = false;
 
 /********************************************************
    setup
@@ -54,14 +53,13 @@ void loop() {
     gc.get_time_info();
     // If we have set the time, we get a moisture reading
     // and send it to the Rasp Pi.
-  } else if (!HaveSentMoistureReading) {
+  } else if (!gc.have_sent_moisture_reading) {
     DEBUG_PRINTLNF("Sending moisture reading");
-    HaveSentMoistureReading = send_moisture_reading();
+    gc.have_sent_moisture_reading = send_moisture_reading();
   } else {
 #ifndef DEBUG:
     // We then go to sleep until the watering time provided
     // us when we got the time info packet.
-    HaveSentMoistureReading = false;
     gc.go_to_sleep();
 #endif
   }
@@ -73,7 +71,7 @@ bool send_moisture_reading() {
   moistureInfo.values.packetType = _MOISTURE_INFO_PACKET;
   moistureInfo.values.node_id = _NODE_ID;
   get_reading();
-  BlinkSendingMoisture
+  //BlinkSendingMoisture
   return (gc.send_packet(moistureInfo.b, sizeof(moistureInfo)) );
 
 }

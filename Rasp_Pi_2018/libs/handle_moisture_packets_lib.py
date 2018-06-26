@@ -20,7 +20,7 @@ class HandleMoisturePackets(ReceiveAndSendPackets,MoistureReading):
             self.handle_logging.print_info('Measurement stored.  nodeID: {}, measurement: {}, battery_level: {}'
                     .format(self.node_id,measurement,battery_level))
         except ValueError as e:
-            self.handle_logging.print_error(e)
+            self.handle_logging.print_error(e.message)
 
     def _water_if_needed(self,measurement):
         def _get_valves():
@@ -41,7 +41,7 @@ class HandleMoisturePackets(ReceiveAndSendPackets,MoistureReading):
                 return valves_list
             except Valves.DoesNotExist as e:
                 Valves.close()
-                self.handle_logging.print_error(e)
+                self.handle_logging.print_error(e.message)
                 return []
         def _send_start_watering_packets(valves_list):
             '''
@@ -58,16 +58,19 @@ class HandleMoisturePackets(ReceiveAndSendPackets,MoistureReading):
             for item in valves_list:
                 # Put the packet together in the expected format.
                 packet_to_send = [self._START_WATERING_PACKET,  item[0],item[1],item[2]]
+                self.handle_logging.print_info("Waiting 25 seconds")
+                time.sleep(25) # Give a bit of time to the RFM69 chip...I was
+                               # not receiving packets...
                 # Send the packet
-                time.sleep(5) # Give a bit of time to the RFM69 chip...I was
-                # not receiving packets...
                 self.radio.send(bytearray(packet_to_send))
                 self.handle_logging.print_info("Sent start watering packet to node {}, valve {}.  Water for {} minutes".format(item[0],item[1],item[2]))
+
         #########################################################################
         # Get the threshold value to compare the reading against.
         node_info = self.get_moisture_puck_info(self.node_id)
         # Is the moisture reading saying it's dryer than we want?
         # TEST
+
         if measurement < node_info.threshold:
             self.handle_logging.print_info("Watering.  The measurement ({}) is less than the threshold ({}).".format(measurement,node_info.threshold))
             # Each entry in valves_list is a tuple (valveID, wateringPuckID,
@@ -82,7 +85,7 @@ class HandleMoisturePackets(ReceiveAndSendPackets,MoistureReading):
                 return
             _send_start_watering_packets(valves_list)
         else:
-            self.handle_logging.print_info("No need to water. The measurement ({}) is greater than the threshold ({}).".format(measurement,node_info.threshold))
+            self.handle_logging.print_info("No need to water. The measurement ({}) is greater than or equal to the threshold ({}).".format(measurement,node_info.threshold))
 
     def _receive_done(self,packet):
         super()._receive_done(packet)
@@ -95,9 +98,8 @@ class HandleMoisturePackets(ReceiveAndSendPackets,MoistureReading):
                 measurement,battery_level = struct.unpack('=hf',packet[2:])
                 battery_level = round(battery_level,2)
                 self._store_measurement(measurement,battery_level)
-                # import pdb;pdb.set_trace()
                 self._water_if_needed(measurement)
             except struct.error as e:
-                self.handle_logging.print_error(e)
+                self.handle_logging.print_error(e.message)
                 packet_to_send = [self._ERROR_IN_PACKET_RECEIVED,self.node_id]
                 self.radio.send(bytearray(packet_to_send))

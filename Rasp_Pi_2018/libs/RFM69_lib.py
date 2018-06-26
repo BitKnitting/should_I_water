@@ -413,7 +413,7 @@ class RFM69:
         # Enter TX mode (will clear FIFO!).
         self.operation_mode = TX_MODE
         # In case we hang in this loop, we'll set a time to break out.
-        timeout = time.time()+10 # 10 seconds from now.
+        timeout = time.time() + 5
         while not self.packet_sent:
             if time.time() > timeout:
                 self.handle_logging.print_error("Timed out trying to send packet!")

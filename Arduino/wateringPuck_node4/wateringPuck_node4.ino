@@ -70,7 +70,6 @@ void loop() {
 
 void handle_watering_packet() {
   // Send back a packet just to acknowledge...
-  gc.send_control_packet(gc.packet_type,_NODE_ID);
   switch (gc.valve_id) {
     case _YELLOW_VALVE:
       DEBUG_PRINTF("-->Told yellow valve to ");

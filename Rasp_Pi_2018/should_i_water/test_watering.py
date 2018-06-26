@@ -66,7 +66,6 @@ def getInput():
         raise WateringTimeTooLongError
     return valve_id,input_list[1],watering_time
 def receive_done(packet):
-    import pdb;pdb.set_trace()
     print("received packet {}".format(packet))
 ######################################################################################
 if __name__ == "__main__":
