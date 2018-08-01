@@ -6,10 +6,7 @@ sys.path.append(LIB_PATH)
 from water_plants_lib import WaterPlants
 
 
-
-
-
 ###############
 if __name__ == "__main__":
     water_plants = WaterPlants()
-    water_plants.begin_water_if_needed()
+    water_plants.send_start_watering_packets()

@@ -59,57 +59,57 @@ __repo__ = "https://github.com/adafruit/Adafruit_CircuitPython_RFM69.git"
 
 # pylint: disable=bad-whitespace
 # Internal constants:
-_REG_FIFO            = 0x00
-_REG_OP_MODE         = 0x01
-_REG_DATA_MOD        = 0x02
-_REG_BITRATE_MSB     = 0x03
-_REG_BITRATE_LSB     = 0x04
-_REG_FDEV_MSB        = 0x05
-_REG_FDEV_LSB        = 0x06
-_REG_FRF_MSB         = 0x07
-_REG_FRF_MID         = 0x08
-_REG_FRF_LSB         = 0x09
-_REG_VERSION         = 0x10
-_REG_PA_LEVEL        = 0x11
-_REG_RX_BW           = 0x19
-_REG_AFC_BW          = 0x1A
-_REG_RSSI_VALUE      = 0x24
-_REG_DIO_MAPPING1    = 0x25    # mapping of pins DIO0 to DIO3
-_REG_IRQ_FLAGS1      = 0x27
-_REG_IRQ_FLAGS2      = 0x28
-_REG_PREAMBLE_MSB    = 0x2C
-_REG_PREAMBLE_LSB    = 0x2D
-_REG_SYNC_CONFIG     = 0x2E
-_REG_SYNC_VALUE1     = 0x2F
-_REG_PACKET_CONFIG1  = 0x37
-_REG_FIFO_THRESH     = 0x3C
-_REG_PACKET_CONFIG2  = 0x3D
-_REG_AES_KEY1        = 0x3E
-_REG_TEMP1           = 0x4E
-_REG_TEMP2           = 0x4F
-_REG_TEST_PA1        = 0x5A
-_REG_TEST_PA2        = 0x5C
-_REG_TEST_DAGC       = 0x6F
+_REG_FIFO = 0x00
+_REG_OP_MODE = 0x01
+_REG_DATA_MOD = 0x02
+_REG_BITRATE_MSB = 0x03
+_REG_BITRATE_LSB = 0x04
+_REG_FDEV_MSB = 0x05
+_REG_FDEV_LSB = 0x06
+_REG_FRF_MSB = 0x07
+_REG_FRF_MID = 0x08
+_REG_FRF_LSB = 0x09
+_REG_VERSION = 0x10
+_REG_PA_LEVEL = 0x11
+_REG_RX_BW = 0x19
+_REG_AFC_BW = 0x1A
+_REG_RSSI_VALUE = 0x24
+_REG_DIO_MAPPING1 = 0x25    # mapping of pins DIO0 to DIO3
+_REG_IRQ_FLAGS1 = 0x27
+_REG_IRQ_FLAGS2 = 0x28
+_REG_PREAMBLE_MSB = 0x2C
+_REG_PREAMBLE_LSB = 0x2D
+_REG_SYNC_CONFIG = 0x2E
+_REG_SYNC_VALUE1 = 0x2F
+_REG_PACKET_CONFIG1 = 0x37
+_REG_FIFO_THRESH = 0x3C
+_REG_PACKET_CONFIG2 = 0x3D
+_REG_AES_KEY1 = 0x3E
+_REG_TEMP1 = 0x4E
+_REG_TEMP2 = 0x4F
+_REG_TEST_PA1 = 0x5A
+_REG_TEST_PA2 = 0x5C
+_REG_TEST_DAGC = 0x6F
 
-_TEST_PA1_NORMAL     = 0x55
-_TEST_PA1_BOOST      = 0x5D
-_TEST_PA2_NORMAL     = 0x70
-_TEST_PA2_BOOST      = 0x7C
+_TEST_PA1_NORMAL = 0x55
+_TEST_PA1_BOOST = 0x5D
+_TEST_PA2_NORMAL = 0x70
+_TEST_PA2_BOOST = 0x7C
 
 # The crystal oscillator frequency and frequency synthesizer step size.
 # See the datasheet for details of this calculation.
-_FXOSC  = 32000000.0
-_FSTEP  = _FXOSC / 524288
+_FXOSC = 32000000.0
+_FSTEP = _FXOSC / 524288
 
 # RadioHead specific compatibility constants.
 _RH_BROADCAST_ADDRESS = 0xFF
 
 # User facing constants:
-SLEEP_MODE   = 0b000
+SLEEP_MODE = 0b000
 STANDBY_MODE = 0b001
-FS_MODE      = 0b010
-TX_MODE      = 0b011
-RX_MODE      = 0b100
+FS_MODE = 0b010
+TX_MODE = 0b011
+RX_MODE = 0b100
 # pylint: enable=bad-whitespace
 
 # Disable the silly too many instance members warning.  Pylint has no knowledge
@@ -117,6 +117,7 @@ RX_MODE      = 0b100
 # is a complex chip which requires exposing many attributes and state.  Disable
 # the warning to work around the error.
 # pylint: disable=too-many-instance-attributes
+
 
 class RFM69:
     """Interface to a RFM69 series packet radio.  Allows simple sending and
@@ -261,14 +262,15 @@ class RFM69:
 
     payload_ready = _RegisterBits(_REG_IRQ_FLAGS2, offset=2)
 
-    def __init__(self, *, reset=22, intPin=18, frequency=915,sync_word=b'\x2D\xD4',
+    def __init__(self, *, reset=22, intPin=18, frequency=915, sync_word=b'\x2D\xD4',
                  preamble_length=4, encryption_key=None, high_power=True, baudrate=2000000):
         self.handle_logging = HandleLogging()
+        self.callback = None
         self._tx_power = 13
         self.high_power = high_power
         GPIO.setmode(GPIO.BOARD)
         GPIO.setwarnings(False)
-        #initialize SPI
+        # initialize SPI
         self._device = spidev.SpiDev()
         self._device.open(0, 0)
         self._device.max_speed_hz = baudrate
@@ -276,7 +278,7 @@ class RFM69:
         self._reset = reset
         GPIO.setup(self._reset, GPIO.OUT)
         self._intPin = intPin
-        GPIO.setup(self._intPin, GPIO.IN,pull_up_down=GPIO.PUD_DOWN)
+        GPIO.setup(self._intPin, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
         GPIO.remove_event_detect(self._intPin)
         GPIO.add_event_detect(self._intPin, GPIO.RISING, callback=self.interruptHandler)
         # Reset the chip.
@@ -329,8 +331,6 @@ class RFM69:
         # Set to True in _get_packet when a packet is received.
         self.packet_received = False
 
-
-
     def _read_into(self, address, buf, length=None):
         # buf is a bytearray that we'll fill with the list of bytes returned
         # from the SPI read...
@@ -339,16 +339,16 @@ class RFM69:
         # will be filled.
         if length is None:
             length = len(buf)
-        resp = self._device.xfer([address &0x7F])
+        resp = self._device.xfer([address & 0x7F])
         buf = b''.join(resp)
 
-    def _read_u8(self,address):
+    def _read_u8(self, address):
         # Read a single byte from the provided address and return it.
         address = address & 0x7F  # Strip out top bit to set 0
-                                  # value (read).
-        resp = self._device.xfer([address,0x00]) # the second byte doesn't matter.  Just
+        # value (read).
+        resp = self._device.xfer([address, 0x00])  # the second byte doesn't matter.  Just
         # needs to be there...
-        return resp[1] # the return byte is in the 2nd element.
+        return resp[1]  # the return byte is in the 2nd element.
 
     def _write_from(self, address, buf, length=None):
         # From what I can tell, buf is a 2 byte byte array...
@@ -357,21 +357,19 @@ class RFM69:
         # buffer is written.
         if length is None:
             length = len(buf)
-        stuff_to_send=[address | 0x80]+ list(buf)
+        stuff_to_send = [address | 0x80] + list(buf)
         self._device.xfer(stuff_to_send)
 
-
-    def _write_u8(self,address,value):
+    def _write_u8(self, address, value):
         address = (address | 0x80) & 0xFF  # Set top bit to 1 to indicate write
         value = value & 0xFF
-        self._device.xfer([address,value])
-
+        self._device.xfer([address, value])
 
     def reset(self):
         """Perform a reset of the chip."""
-        GPIO.output(self._reset, GPIO.HIGH);
+        GPIO.output(self._reset, GPIO.HIGH)
         time.sleep(0.0001)
-        GPIO.output(self._reset, GPIO.LOW);
+        GPIO.output(self._reset, GPIO.LOW)
         time.sleep(0.005)
 
     def idle(self):
@@ -471,7 +469,7 @@ class RFM69:
             return None
         # Sync word is not disabled so read the current value.
         sync_word_length = self.sync_size + 1  # Sync word size is offset by 1
-                                               # according to datasheet.
+        # according to datasheet.
         sync_word = bytearray(sync_word_length)
         self._read_into(_REG_SYNC_VALUE1, sync_word)
         return sync_word
@@ -487,7 +485,7 @@ class RFM69:
             # Update the value, size and turn on the sync word.
             self._write_from(_REG_SYNC_VALUE1, val)
             self.sync_size = len(val) - 1  # Again sync word size is offset by
-                                           # 1 according to datasheet.
+            # 1 according to datasheet.
             self.sync_on = 1
 
     @property
@@ -670,17 +668,17 @@ class RFM69:
         assert 0 < len(data_string) <= 60
         # pylint: enable=len-as-condition
         self.idle()  # Stop receiving to clear FIFO and keep it clear.
-        stuff_to_send=[_REG_FIFO | 0x80] # Set top bit to 1 to indicate a write.
+        stuff_to_send = [_REG_FIFO | 0x80]  # Set top bit to 1 to indicate a write.
         # Add 4 bytes for  RadhioHead Library
-        stuff_to_send += [(len(data_string) + 4)&0xFF]
+        stuff_to_send += [(len(data_string) + 4) & 0xFF]
         # Send over broadcast address.
         stuff_to_send += [_RH_BROADCAST_ADDRESS, _RH_BROADCAST_ADDRESS]
         # Add txHeaderId and txHeaderFlag bytes
-        stuff_to_send += [0,0]
+        stuff_to_send += [0, 0]
         # Add in the data
-        if isinstance(data_string,str):
+        if isinstance(data_string, str):
             stuff_to_send += [int(ord(i)) for i in list(data_string)]
-        else: # assume bytearray...
+        else:  # assume bytearray...
             stuff_to_send += [i for i in list(data_string)]
         self._device.xfer(stuff_to_send)
         # Turn on transmit mode to send out the packet.
@@ -688,7 +686,7 @@ class RFM69:
 
         self.idle()
 
-    def receive_begin(self, timeout_s=5, keep_listening=True,callback=None):
+    def receive_begin(self, timeout_s=5, keep_listening=True, callback=None):
         """Wait to receive a packet from the receiver. Will wait for up to timeout_s amount of
            seconds for a packet to be received and decoded. If a packet is found the payload bytes
            are returned, otherwise None is returned (which indicates the timeout elapsed with no
@@ -698,35 +696,30 @@ class RFM69:
            a packet, otherwise it will fall back to idle mode and ignore any future reception.
         """
         # Make sure we are listening for packets.
-        self.callback = callback
-        self.packet_received = False;
         start_time = time.time()
+        self.callback = callback
+        self.packet_received = False
         while True:
             self.listen()
             # packet received is set when a packet comes in via the interrupt.
             if self.packet_received or time.time() - start_time > timeout_s:
                 if keep_listening is False:
                     self.idle()
-                    break;
-
-
-
-
-
+                    break
 
     def _get_packet(self):
         address = _REG_FIFO
-        fifo_length, targetid, senderid, byte1,byte2 = self._device.xfer([_REG_FIFO & 0x7f,0,0,0,0,0])[1:]
-        fifo_length -=  4
+        fifo_length, targetid, senderid, byte1, byte2 = self._device.xfer(
+            [_REG_FIFO & 0x7f, 0, 0, 0, 0, 0])[1:]
+        fifo_length -= 4
         received_data = bytearray(self._device.xfer([_REG_FIFO & 0x7f] +
-                                [0 for i in range(0, fifo_length)])[1:])
+                                                    [0 for i in range(0, fifo_length)])[1:])
         if (self.callback):
             self.listen()
             self.packet_received = True
             self.callback(received_data)
 
-
-    def interruptHandler(self,int):
+    def interruptHandler(self, int):
         if self.payload_ready:
             self.idle()
             self._get_packet()
