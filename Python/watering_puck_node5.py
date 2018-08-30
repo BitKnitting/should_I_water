@@ -11,5 +11,4 @@ pin = board.D11
 if __name__ == "__main__":
     watering_puck = WateringPuck(NODE_ID, pin)
     while True:
-        if watering_puck.time_to_water():
-            watering_puck.water()
+        watering_puck.packet_check()

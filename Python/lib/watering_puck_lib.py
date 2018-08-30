@@ -11,7 +11,6 @@ import adafruit_rfm69
 
 _START_WATERING_PACKET = 5
 _STOP_WATERING_PACKET = 6
-_VALVE = board.D12
 
 
 class WateringPuck:
@@ -27,15 +26,12 @@ class WateringPuck:
         self.valve = digitalio.DigitalInOut(pin)
         self.valve.direction = digitalio.Direction.OUTPUT
         self.valve.value = False
-        # start and stop watering markers are used with time.monotonic() to
-        # figure out whether to turn of watering.
-        self.start_watering_marker = 0
-        self.stop_watering_marker = 0
+        self.stop_watering_time = 0
         self.watering = False
         self.led = digitalio.DigitalInOut(board.D13)
         self.led.direction = digitalio.Direction.OUTPUT
 
-    def water_packet_check(self):
+    def packet_check(self):
         '''
         water_packet_check checks with the RFM69 to see if a start or stop watering
         packet has been received.
@@ -65,7 +61,6 @@ class WateringPuck:
                 self._stop_watering()
                 return True
             else:  # start watering packet
-                self.watering_minutes = self.packet[3]
                 self._start_watering(self.packet[3])
                 return True
         return False
@@ -73,7 +68,7 @@ class WateringPuck:
     def _should_stop_watering(self):
         if self.watering:
             now_time = time.monotonic()
-            if now_time > self.stop_watering_marker:
+            if now_time > self.stop_watering_time:
                 return True
         return False
 
@@ -84,15 +79,13 @@ class WateringPuck:
         '''
         self.watering = True
         self.valve.value = True
-        self.start_watering_marker = time.monotonic()
-        self.stop_watering_marker = self.start_watering_marker + watering_minutes * 60
+        self.stop_watering_time = time.monotonic() + watering_minutes * 60
         self._blink(3)
 
     def _stop_watering(self):
         self.watering = False
         self.valve.value = False
-        self.start_watering_marker = 0
-        self.stop_watering_marker = 0
+        self.stop_watering_time = 0
         self._blink(5)
 
     def _blink(self, numBlinks):

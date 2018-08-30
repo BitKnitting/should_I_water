@@ -6,7 +6,7 @@ import time
 
 class WaterPlants(MoistureReading, RFM69Messages):
     '''
-    Turn on and off valves if the plants need watering.  This is a
+    Turn on and off watering valves.  This is a
     subclass of MoistureReading to autowater based on the moisture
     readings of the moisture pucks.  Alternitively, we can water
     whenever we want.
@@ -18,18 +18,28 @@ class WaterPlants(MoistureReading, RFM69Messages):
 
     def _get_valves(self, all_valves=True):
         '''
-        Returns a list of (valveID,wateringPuckID) tuples.  One for each valve
-        associated with the moisture puck. Or if all_valves == Turn on water
-        for each valve
+        Return a list of valves from the valves table.  Which rows are returned
+        depend on all_values.  all_values can be:
+        True - if all values is True, all rows in the valves table are returned.
+           e.g.:  self._get_valves(True)
+        An int - the rows whose moisture puck id are = to the int are returned.
+           e.g.:  self._get_valves(1)
+        Returns a list of valves that have the valve ID in the all_values list.
+           e.g.:  self._get_values([102,102])
+
+        Each entry in the list of valves is a tuple:
+            (wateringPuckID,valveID,watering_time)
         '''
         valves_list = []
         try:
             Valves.initialize()
-            if all_valves:
+            if all_valves is True:
                 # Peewee's .dicts() explanation: http://docs.peewee-orm.com/en/latest/peewee/querying.html?highlight=dicts()#retrieving-row-tuples-dictionaries-namedtuples
                 query = Valves.select().dicts()
-            else:
-                query = Valves.select().dicts().where(Valves.moisturePuckID == self.moisture_puck_id)
+            elif isinstance(all_valves, int):
+                query = Valves.select().dicts().where(Valves.moisturePuckID == all_values)
+            elif isinstance(all_valves, list):
+                query = Valves.select().dicts().where(Valves.valveID.in_(all_valves))
             # The watering puck id tells us which watering puck to send the rfm69
             # message to.  The message will contain the valve ID.  This way, the
             # watering puck knows which valve to turn on and off.
@@ -44,14 +54,17 @@ class WaterPlants(MoistureReading, RFM69Messages):
 
     def send_start_watering_packets(self, all_valves=True):
         '''
-        Send a start watering packet to the watering puck that is responsible
-        for watering the area where the moisture puck's reading was below the
-        threshold value.  The values parameter is a list of tuples that contain
-        the id of the watering puck, the valve id, and the watering time.
-        E.g.: [(1,1,15),(1,2,30)] says to send a start watering packet to the
-        watering puck whose node id = 1.  The watering puck should turn on the valve
-        identified as 1 for 15 minutes.  The second tuple says to send another
-        packet to the same watering puck, this time telling it to turn on the valve
+        Send a start watering packet to a watering puck for each valve.
+        Which watering pucks and which valves are determined by the all_values
+        parameter:
+        - all_valves = True: loops through all entries in the valves table (i.e.:
+        all valves regardless of watering puck)
+        - all_valves = moisture puck ID:  All valves that are identified as being
+        "managed" by a particular moisture puck.  For example, the valves table has
+        a column for the moisture puck id.  The rows with the moisture puck ID passed
+        in will be sent a start watering packet.
+        - all_valves = list of valves (e.g.:[102,102]) valves identified by the valveID
+        column in the valves table will be sent a start watering packet.
         with id 2 for 30 minutes.
         '''
         # Each entry in valves_list is a tuple (valveID, wateringPuckID,

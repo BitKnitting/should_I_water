@@ -4,6 +4,6 @@ Description=Water zones based on info in the database.
 [Service]
 Type=simple
 Environment = 'PYTHONPATH=/home/pi/.local/lib/python3.5/site-packages'
-EnvironmentFile=/home/pi/myLadybugHelper/env_variables/environment_siw
-ExecStart=/usr/bin/python3 /home/pi/myLadybugHelper/should_i_water/water_task.py
+EnvironmentFile= /home/pi/myLadybugHelper/env_variables/environment_siw
+ExecStart=/usr/bin/python3 /home/pi/myLadybugHelper/should_i_water/water_plants_task.py
 User=pi
