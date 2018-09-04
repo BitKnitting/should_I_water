@@ -30,6 +30,7 @@ class WateringPuck:
         self.watering = False
         self.led = digitalio.DigitalInOut(board.D13)
         self.led.direction = digitalio.Direction.OUTPUT
+        self.led.value = False
 
     def packet_check(self):
         '''
@@ -80,17 +81,15 @@ class WateringPuck:
         self.watering = True
         self.valve.value = True
         self.stop_watering_time = time.monotonic() + watering_minutes * 60
-        self._blink(3)
+        self._blink(5, .3)
 
     def _stop_watering(self):
         self.watering = False
         self.valve.value = False
         self.stop_watering_time = 0
-        self._blink(5)
+        self._blink(5, .3)
 
-    def _blink(self, numBlinks):
-        for _ in range(numBlinks):
-            self.led.value = True
-            time.sleep(.3)
-            self.led.value = False
-            time.sleep(.3)
+    def _blink(self, numBlinks, sec):
+        for _ in range(numBlinks*2):
+            self.led.value = not self.led.value
+            time.sleep(sec)

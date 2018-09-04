@@ -194,3 +194,152 @@ Aug 26,2018 04:30 INFO  : water_plants_lib.py - 70 - send_start_watering_packets
 Aug 26,2018 04:30 INFO  : water_plants_lib.py - 73 - send_start_watering_packets : sent packet. Waiting 8 minutes to send next packet
 Aug 26,2018 04:38 INFO  : water_plants_lib.py - 70 - send_start_watering_packets : sending packet: watering puck: 4, valve id: 101, minutes to water: 8
 Aug 26,2018 04:38 INFO  : water_plants_lib.py - 73 - send_start_watering_packets : sent packet. Waiting 8 minutes to send next packet
+Aug 30,2018 04:30 INFO  : water_plants_lib.py - 83 - send_start_watering_packets : sending packet: watering puck: 4, valve id: 102, minutes to water: 8
+Aug 30,2018 04:30 INFO  : water_plants_lib.py - 86 - send_start_watering_packets : sent packet. Waiting 8 minutes to send next packet
+Aug 30,2018 04:38 INFO  : water_plants_lib.py - 83 - send_start_watering_packets : sending packet: watering puck: 4, valve id: 101, minutes to water: 8
+Aug 30,2018 04:38 INFO  : water_plants_lib.py - 86 - send_start_watering_packets : sent packet. Waiting 8 minutes to send next packet
+Aug 30,2018 04:46 INFO  : water_plants_lib.py - 83 - send_start_watering_packets : sending packet: watering puck: 5, valve id: 103, minutes to water: 8
+Aug 30,2018 04:46 INFO  : water_plants_lib.py - 86 - send_start_watering_packets : sent packet. Waiting 8 minutes to send next packet
+Aug 30,2018 19:00 INFO  : water_plants_lib.py - 83 - send_start_watering_packets : sending packet: watering puck: 4, valve id: 102, minutes to water: 8
+Aug 30,2018 19:00 INFO  : water_plants_lib.py - 86 - send_start_watering_packets : sent packet. Waiting 8 minutes to send next packet
+Aug 30,2018 19:08 INFO  : water_plants_lib.py - 83 - send_start_watering_packets : sending packet: watering puck: 4, valve id: 101, minutes to water: 8
+Aug 30,2018 19:08 INFO  : water_plants_lib.py - 86 - send_start_watering_packets : sent packet. Waiting 8 minutes to send next packet
+Aug 30,2018 19:16 INFO  : water_plants_lib.py - 83 - send_start_watering_packets : sending packet: watering puck: 5, valve id: 103, minutes to water: 8
+Aug 30,2018 19:16 INFO  : water_plants_lib.py - 86 - send_start_watering_packets : sent packet. Waiting 8 minutes to send next packet
+Aug 31,2018 10:18 INFO  : water_plants_lib.py - 76 - send_start_watering_packets : No valves found to send watering packets to.
+Aug 31,2018 10:21 INFO  : water_plants_lib.py - 86 - send_start_watering_packets : sending packet: watering puck: 5, valve id: 103, minutes to water: 8
+Sep 1,2018 11:09 INFO  : water_plants_lib.py - 102 - send_start_watering_packets : sending packet: watering puck: 5, valve id: 103, minutes to water: 8
+Sep 1,2018 11:09 INFO  : water_plants_lib.py - 105 - send_start_watering_packets : sent packet. Waiting 8 minutes to send next packet
+Sep 1,2018 11:09 INFO  : water_plants_lib.py - 69 - send_stop_watering_packets : sending stop watering packet: watering puck: 5, valve id: 103, minutes to water: 8
+Sep 1,2018 11:09 INFO  : water_plants_lib.py - 71 - send_stop_watering_packets : sent packet. 
+Sep 1,2018 15:41 INFO  : water_plants_lib.py - 102 - send_start_watering_packets : sending packet: watering puck: 5, valve id: 103, minutes to water: 8
+Sep 1,2018 15:41 INFO  : water_plants_lib.py - 105 - send_start_watering_packets : sent packet. Waiting 8 minutes to send next packet
+Sep 2,2018 04:30 INFO  : water_plants_lib.py - 102 - send_start_watering_packets : sending packet: watering puck: 4, valve id: 102, minutes to water: 8
+Sep 2,2018 04:30 INFO  : water_plants_lib.py - 105 - send_start_watering_packets : sent packet. Waiting 8 minutes to send next packet
+Sep 2,2018 04:33 INFO  : water_plants_lib.py - 102 - send_start_watering_packets : sending packet: watering puck: 5, valve id: 103, minutes to water: 8
+Sep 2,2018 04:33 INFO  : water_plants_lib.py - 105 - send_start_watering_packets : sent packet. Waiting 8 minutes to send next packet
+Sep 2,2018 04:33 INFO  : water_plants_lib.py - 69 - send_stop_watering_packets : sending stop watering packet: watering puck: 5, valve id: 103, minutes to water: 8
+Sep 2,2018 04:33 INFO  : water_plants_lib.py - 71 - send_stop_watering_packets : sent packet. 
+Sep 2,2018 04:33 INFO  : water_plants_lib.py - 102 - send_start_watering_packets : sending packet: watering puck: 5, valve id: 103, minutes to water: 8
+Sep 2,2018 04:33 INFO  : water_plants_lib.py - 105 - send_start_watering_packets : sent packet. Waiting 8 minutes to send next packet
+Sep 2,2018 04:33 INFO  : water_plants_lib.py - 69 - send_stop_watering_packets : sending stop watering packet: watering puck: 5, valve id: 103, minutes to water: 8
+Sep 2,2018 04:33 INFO  : water_plants_lib.py - 71 - send_stop_watering_packets : sent packet. 
+Sep 2,2018 04:37 INFO  : water_plants_lib.py - 102 - send_start_watering_packets : sending packet: watering puck: 5, valve id: 103, minutes to water: 8
+Sep 2,2018 04:37 INFO  : water_plants_lib.py - 105 - send_start_watering_packets : sent packet. Waiting 8 minutes to send next packet
+Sep 2,2018 04:37 INFO  : water_plants_lib.py - 102 - send_start_watering_packets : sending packet: watering puck: 5, valve id: 103, minutes to water: 8
+Sep 2,2018 04:37 INFO  : water_plants_lib.py - 105 - send_start_watering_packets : sent packet. Waiting 8 minutes to send next packet
+Sep 2,2018 04:37 INFO  : water_plants_lib.py - 69 - send_stop_watering_packets : sending stop watering packet: watering puck: 5, valve id: 103, minutes to water: 8
+Sep 2,2018 04:37 INFO  : water_plants_lib.py - 71 - send_stop_watering_packets : sent packet. 
+Sep 2,2018 04:38 INFO  : water_plants_lib.py - 102 - send_start_watering_packets : sending packet: watering puck: 4, valve id: 101, minutes to water: 8
+Sep 2,2018 04:38 INFO  : water_plants_lib.py - 105 - send_start_watering_packets : sent packet. Waiting 8 minutes to send next packet
+Sep 2,2018 04:40 INFO  : water_plants_lib.py - 102 - send_start_watering_packets : sending packet: watering puck: 5, valve id: 103, minutes to water: 8
+Sep 2,2018 04:40 INFO  : water_plants_lib.py - 105 - send_start_watering_packets : sent packet. Waiting 8 minutes to send next packet
+Sep 2,2018 04:42 INFO  : water_plants_lib.py - 102 - send_start_watering_packets : sending packet: watering puck: 5, valve id: 103, minutes to water: 8
+Sep 2,2018 04:42 INFO  : water_plants_lib.py - 105 - send_start_watering_packets : sent packet. Waiting 8 minutes to send next packet
+Sep 2,2018 04:46 INFO  : water_plants_lib.py - 102 - send_start_watering_packets : sending packet: watering puck: 5, valve id: 103, minutes to water: 8
+Sep 2,2018 04:46 INFO  : water_plants_lib.py - 105 - send_start_watering_packets : sent packet. Waiting 8 minutes to send next packet
+Sep 2,2018 04:47 INFO  : water_plants_lib.py - 69 - send_stop_watering_packets : sending stop watering packet: watering puck: 5, valve id: 103, minutes to water: 8
+Sep 2,2018 04:47 INFO  : water_plants_lib.py - 71 - send_stop_watering_packets : sent packet. 
+Sep 2,2018 04:51 INFO  : water_plants_lib.py - 102 - send_start_watering_packets : sending packet: watering puck: 5, valve id: 103, minutes to water: 8
+Sep 2,2018 04:51 INFO  : water_plants_lib.py - 105 - send_start_watering_packets : sent packet. Waiting 8 minutes to send next packet
+Sep 2,2018 04:52 INFO  : water_plants_lib.py - 69 - send_stop_watering_packets : sending stop watering packet: watering puck: 5, valve id: 103, minutes to water: 8
+Sep 2,2018 04:52 INFO  : water_plants_lib.py - 71 - send_stop_watering_packets : sent packet. 
+Sep 2,2018 04:54 INFO  : water_plants_lib.py - 102 - send_start_watering_packets : sending packet: watering puck: 5, valve id: 103, minutes to water: 8
+Sep 2,2018 04:54 INFO  : water_plants_lib.py - 105 - send_start_watering_packets : sent packet. Waiting 8 minutes to send next packet
+Sep 2,2018 04:54 INFO  : water_plants_lib.py - 69 - send_stop_watering_packets : sending stop watering packet: watering puck: 5, valve id: 103, minutes to water: 8
+Sep 2,2018 04:54 INFO  : water_plants_lib.py - 71 - send_stop_watering_packets : sent packet. 
+Sep 2,2018 04:55 INFO  : water_plants_lib.py - 102 - send_start_watering_packets : sending packet: watering puck: 5, valve id: 103, minutes to water: 8
+Sep 2,2018 04:55 INFO  : water_plants_lib.py - 105 - send_start_watering_packets : sent packet. Waiting 8 minutes to send next packet
+Sep 2,2018 04:55 INFO  : water_plants_lib.py - 69 - send_stop_watering_packets : sending stop watering packet: watering puck: 5, valve id: 103, minutes to water: 8
+Sep 2,2018 04:55 INFO  : water_plants_lib.py - 71 - send_stop_watering_packets : sent packet. 
+Sep 2,2018 04:56 INFO  : water_plants_lib.py - 102 - send_start_watering_packets : sending packet: watering puck: 5, valve id: 103, minutes to water: 8
+Sep 2,2018 04:56 INFO  : water_plants_lib.py - 105 - send_start_watering_packets : sent packet. Waiting 8 minutes to send next packet
+Sep 2,2018 04:57 INFO  : water_plants_lib.py - 69 - send_stop_watering_packets : sending stop watering packet: watering puck: 5, valve id: 103, minutes to water: 8
+Sep 2,2018 04:57 INFO  : water_plants_lib.py - 71 - send_stop_watering_packets : sent packet. 
+Sep 2,2018 04:58 INFO  : water_plants_lib.py - 102 - send_start_watering_packets : sending packet: watering puck: 5, valve id: 103, minutes to water: 8
+Sep 2,2018 04:58 INFO  : water_plants_lib.py - 105 - send_start_watering_packets : sent packet. Waiting 8 minutes to send next packet
+Sep 2,2018 05:00 INFO  : water_plants_lib.py - 102 - send_start_watering_packets : sending packet: watering puck: 5, valve id: 103, minutes to water: 8
+Sep 2,2018 05:00 INFO  : water_plants_lib.py - 105 - send_start_watering_packets : sent packet. Waiting 8 minutes to send next packet
+Sep 2,2018 05:01 INFO  : water_plants_lib.py - 102 - send_start_watering_packets : sending packet: watering puck: 5, valve id: 103, minutes to water: 8
+Sep 2,2018 05:01 INFO  : water_plants_lib.py - 105 - send_start_watering_packets : sent packet. Waiting 8 minutes to send next packet
+Sep 2,2018 05:02 INFO  : water_plants_lib.py - 102 - send_start_watering_packets : sending packet: watering puck: 5, valve id: 103, minutes to water: 8
+Sep 2,2018 05:02 INFO  : water_plants_lib.py - 105 - send_start_watering_packets : sent packet. Waiting 8 minutes to send next packet
+Sep 2,2018 05:05 INFO  : water_plants_lib.py - 102 - send_start_watering_packets : sending packet: watering puck: 5, valve id: 103, minutes to water: 8
+Sep 2,2018 05:05 INFO  : water_plants_lib.py - 105 - send_start_watering_packets : sent packet. Waiting 8 minutes to send next packet
+Sep 2,2018 05:07 INFO  : water_plants_lib.py - 69 - send_stop_watering_packets : sending stop watering packet: watering puck: 5, valve id: 103, minutes to water: 8
+Sep 2,2018 05:07 INFO  : water_plants_lib.py - 71 - send_stop_watering_packets : sent packet. 
+Sep 2,2018 07:02 INFO  : water_plants_lib.py - 104 - send_start_watering_packets : sending packet: watering puck: 4, valve id: 102, minutes to water: 8
+Sep 2,2018 07:02 INFO  : water_plants_lib.py - 107 - send_start_watering_packets : sent packet. Waiting 8 minutes to send next packet
+Sep 2,2018 07:05 INFO  : water_plants_lib.py - 104 - send_start_watering_packets : sending packet: watering puck: 4, valve id: 102, minutes to water: 8
+Sep 2,2018 07:05 INFO  : water_plants_lib.py - 107 - send_start_watering_packets : sent packet. Waiting 8 minutes to send next packet
+Sep 2,2018 07:13 INFO  : water_plants_lib.py - 108 - send_start_watering_packets : sending packet: watering puck: 4, valve id: 101, minutes to water: 8
+Sep 2,2018 07:13 INFO  : water_plants_lib.py - 108 - send_start_watering_packets : sent packet. Waiting 8 minutes to send next packet
+Sep 2,2018 07:21 INFO  : water_plants_lib.py - 108 - send_start_watering_packets : sending packet: watering puck: 5, valve id: 103, minutes to water: 8
+Sep 2,2018 07:21 INFO  : water_plants_lib.py - 108 - send_start_watering_packets : sent packet. Waiting 8 minutes to send next packet
+Sep 2,2018 07:35 INFO  : water_plants_lib.py - 104 - send_start_watering_packets : sending packet: watering puck: 5, valve id: 103, minutes to water: 8
+Sep 2,2018 07:35 INFO  : water_plants_lib.py - 107 - send_start_watering_packets : sent packet. Waiting 8 minutes to send next packet
+Sep 2,2018 07:37 INFO  : water_plants_lib.py - 71 - send_stop_watering_packets : sending stop watering packet: watering puck: 5, valve id: 103, minutes to water: 8
+Sep 2,2018 07:37 INFO  : water_plants_lib.py - 73 - send_stop_watering_packets : sent packet. 
+Sep 2,2018 07:38 INFO  : water_plants_lib.py - 104 - send_start_watering_packets : sending packet: watering puck: 5, valve id: 103, minutes to water: 8
+Sep 2,2018 07:38 INFO  : water_plants_lib.py - 107 - send_start_watering_packets : sent packet. Waiting 8 minutes to send next packet
+Sep 2,2018 19:00 INFO  : water_plants_lib.py - 104 - send_start_watering_packets : sending packet: watering puck: 4, valve id: 102, minutes to water: 8
+Sep 2,2018 19:00 INFO  : water_plants_lib.py - 107 - send_start_watering_packets : sent packet. Waiting 8 minutes to send next packet
+Sep 2,2018 19:08 INFO  : water_plants_lib.py - 104 - send_start_watering_packets : sending packet: watering puck: 4, valve id: 101, minutes to water: 8
+Sep 2,2018 19:08 INFO  : water_plants_lib.py - 107 - send_start_watering_packets : sent packet. Waiting 8 minutes to send next packet
+Sep 2,2018 19:16 INFO  : water_plants_lib.py - 104 - send_start_watering_packets : sending packet: watering puck: 5, valve id: 103, minutes to water: 8
+Sep 2,2018 19:16 INFO  : water_plants_lib.py - 107 - send_start_watering_packets : sent packet. Waiting 8 minutes to send next packet
+Sep 3,2018 03:15 INFO  : water_plants_lib.py - 104 - send_start_watering_packets : sending packet: watering puck: 5, valve id: 103, minutes to water: 8
+Sep 3,2018 03:15 ERROR  : RFM69_lib.py - 417 - transmit : Timed out trying to send packet!
+Sep 3,2018 03:15 INFO  : water_plants_lib.py - 107 - send_start_watering_packets : sent packet. Waiting 8 minutes to send next packet
+Sep 3,2018 03:31 INFO  : water_plants_lib.py - 104 - send_start_watering_packets : sending packet: watering puck: 5, valve id: 103, minutes to water: 8
+Sep 3,2018 03:31 ERROR  : RFM69_lib.py - 417 - transmit : Timed out trying to send packet!
+Sep 3,2018 03:31 INFO  : water_plants_lib.py - 107 - send_start_watering_packets : sent packet. Waiting 8 minutes to send next packet
+Sep 3,2018 04:23 INFO  : water_plants_lib.py - 104 - send_start_watering_packets : sending packet: watering puck: 5, valve id: 103, minutes to water: 8
+Sep 3,2018 04:23 ERROR  : RFM69_lib.py - 417 - transmit : Timed out trying to send packet!
+Sep 3,2018 04:23 INFO  : water_plants_lib.py - 107 - send_start_watering_packets : sent packet. Waiting 8 minutes to send next packet
+Sep 3,2018 04:24 INFO  : water_plants_lib.py - 104 - send_start_watering_packets : sending packet: watering puck: 5, valve id: 103, minutes to water: 8
+Sep 3,2018 04:24 ERROR  : RFM69_lib.py - 417 - transmit : Timed out trying to send packet!
+Sep 3,2018 04:24 INFO  : water_plants_lib.py - 107 - send_start_watering_packets : sent packet. Waiting 8 minutes to send next packet
+Sep 3,2018 04:30 INFO  : water_plants_lib.py - 104 - send_start_watering_packets : sending packet: watering puck: 4, valve id: 102, minutes to water: 8
+Sep 3,2018 04:30 ERROR  : RFM69_lib.py - 417 - transmit : Timed out trying to send packet!
+Sep 3,2018 04:30 INFO  : water_plants_lib.py - 107 - send_start_watering_packets : sent packet. Waiting 8 minutes to send next packet
+Sep 3,2018 04:38 INFO  : water_plants_lib.py - 104 - send_start_watering_packets : sending packet: watering puck: 4, valve id: 101, minutes to water: 8
+Sep 3,2018 04:38 ERROR  : RFM69_lib.py - 417 - transmit : Timed out trying to send packet!
+Sep 3,2018 04:38 INFO  : water_plants_lib.py - 107 - send_start_watering_packets : sent packet. Waiting 8 minutes to send next packet
+Sep 3,2018 04:46 INFO  : water_plants_lib.py - 104 - send_start_watering_packets : sending packet: watering puck: 5, valve id: 103, minutes to water: 8
+Sep 3,2018 04:46 ERROR  : RFM69_lib.py - 417 - transmit : Timed out trying to send packet!
+Sep 3,2018 04:46 INFO  : water_plants_lib.py - 107 - send_start_watering_packets : sent packet. Waiting 8 minutes to send next packet
+Sep 3,2018 05:42 INFO  : water_plants_lib.py - 104 - send_start_watering_packets : sending packet: watering puck: 5, valve id: 103, minutes to water: 8
+Sep 3,2018 05:42 ERROR  : RFM69_lib.py - 417 - transmit : Timed out trying to send packet!
+Sep 3,2018 05:42 INFO  : water_plants_lib.py - 107 - send_start_watering_packets : sent packet. Waiting 8 minutes to send next packet
+Sep 3,2018 05:47 INFO  : water_plants_lib.py - 104 - send_start_watering_packets : sending packet: watering puck: 5, valve id: 103, minutes to water: 8
+Sep 3,2018 05:47 ERROR  : RFM69_lib.py - 417 - transmit : Timed out trying to send packet!
+Sep 3,2018 05:47 INFO  : water_plants_lib.py - 107 - send_start_watering_packets : sent packet. Waiting 8 minutes to send next packet
+Sep 3,2018 05:48 INFO  : water_plants_lib.py - 104 - send_start_watering_packets : sending packet: watering puck: 5, valve id: 103, minutes to water: 8
+Sep 3,2018 05:48 ERROR  : RFM69_lib.py - 417 - transmit : Timed out trying to send packet!
+Sep 3,2018 05:48 INFO  : water_plants_lib.py - 107 - send_start_watering_packets : sent packet. Waiting 8 minutes to send next packet
+Sep 3,2018 05:52 INFO  : water_plants_lib.py - 104 - send_start_watering_packets : sending packet: watering puck: 5, valve id: 103, minutes to water: 8
+Sep 3,2018 05:52 ERROR  : RFM69_lib.py - 417 - transmit : Timed out trying to send packet!
+Sep 3,2018 05:52 INFO  : water_plants_lib.py - 107 - send_start_watering_packets : sent packet. Waiting 8 minutes to send next packet
+Sep 3,2018 05:56 INFO  : water_plants_lib.py - 104 - send_start_watering_packets : sending packet: watering puck: 5, valve id: 103, minutes to water: 8
+Sep 3,2018 05:57 ERROR  : RFM69_lib.py - 417 - transmit : Timed out trying to send packet!
+Sep 3,2018 06:04 INFO  : water_plants_lib.py - 104 - send_start_watering_packets : sending packet: watering puck: 5, valve id: 103, minutes to water: 8
+Sep 3,2018 06:04 INFO  : water_plants_lib.py - 107 - send_start_watering_packets : sent packet. Waiting 8 minutes to send next packet
+Sep 3,2018 06:08 INFO  : water_plants_lib.py - 104 - send_start_watering_packets : sending packet: watering puck: 5, valve id: 103, minutes to water: 8
+Sep 3,2018 06:08 INFO  : water_plants_lib.py - 107 - send_start_watering_packets : sent packet. Waiting 8 minutes to send next packet
+Sep 3,2018 06:12 INFO  : water_plants_lib.py - 104 - send_start_watering_packets : sending packet: watering puck: 5, valve id: 103, minutes to water: 8
+Sep 3,2018 06:12 INFO  : water_plants_lib.py - 107 - send_start_watering_packets : sent packet. Waiting 8 minutes to send next packet
+Sep 3,2018 06:28 INFO  : water_plants_lib.py - 104 - send_start_watering_packets : sending packet: watering puck: 5, valve id: 103, minutes to water: 8
+Sep 3,2018 06:28 INFO  : water_plants_lib.py - 107 - send_start_watering_packets : sent packet. Waiting 8 minutes to send next packet
+Sep 3,2018 19:00 INFO  : water_plants_lib.py - 104 - send_start_watering_packets : sending packet: watering puck: 4, valve id: 102, minutes to water: 8
+Sep 3,2018 19:00 INFO  : water_plants_lib.py - 107 - send_start_watering_packets : sent packet. Waiting 8 minutes to send next packet
+Sep 3,2018 19:08 INFO  : water_plants_lib.py - 104 - send_start_watering_packets : sending packet: watering puck: 4, valve id: 101, minutes to water: 8
+Sep 3,2018 19:08 INFO  : water_plants_lib.py - 107 - send_start_watering_packets : sent packet. Waiting 8 minutes to send next packet
+Sep 3,2018 19:16 INFO  : water_plants_lib.py - 104 - send_start_watering_packets : sending packet: watering puck: 5, valve id: 103, minutes to water: 8
+Sep 3,2018 19:16 INFO  : water_plants_lib.py - 107 - send_start_watering_packets : sent packet. Waiting 8 minutes to send next packet
+Sep 4,2018 04:30 INFO  : water_plants_lib.py - 104 - send_start_watering_packets : sending packet: watering puck: 4, valve id: 102, minutes to water: 8
+Sep 4,2018 04:30 INFO  : water_plants_lib.py - 107 - send_start_watering_packets : sent packet. Waiting 8 minutes to send next packet
+Sep 4,2018 04:38 INFO  : water_plants_lib.py - 104 - send_start_watering_packets : sending packet: watering puck: 4, valve id: 101, minutes to water: 8
+Sep 4,2018 04:38 INFO  : water_plants_lib.py - 107 - send_start_watering_packets : sent packet. Waiting 8 minutes to send next packet
+Sep 4,2018 04:46 INFO  : water_plants_lib.py - 104 - send_start_watering_packets : sending packet: watering puck: 5, valve id: 103, minutes to water: 8
+Sep 4,2018 04:46 INFO  : water_plants_lib.py - 107 - send_start_watering_packets : sent packet. Waiting 8 minutes to send next packet

@@ -1,10 +1,11 @@
+from handle_logging_lib import HandleLogging
 from moisture_reading_lib import MoistureReading
 from reading_model import Valves
 from RFM69_messages_lib import RFM69Messages
 import time
 
 
-class WaterPlants(MoistureReading, RFM69Messages):
+class WaterPlants(RFM69Messages):
     '''
     Turn on and off watering valves.  This is a
     subclass of MoistureReading to autowater based on the moisture
@@ -15,6 +16,7 @@ class WaterPlants(MoistureReading, RFM69Messages):
     def __init__(self):
         '''start receiving/sending packets to watering pucks'''
         super().__init__()
+        self.handle_logging = HandleLogging()
 
     def _get_valves(self, all_valves=True):
         '''
@@ -37,7 +39,7 @@ class WaterPlants(MoistureReading, RFM69Messages):
                 # Peewee's .dicts() explanation: http://docs.peewee-orm.com/en/latest/peewee/querying.html?highlight=dicts()#retrieving-row-tuples-dictionaries-namedtuples
                 query = Valves.select().dicts()
             elif isinstance(all_valves, int):
-                query = Valves.select().dicts().where(Valves.moisturePuckID == all_values)
+                query = Valves.select().dicts().where(Valves.moisturePuckID == all_valves)
             elif isinstance(all_valves, list):
                 query = Valves.select().dicts().where(Valves.valveID.in_(all_valves))
             # The watering puck id tells us which watering puck to send the rfm69
@@ -51,6 +53,24 @@ class WaterPlants(MoistureReading, RFM69Messages):
             Valves.close()
             self.handle_logging.print_error(e)
             return []
+
+    def send_stop_watering_packets(self, all_valves=True):
+        '''
+        The opposite of send_start_watering_packets
+        '''
+        valves_list = self._get_valves(all_valves)
+        if not valves_list:
+            self.handle_logging.print_info("No valves found.")
+            return
+
+        for item in valves_list:
+            # Put the packet together in the expected format.
+            packet_to_send = [self._STOP_WATERING_PACKET,  item[0], item[1], item[2]]
+            # Send the packet
+            self.handle_logging.print_info(("sending stop watering packet: watering puck: {}, "
+                                            "valve id: {}, minutes to water: {}").format(item[0], item[1], item[2]))
+            self.radio.send(bytearray(packet_to_send))
+            self.handle_logging.print_info("sent packet. ")
 
     def send_start_watering_packets(self, all_valves=True):
         '''
@@ -73,6 +93,7 @@ class WaterPlants(MoistureReading, RFM69Messages):
         # start watering packet to and which valve to open/close.
         valves_list = self._get_valves(all_valves)
         if not valves_list:
+            self.handle_logging.print_info("No valves found to send watering packets to.")
             return
 
         for item in valves_list:
