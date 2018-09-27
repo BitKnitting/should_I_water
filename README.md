@@ -1,5 +1,7 @@
 # should_I_water
 Hello, for several years I posted the details of projects I have worked on at my [bitknitting blog](https://bitknitting.wordpress.com/),  But - hey, looky here!  GitHub has a wiki for each project.  So I switched to this method for documentation.  
+
+Please check out [should_i_water's wiki](https://github.com/BitKnitting/should_I_water/wiki) for the innard details of this project.
   
 The challenge is along the way I have bumbled through different accounts and such.
 
